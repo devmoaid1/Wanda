@@ -1,3 +1,5 @@
 {
-    "python.formatting.provider": "autopep8"
+    "python.formatting.provider": "black",
+    "python.autoComplete.extraPaths": ["C:/React App/Wanda/backend/Scripts/python"]
+
 }
