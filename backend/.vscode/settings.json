@@ -1,11 +1,3 @@
 {
-    "git.ignoreLimitWarning": true,
-    
-    "python.linting.enabled": false,
-    "python.linting.pycodestyleEnabled": true,
-    "python.linting.pylintEnabled": true,
-    "python.linting.pylintPath": "pylint_django",
-   
-    
-   
+    "git.ignoreLimitWarning": true
 }
