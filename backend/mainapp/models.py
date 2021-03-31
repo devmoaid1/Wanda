@@ -4,6 +4,7 @@ from django.db import models
 
 
 class Car(models.Model):
+
     name = models.CharField(max_length=50)
     brand = models.CharField(max_length=100)
     price = models.FloatField()
@@ -13,8 +14,12 @@ class Car(models.Model):
 
 
 class Booking(models.Model):
-    date = models.DateTimeField(auto_now_add=True)
-    car = models.ForeignKey(Car, on_delete=models.CASCADE, null=True)
+    date = models.DateTimeField(auto_now_add=True, primary_key=True)
+    cars = models.ManyToManyField("car")
+
+    def carlist(self):
+
+        return list(self.cars.all())
 
 
 class Customer(models.Model):
