@@ -27,13 +27,9 @@ class Dealership(models.Model):
     cars = models.ManyToManyField(Car)
 
 
-"""
 class Customer(models.Model):
     name = models.CharField(max_length=50)
     email = models.EmailField(max_length=100)
     phone = models.CharField(max_length=100)
     address = models.CharField(max_length=100)
     bookings = models.ManyToManyField(Booking)
-
-
-"""
