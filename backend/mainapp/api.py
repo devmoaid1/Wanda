@@ -1,18 +1,19 @@
+
 from rest_framework import viewsets, permissions
-from .models import Booking, Car, Customer, Dealership
-from .serializer import BookingSerializer, CustomerSerializer, CarSerializer, DealershipSerializer
-
-
-class CustomerViewSet(viewsets.ModelViewSet):
-    queryset = Customer.objects.all()
-    permission_classes = [permissions.AllowAny]
-    serializer_class = CustomerSerializer
+from .models import *
+from .serializer import *
 
 
 class CarViewSet(viewsets.ModelViewSet):
     queryset = Car.objects.all()
-    permission_classes = [permissions.AllowAny]
+   # permission_classes = [permissions.AllowAny]
     serializer_class = CarSerializer
+
+
+class BookingViewSet(viewsets.ModelViewSet):
+    queryset = Booking.objects.all()
+    permission_classes = [permissions.AllowAny]
+    serializer_class = BookingSerializer
 
 
 class DealershipViewSet(viewsets.ModelViewSet):
@@ -21,7 +22,15 @@ class DealershipViewSet(viewsets.ModelViewSet):
     serializer_class = DealershipSerializer
 
 
-class BookingViewSet(viewsets.ModelViewSet):
-    queryset = Booking.objects.all()
+"""
+class CustomerViewSet(viewsets.ModelViewSet):
+    queryset = Customer.objects.all()
     permission_classes = [permissions.AllowAny]
-    serializer_class = BookingSerializer
+    serializer_class = CustomerSerializer
+
+
+
+
+
+
+"""

@@ -15,13 +15,19 @@ class Car(models.Model):
 
 class Booking(models.Model):
     date = models.DateTimeField(auto_now_add=True, primary_key=True)
-    cars = models.ManyToManyField("car")
+    cars = models.OneToOneField(Car, on_delete=models.CASCADE)
 
-    def carlist(self):
+    def __str__(self):
+        return self.date
 
-        return list(self.cars.all())
+
+class Dealership(models.Model):
+    name = models.CharField(max_length=50)
+    address = models.CharField(max_length=100)
+    cars = models.ManyToManyField(Car)
 
 
+"""
 class Customer(models.Model):
     name = models.CharField(max_length=50)
     email = models.EmailField(max_length=100)
@@ -30,7 +36,4 @@ class Customer(models.Model):
     bookings = models.ManyToManyField(Booking)
 
 
-class Dealership(models.Model):
-    name = models.CharField(max_length=50)
-    address = models.CharField(max_length=100)
-    cars = models.ManyToManyField(Car)
+"""
