@@ -9,6 +9,7 @@ djongo = "*"
 djangorestframework = "*"
 django-rest-knox = "*"
 pylint-django = "*"
+django-cors-headers = "*"
 
 [dev-packages]
 autopep8 = "*"
