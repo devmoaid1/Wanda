@@ -1,6 +1,7 @@
 
 import './App.css';
-import 'antd/dist/antd.css';
+import 'antd/dist/antd.css'; 
+import axios from 'axios'
 function App() {
   return (
     <div className="App">
