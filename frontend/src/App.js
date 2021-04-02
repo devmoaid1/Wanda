@@ -1,11 +1,12 @@
 
 import './App.css';
 import 'antd/dist/antd.css'; 
-import axios from 'axios'
+import CarsView from './components/cars'
 function App() {
   return (
     <div className="App">
       hello
+      <CarsView/>
     </div>
   );
 }
