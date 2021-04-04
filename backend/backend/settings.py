@@ -83,6 +83,10 @@ DATABASES = {
     'default': {
         'ENGINE': 'djongo',
         'NAME': 'wanda',
+        'CLIENT': {
+            'host': 'mongodb+srv://moaid123:moaidmohamed123@cluster0.66ea3.mongodb.net/test',
+        }
+
     }
 }
 

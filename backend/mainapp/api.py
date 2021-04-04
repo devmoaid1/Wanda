@@ -6,7 +6,7 @@ from .serializer import *
 
 class CarViewSet(viewsets.ModelViewSet):
     queryset = Car.objects.all()
-   # permission_classes = [permissions.AllowAny]
+    permission_classes = [permissions.AllowAny]
     serializer_class = CarSerializer
 
 

@@ -10,6 +10,7 @@ djangorestframework = "*"
 django-rest-knox = "*"
 pylint-django = "*"
 django-cors-headers = "*"
+dnspython = "*"
 
 [dev-packages]
 autopep8 = "*"
