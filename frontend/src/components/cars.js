@@ -69,7 +69,7 @@ class CarsView extends Component{
 } 
 
 const mapStateToProps=state=>({
- cars:state.cars
+ cars:state.cars.cars
 })
 
 export default connect(mapStateToProps,{getCars})(CarsView);

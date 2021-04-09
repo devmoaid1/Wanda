@@ -1,4 +1,4 @@
-import{GET_CARS} from './actions/types.js'
+import GET_CARS from '../actions/types'
 
 
 const initialState={
