@@ -12,8 +12,8 @@ code {
     monospace;
 }
 
-.carcontainer {
-  width: 60%;
+#carcontainer {
+  width: 30%;
   background-color: black;
 }
 

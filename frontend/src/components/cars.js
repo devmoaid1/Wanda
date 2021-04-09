@@ -1,9 +1,13 @@
 import React,{Component} from 'react' 
-import axios from 'axios';
+//import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css'; 
+import {connect} from 'react-redux'
+import getCars from '../actions/cars'
+import propTypes from 'prop-types'
+
 class CarsView extends Component{
  
-   constructor(props){
+   /*constructor(props){
 
      super(props); 
      this.state={
@@ -11,23 +15,21 @@ class CarsView extends Component{
      }
 
 
-    } 
+    }
+     */
     
     
     componentDidMount(){
       
-      axios
-      .get("/api/cars/")
-      .then((res) => this.setState({ cars: res.data }))
-      .catch((err) => console.log(err));
+     this.props.getCars();
       
     }
     
-   renderCarList(){
+   /*renderCarList(){
     const newitems=this.state.cars;
     return newitems.map((item)=>(
 
-            <div className="carcontainer" class="col-sm-7" key={item.id}>
+            <div id="carcontainer" class="col-sm-6" key={item.id}>
 
               <img src={item.picture} alt="carphoto"></img>
               <p>{item.Manfacture}{item.name}</p>
@@ -42,6 +44,10 @@ class CarsView extends Component{
 
 
     ))
+   } 
+*/
+   static propTypes={
+     cars:propTypes.array.isRequired
    }
  
     render(){
@@ -50,7 +56,7 @@ class CarsView extends Component{
 
         <div class="container">
         <div class="row">
-          {this.renderCarList()}
+          hello
         </div>
         </div> 
 
@@ -62,5 +68,8 @@ class CarsView extends Component{
 
 } 
 
+const mapStateToProps=state=>({
+ cars:state.cars
+})
 
-export default CarsView;
+export default connect(mapStateToProps,{getCars})(CarsView);

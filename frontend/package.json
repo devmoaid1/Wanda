@@ -5,14 +5,15 @@
   "proxy": "http://localhost:8000",
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.10",
-    "@testing-library/react": "^11.2.5",
+    "@testing-library/react": "^11.2.6",
     "@testing-library/user-event": "^12.8.3",
     "antd": "^4.15.0",
     "axios": "^0.21.1",
     "bootstrap": "^4.6.0",
-    "react": "^17.0.2",
+    "eslint": "^7.23.0",
+    "react": "0.0.0-bdc23c3db",
     "react-bootstrap": "^1.5.2",
-    "react-dom": "^17.0.2",
+    "react-dom": "0.0.0-bdc23c3db",
     "react-redux": "^7.2.3",
     "react-scripts": "4.0.3",
     "redux": "^4.0.5",
@@ -30,7 +31,11 @@
     "extends": [
       "react-app",
       "react-app/jest"
-    ]
+    ],
+    "parser": "babel-eslint",
+    "parserOptions": {
+      "ecmaVersion": 2020
+    }
   },
   "browserslist": {
     "production": [
@@ -43,5 +48,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "babel-eslint": "^10.1.0"
   }
 }
