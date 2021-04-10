@@ -11,6 +11,7 @@ django-rest-knox = "*"
 pylint-django = "*"
 django-cors-headers = "*"
 dnspython = "*"
+pillow = "*"
 
 [dev-packages]
 autopep8 = "*"

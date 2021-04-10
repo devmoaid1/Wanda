@@ -33,13 +33,13 @@ class Dealership(models.Model):
 
 
 class Customer(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE, null=True)
     name = models.CharField(max_length=50)
     email = models.EmailField(max_length=100)
     phone = models.CharField(max_length=100)
     address = models.CharField(max_length=100)
+    pic = models.ImageField(null=True, blank=True)
     bookings = models.ManyToManyField(Booking)
-    owner = models.ForeignKey(
-        User, related_name="customer", on_delete=models.CASCADE, null=True)
 
     def __str__(self):
         return self.name
