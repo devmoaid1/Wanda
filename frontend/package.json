@@ -11,7 +11,7 @@
     "axios": "^0.21.1",
     "bootstrap": "^4.6.0",
     "eslint": "^7.23.0",
-    "react": "0.0.0-bdc23c3db",
+    "react": "0.14.0",
     "react-bootstrap": "^1.5.2",
     "react-dom": "0.0.0-bdc23c3db",
     "react-redux": "^7.2.3",
