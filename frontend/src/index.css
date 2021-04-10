@@ -16,3 +16,11 @@ p {
   width: 100%;
   text-align: justify;
 }
+.nav {
+  background-color: black;
+  padding: 20px;
+}
+
+ul {
+  height: 70px;
+}

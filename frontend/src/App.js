@@ -1,21 +1,23 @@
 
 import './App.css';
 import 'antd/dist/antd.css'; 
-import CarsView from './components/cars' 
+
 import 'bootstrap/dist/css/bootstrap.min.css'; 
-import {Provider} from 'react-redux'
-import store from './store'
+//import {Provider} from 'react-redux'
+//import store from './store'
+import {BrowserRouter} from 'react-router-dom';
+import BaseRouter from './routes'
+import Nav from './components/navbar'
 function App() {
   return (
-  <Provider store={store}>
-      <div className="App">
-          <div className="jumbotron text-center">
-            <h1>My First Bootstrap Page</h1>
-             <p>Resize this responsive page to see the effect!</p> 
-           </div>
-          <CarsView/>
+  
+      <div className="App"> 
+         <BrowserRouter>
+         <Nav/>
+         <BaseRouter/>
+         </BrowserRouter>
     </div>
-  </Provider>
+
   );
 }
 

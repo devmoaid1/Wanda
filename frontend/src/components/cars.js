@@ -3,7 +3,8 @@ import React,{Component} from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'; 
 import {connect} from 'react-redux'
 import getCars from '../actions/cars'
-import propTypes from 'prop-types'
+import propTypes from 'prop-types' 
+
 
 class CarsView extends Component{
  
@@ -54,14 +55,15 @@ class CarsView extends Component{
     render(){
 
     return( 
-
+        
+        
         <div className="container">
         <h2>Cars</h2>
         <div className="row">
           {this.renderCarList()}
         </div>
         </div> 
-
+       
 
 
     )
