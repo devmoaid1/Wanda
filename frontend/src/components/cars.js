@@ -21,15 +21,16 @@ class CarsView extends Component{
     
     componentDidMount(){
       
-     this.props.getCars();
+     this.props.getCars(); 
+     console.log(this.props);
       
     }
     
-   /*renderCarList(){
-    const newitems=this.state.cars;
+   renderCarList(){
+    const newitems=this.props.cars;
     return newitems.map((item)=>(
 
-            <div id="carcontainer" class="col-sm-6" key={item.id}>
+            <div id="carcontainer" className="col-sm-5" key={item.id}>
 
               <img src={item.picture} alt="carphoto"></img>
               <p>{item.Manfacture}{item.name}</p>
@@ -45,7 +46,7 @@ class CarsView extends Component{
 
     ))
    } 
-*/
+
    static propTypes={
      cars:propTypes.array.isRequired
    }
@@ -54,9 +55,10 @@ class CarsView extends Component{
 
     return( 
 
-        <div class="container">
-        <div class="row">
-          hello
+        <div className="container">
+        <h2>Cars</h2>
+        <div className="row">
+          {this.renderCarList()}
         </div>
         </div> 
 

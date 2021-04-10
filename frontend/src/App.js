@@ -9,7 +9,7 @@ function App() {
   return (
   <Provider store={store}>
       <div className="App">
-          <div class="jumbotron text-center">
+          <div className="jumbotron text-center">
             <h1>My First Bootstrap Page</h1>
              <p>Resize this responsive page to see the effect!</p> 
            </div>

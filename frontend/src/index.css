@@ -12,11 +12,7 @@ code {
     monospace;
 }
 
-#carcontainer {
-  width: 30%;
-  background-color: black;
-}
-
 p {
   width: 100%;
+  text-align: justify;
 }
