@@ -1,26 +1,40 @@
-import React  from 'react'; 
+import React, { Fragment } from 'react';
 //import {NavLink} from 'react-router-dom';
-import {Navbar,Form,FormControl,Button} from 'react-bootstrap'
+import {
+  Collapse,
+  Navbar,
+  NavbarToggler,
+  NavbarBrand,
+  Nav,
+  NavItem,
+  NavLink,
+  
+} from 'reactstrap';
 
 
-const Nav=()=>{
-    return(
-        <Navbar bg="dark" variant="dark">
-    <Navbar.Brand href="#home">Navbar</Navbar.Brand>
-    <Nav className="mr-auto">
-      <Nav.Link href="#home">Home</Nav.Link>
-      <Nav.Link href="#features">Features</Nav.Link>
-      <Nav.Link href="#pricing">Pricing</Nav.Link>
-    </Nav>
-    <Form inline>
-      <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-      <Button variant="outline-info">Search</Button>
-    </Form>
-  </Navbar>
-    )
-} 
+const NavBarComponent = () => {
+  return (
+    <Fragment>
+      <Navbar color="dark" light expand="md">
+        <NavbarBrand href="/">Wanda</NavbarBrand>
+        <NavbarToggler  />
+        <Collapse  navbar>
+          <Nav className="ml-auto" navbar>
+            <NavItem>
+              <NavLink  activeClassName="selected" href="/cars/">Cars</NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink activeClassName="selected" href ="/">Home</NavLink>
+            </NavItem>
+           
+          </Nav>
+        </Collapse>
+      </Navbar>
+    </Fragment>
+  )
+}
 
-export default Nav; 
+export default NavBarComponent;
 
 /*
 <NavLink  activeClassName="selected" exact to="/"className="nav-item nav-link active" >Home <span className="sr-only"></span></NavLink>

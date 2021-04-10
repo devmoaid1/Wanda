@@ -7,13 +7,13 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 //import store from './store'
 import {BrowserRouter} from 'react-router-dom';
 import BaseRouter from './routes'
-import Nav from './components/navbar'
+import NavBarComponent from './components/navbar'
 function App() {
   return (
   
       <div className="App"> 
          <BrowserRouter>
-         <Nav/>
+         <NavBarComponent/>
          <BaseRouter/>
          </BrowserRouter>
     </div>
