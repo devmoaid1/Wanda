@@ -2,35 +2,33 @@ import React, { Fragment } from 'react';
 import logo from'../images/wanda.svg'
 //import {NavLink} from 'react-router-dom';
 import {
-  Collapse,
-  Navbar,
-  NavbarToggler,
-  NavbarBrand,
-  Nav,
-  NavItem,
-  NavLink,
   
-} from 'reactstrap';
+  Navbar,
+ 
+  Nav,
+  
+  
+} from 'react-bootstrap';
 
 
 const NavBarComponent = () => {
   return (
     <Fragment>
-      <Navbar color="dark" light expand="md">
-        <NavbarBrand ><img src={logo} alt="logo" className="logo"></img></NavbarBrand>
-        <NavbarToggler  />
-        <Collapse  navbar>
-          <Nav className="ml-auto" navbar>
-            <NavItem>
-              <NavLink  activeClassName="selected" href="/cars/">Cars</NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink activeClassName="selected" href ="/">Home</NavLink>
-            </NavItem>
-           
-          </Nav>
-        </Collapse>
-      </Navbar>
+       <Navbar bg="dark" variant="dark">
+    <Navbar.Brand ><img
+        src={logo}
+        width="50"
+        height="50"
+        className="d-inline-block align-top"
+        alt="wanda logo"
+      /></Navbar.Brand>
+    <Nav className="mr-auto">
+      <Nav.Link href="/">Home</Nav.Link>
+      <Nav.Link href="/cars/">Cars</Nav.Link>
+     
+    </Nav>
+   
+  </Navbar>
     </Fragment>
   )
 }
