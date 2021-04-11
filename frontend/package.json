@@ -38,6 +38,7 @@
     "parserOptions": {
       "ecmaVersion": 2020
     }
+    
   },
   "browserslist": {
     "production": [

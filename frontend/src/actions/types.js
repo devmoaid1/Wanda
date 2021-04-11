@@ -1,4 +1,15 @@
 const GET_CARS='GET_CARS';
+/*
+const AUTH_START='AUTH_START';
+const AUTH_SUCCSESS='AUTH_SUCCSESS';
+const AUTH_FAIL='AUTH_FAIL';
+const AUTH_LOGOUT='AUTH_LOGOUT';
+
+*/
 
 
-export default GET_CARS
+export default GET_CARS;
+export  const AUTH_START='AUTH_START';
+export  const AUTH_SUCCSESS='AUTH_SUCCSESS';
+export  const AUTH_FAIL='AUTH_FAIL';
+export  const AUTH_LOGOUT='AUTH_LOGOUT';
