@@ -39,7 +39,7 @@ const authLogout=(state,action)=>{
    });
 }
 
- const reducer=(state=intialState,action)=>{
+ const authReducer=(state=intialState,action)=>{
   switch(action.type){
       case actionTypes.AUTH_START:return authStart(state,action);
       case actionTypes.AUTH_SUCCSESS:return authSuccess(state,action);
@@ -51,4 +51,4 @@ const authLogout=(state,action)=>{
   }
 }
 
-export default reducer;
+export default authReducer;

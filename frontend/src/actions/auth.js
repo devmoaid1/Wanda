@@ -80,8 +80,28 @@ export const authSignUp=(username,email,password1,password2)=>{
             dispatch(authSuccess(token));
             dispatch(checkAuthTimeout(3600));
         }).catch(err=>{
-            dispatch(authFail(err))
+            dispatch(authFail(err));
         })
         
+    } 
+
+}
+
+export const authCheckState=()=>{
+    return dispatch=>{ 
+        const token=localStorage.getItem('token');
+
+        if(token===undefined){
+             dispatch(logout());
+        }else{
+            const expirationDate=new Date(localStorage.getItem('expirationDate'));
+            if(expirationDate<=new Date()){
+                dispatch(logout())
+            }else{
+                dispatch(authSuccess(token));
+                dispatch(checkAuthTimeout( (expirationDate-new Date().getTime()) /1000) )
+            }
+        }
+       
     }
 }
