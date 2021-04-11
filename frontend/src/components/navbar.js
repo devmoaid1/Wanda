@@ -1,4 +1,5 @@
-import React, { Fragment } from 'react';
+import React, { Fragment } from 'react'; 
+import logo from'../images/wanda.svg'
 //import {NavLink} from 'react-router-dom';
 import {
   Collapse,
@@ -16,7 +17,7 @@ const NavBarComponent = () => {
   return (
     <Fragment>
       <Navbar color="dark" light expand="md">
-        <NavbarBrand href="/">Wanda</NavbarBrand>
+        <NavbarBrand ><img src={logo} alt="logo" className="logo"></img></NavbarBrand>
         <NavbarToggler  />
         <Collapse  navbar>
           <Nav className="ml-auto" navbar>

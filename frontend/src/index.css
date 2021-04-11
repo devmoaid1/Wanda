@@ -12,15 +12,11 @@ code {
     monospace;
 }
 
-p {
-  width: 100%;
-  text-align: justify;
-}
-.nav {
-  background-color: black;
-  padding: 20px;
+.logo {
+  width: 70px;
+  height: 70px;
 }
 
-ul {
-  height: 70px;
+.logoheading {
+  margin-right: 50px;
 }
