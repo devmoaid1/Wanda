@@ -1,0 +1,52 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #333;
+}
+
+h1 {
+  font-family: "Roboto";
+}
+h4 {
+  font-family: "Roboto";
+}
+#SignUp {
+  color: #f75454;
+  font-family: "Roboto";
+}
+
+#Login {
+  font-family: "Roboto";
+  font-size: x-large;
+  font-weight: 700;
+}
+.row {
+  background-color: white;
+  border-radius: 30px;
+  box-shadow: 12px 12px 22px rgb(71, 71, 71);
+}
+img {
+  border-top-left-radius: 30px;
+  border-bottom-left-radius: 30px;
+}
+.btn1 {
+  background-color: #f75454;
+  outline: none;
+  border: none;
+  width: 100%;
+  border-radius: 4px;
+  font-weight: bold;
+  font-family: "Roboto";
+}
+.btn1:hover {
+  background-color: #f75454;
+  opacity: 0.8;
+}
+
+.signup {
+  color: #f75454;
+}
