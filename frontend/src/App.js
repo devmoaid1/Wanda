@@ -8,7 +8,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import {BrowserRouter} from 'react-router-dom';
 import BaseRouter from './routes'
 import {connect} from 'react-redux'
-import NavBarComponent from './components/navbar'
+import NavBarComponent from './Views/Components/navbar'
 import * as actions from './actions/auth'
 //import authReducer from './reducers/auth'
 

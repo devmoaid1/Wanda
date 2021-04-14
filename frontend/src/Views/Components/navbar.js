@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react'; 
-import logo from'../images/wanda.svg'
+import logo from'../../images/wanda.svg'
 //import {NavLink} from 'react-router-dom';
 import {
   

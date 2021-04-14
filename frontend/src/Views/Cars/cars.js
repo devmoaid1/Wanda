@@ -2,7 +2,7 @@ import React,{Component} from 'react'
 //import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css'; 
 import {connect} from 'react-redux'
-import getCars from '../actions/cars'
+import getCars from '../../actions/cars'
 import propTypes from 'prop-types' 
 
 

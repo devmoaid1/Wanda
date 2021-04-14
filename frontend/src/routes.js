@@ -1,16 +1,17 @@
 import React from "react";
 import { Route } from "react-router-dom";
 
-import Home from './components/home'
-import CarsView from './components/cars' 
-import LoginForm from './components/login';
+import Home from './Views/home'
+import CarsView from './Views/Cars/cars' 
+import LoginForm from './Views/Login/login';
 
 const BaseRouter = () => (
     <div>
 
-      <Route exact path="/" component={Home} />
-      <Route exact path="/cars/" component={CarsView} />
-      <Route exact path="/login/" component={LoginForm} />
+      <Route exact path="/" component={LoginForm} />
+      <Route  path="/cars/" component={CarsView} />
+      <Route  path="/home/" component={Home} />
+      <Route  path="/login/" component={LoginForm} />
     </div>
   );
   

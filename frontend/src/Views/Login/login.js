@@ -1,7 +1,7 @@
 import React,{Component,Fragment} from 'react'; 
 import{Container,Form ,Col,Row,Button,Spinner} from 'react-bootstrap'; 
 //import logo from '../images/wanda.svg'
-import logphoto from '../images/loginphoto.jpeg' 
+import logphoto from '../../images/loginphoto.jpeg' 
 import {connect} from 'react-redux'
 import {NavLink} from 'react-router-dom'
 import './login.css'
@@ -21,10 +21,10 @@ class LoginForm extends Component{
         return(
             <Fragment>
                 {errorMassage} 
-            <section className="Form my-4 mx-5">
            {
                  this.props.loading?
                  <Spinner animation="border" variant="danger" />:
+            <section className="Form my-4 mx-5">
 
 
 
@@ -71,8 +71,8 @@ class LoginForm extends Component{
 
 
              </Container> 
-    }
              </section>
+    }
 
             </Fragment>
         )
