@@ -30,7 +30,7 @@ class CarsView extends Component{
    renderCarList(){
     const newitems=this.props.cars;
     return newitems.map((item)=>(
-
+      <div className="col-md-4">
       <Card style={{ width: '18rem' }}>
       <Card.Img variant="top" src={item.picture} />
       <Card.Body>
@@ -42,14 +42,14 @@ class CarsView extends Component{
       <ListGroup className="list-group-flush">
         <ListGroupItem>{item.price} Egp</ListGroupItem>
         <ListGroupItem>{item.year}</ListGroupItem>
-        <ListGroupItem>Vestibulum at eros</ListGroupItem>
+      
       </ListGroup>
       <Card.Body>
         <Card.Link href="#">Card Link</Card.Link>
         <Card.Link href="#">Another Link</Card.Link>
       </Card.Body>
     </Card>
-
+    </div>
 
 
 
@@ -66,12 +66,17 @@ class CarsView extends Component{
         
         
         <Fragment>
-          <div className="container"></div>
-        <h2>Cars</h2>
-        <div className="row gy-5 gx-10">
-          <div className=""></div>
+          <h2>Cars</h2>
+          <div className="container-fluid d-flex justify-content-center"> 
+          <div className="row">
+            
+          </div>
+          
+          
           {this.renderCarList()}
-        </div>
+       
+          </div>
+       
         </Fragment>
        
 
