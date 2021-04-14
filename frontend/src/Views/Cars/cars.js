@@ -1,10 +1,10 @@
-import React,{Component} from 'react' 
+import React,{Component,Fragment} from 'react' 
 //import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css'; 
 import {connect} from 'react-redux'
 import getCars from '../../actions/cars'
 import propTypes from 'prop-types' 
-
+import {Card,ListGroup,ListGroupItem} from 'react-bootstrap'
 
 class CarsView extends Component{
  
@@ -31,16 +31,24 @@ class CarsView extends Component{
     const newitems=this.props.cars;
     return newitems.map((item)=>(
 
-            <div id="carcontainer" className="col-sm-5" key={item.id}>
-
-              <img src={item.picture} alt="carphoto"></img>
-              <p>{item.Manfacture}{item.name}</p>
-              <div><p>{item.description}</p></div>
-              <p>{item.price} EGP</p>
-              
-              
-
-            </div>
+      <Card style={{ width: '18rem' }}>
+      <Card.Img variant="top" src={item.picture} />
+      <Card.Body>
+        <Card.Title>{item.manfacture}{item.name}</Card.Title>
+        <Card.Text>
+          {item.description}
+        </Card.Text>
+      </Card.Body>
+      <ListGroup className="list-group-flush">
+        <ListGroupItem>{item.price} Egp</ListGroupItem>
+        <ListGroupItem>{item.year}</ListGroupItem>
+        <ListGroupItem>Vestibulum at eros</ListGroupItem>
+      </ListGroup>
+      <Card.Body>
+        <Card.Link href="#">Card Link</Card.Link>
+        <Card.Link href="#">Another Link</Card.Link>
+      </Card.Body>
+    </Card>
 
 
 
@@ -57,12 +65,14 @@ class CarsView extends Component{
     return( 
         
         
-        <div className="container">
+        <Fragment>
+          <div className="container"></div>
         <h2>Cars</h2>
-        <div className="row">
+        <div className="row gy-5 gx-10">
+          <div className=""></div>
           {this.renderCarList()}
         </div>
-        </div> 
+        </Fragment>
        
 
 

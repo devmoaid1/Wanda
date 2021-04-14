@@ -4,6 +4,9 @@
   "private": true,
   "proxy": "http://localhost:8000",
   "dependencies": {
+    "@craco/craco": "^6.1.1",
+    "@headlessui/react": "^1.0.0",
+    "@heroicons/react": "^1.0.1",
     "@testing-library/jest-dom": "^5.11.10",
     "@testing-library/react": "^11.2.6",
     "@testing-library/user-event": "^12.8.3",
@@ -11,6 +14,7 @@
     "axios": "^0.21.1",
     "bootstrap": "^4.6.0",
     "eslint": "^7.23.0",
+    "postcss-cli": "^8.3.1",
     "react": "^17.0.2",
     "react-bootstrap": "^1.5.2",
     "react-dom": "^17.0.2",
@@ -38,7 +42,6 @@
     "parserOptions": {
       "ecmaVersion": 2020
     }
-    
   },
   "browserslist": {
     "production": [
@@ -53,6 +56,7 @@
     ]
   },
   "devDependencies": {
+    "@tailwindcss/postcss7-compat": "^2.1.0",
     "babel-eslint": "^10.1.0"
   }
 }

@@ -23,7 +23,7 @@ const NavBarComponent = () => {
         alt="wanda logo"
       /></Navbar.Brand>
     <Nav className="mr-auto">
-      <Nav.Link href="/">Home</Nav.Link>
+      <Nav.Link href="/home/">Home</Nav.Link>
       <Nav.Link href="/cars/">Cars</Nav.Link> 
       <Nav.Link href="/login/">Login</Nav.Link>
      
