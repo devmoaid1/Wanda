@@ -5,6 +5,7 @@ import {connect} from 'react-redux'
 import getCars from '../../actions/cars'
 import propTypes from 'prop-types' 
 import {Card,ListGroup,ListGroupItem} from 'react-bootstrap'
+import './cars.css'
 
 class CarsView extends Component{
  
@@ -30,8 +31,8 @@ class CarsView extends Component{
    renderCarList(){
     const newitems=this.props.cars;
     return newitems.map((item)=>(
-      <div className="col-md-4">
-      <Card style={{ width: '18rem' }}>
+      <div className="col-md-4 ">
+      <Card >
       <Card.Img variant="top" src={item.picture} />
       <Card.Body>
         <Card.Title>{item.manfacture}{item.name}</Card.Title>
@@ -41,7 +42,7 @@ class CarsView extends Component{
       </Card.Body>
       <ListGroup className="list-group-flush">
         <ListGroupItem>{item.price} Egp</ListGroupItem>
-        <ListGroupItem>{item.year}</ListGroupItem>
+        
       
       </ListGroup>
       <Card.Body>
