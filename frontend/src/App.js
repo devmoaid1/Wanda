@@ -10,6 +10,8 @@ import BaseRouter from './routes'
 import {connect} from 'react-redux'
 import NavBarComponent from './Views/Components/navbar'
 import * as actions from './actions/auth'
+
+
 //import authReducer from './reducers/auth'
 
 class App extends Component {

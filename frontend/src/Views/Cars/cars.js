@@ -6,6 +6,7 @@ import getCars from '../../actions/cars'
 import propTypes from 'prop-types' 
 import {Card,ListGroup,ListGroupItem} from 'react-bootstrap'
 import './cars.css'
+import bgphoto from'../../images/bgphoto.jpg'
 
 class CarsView extends Component{
  
@@ -31,7 +32,7 @@ class CarsView extends Component{
    renderCarList(){
     const newitems=this.props.cars;
     return newitems.map((item)=>(
-      <div className="col-md-4 ">
+      <div >
       <Card >
       <Card.Img variant="top" src={item.picture} />
       <Card.Body>
@@ -67,16 +68,18 @@ class CarsView extends Component{
         
         
         <Fragment>
-          <h2>Cars</h2>
-          <div className="container-fluid d-flex justify-content-center"> 
-          <div className="row">
+        
+           <img className="w-full" src={bgphoto} alt="bgphoto"></img>
+         
+           
+          <div className=" mt-8 grid grid-cols-3 gap-4">
             
-          </div>
-          
-          
           {this.renderCarList()}
-       
           </div>
+          
+          
+       
+        
        
         </Fragment>
        
