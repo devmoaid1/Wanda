@@ -22,11 +22,13 @@ class App extends Component {
   render(){
     return (
   
-      <div > 
+      <div className="min-h-full">
+        <div className="h-screen flex flex-col">
          <BrowserRouter {...this.props}>
          <NavBarComponent />
          <BaseRouter />
-         </BrowserRouter>
+         </BrowserRouter> 
+         </div> 
       </div>
 
   );

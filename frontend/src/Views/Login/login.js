@@ -23,8 +23,13 @@ class LoginForm extends Component{
                 {errorMassage} 
            {
                  this.props.loading?
+            
+            
                  <Spinner animation="border" variant="danger" />:
-            <section className="Form my-4 mx-5">
+            
+            <div>  
+                
+                <div className="mb-10 mt-2">
 
 
 
@@ -34,7 +39,7 @@ class LoginForm extends Component{
                    <Col lg={5}> <img src={logphoto} className="img-fluid" alt="logo"></img></Col>
 
                    <Col className="lg-7 px-5 pt-5">
-                    <h1 className="font-weight-bold py-3">Wanda</h1>
+                    <h1 className=" text-5xl font-bold mb-3">Wanda</h1>
                     <h4 >Sign in into your account</h4>
                    <Form>
             
@@ -71,7 +76,10 @@ class LoginForm extends Component{
 
 
              </Container> 
-             </section>
+             </div>
+                
+                 </div>
+            
     }
 
             </Fragment>

@@ -4,7 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import {connect} from 'react-redux'
 import getCars from '../../actions/cars'
 import propTypes from 'prop-types' 
-import {Card,ListGroup,ListGroupItem} from 'react-bootstrap'
+
 import './cars.css'
 import bgphoto from'../../images/bgphoto.jpg'
 
@@ -32,26 +32,20 @@ class CarsView extends Component{
    renderCarList(){
     const newitems=this.props.cars;
     return newitems.map((item)=>(
-      <div >
-      <Card >
-      <Card.Img variant="top" src={item.picture} />
-      <Card.Body>
-        <Card.Title>{item.manfacture}{item.name}</Card.Title>
-        <Card.Text>
-          {item.description}
-        </Card.Text>
-      </Card.Body>
-      <ListGroup className="list-group-flush">
-        <ListGroupItem>{item.price} Egp</ListGroupItem>
-        
-      
-      </ListGroup>
-      <Card.Body>
-        <Card.Link href="#">Card Link</Card.Link>
-        <Card.Link href="#">Another Link</Card.Link>
-      </Card.Body>
-    </Card>
-    </div>
+      <div className="rounded-md bg-white ml-3 mr-3 overflow-hidden shadow-lg h-5/6  " key={item.id}>
+        <img src={item.picture} className="w-full"alt="pic"></img>
+        <h1 className="text-2xl font-bold ml-4 my-3">{item.name}</h1>
+        <div className="font-sans my-6 ml-4">{item.description}</div>
+        <span className="block my-6 ml-4 font-bold">{item.price} Egp</span> 
+        <div className="inline-block ">
+        <button class="bg-pink-600 hover:bg-pink-300 text-white font-bold py-2 px-4 ml-3 mx-2 rounded">
+  Purchase
+</button>
+<button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mx-2 rounded">
+  View details
+</button>
+        </div>     
+      </div>
 
 
 
@@ -68,11 +62,20 @@ class CarsView extends Component{
         
         
         <Fragment>
-        
-           <img className="w-full" src={bgphoto} alt="bgphoto"></img>
-         
+          <div 
+          className="relative flex items-center justify-center h-full bg-cover bg-center bg-fixed bg-no-repeat "
+          style={{
+            backgroundImage:`url(${bgphoto})`
+
+          }}>
+          <h1 className="relative left-0 top-0  text-white font-bold uppercase  text-center  md:text-6xl">Get Your Car NOW</h1>
+          <div
+           className="z-0 absolute -top-0 left-0 h-full w-full opacity-40 "
+          
+          />
+           </div>
            
-          <div className=" mt-8 grid grid-cols-3 gap-4">
+          <div className=" w-full h-full mx-auto my-10  grid grid-cols-3 gap-3">
             
           {this.renderCarList()}
           </div>

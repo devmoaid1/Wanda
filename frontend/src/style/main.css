@@ -47,6 +47,7 @@ Remove the margin in all browsers.
 
 body {
   margin: 0;
+ 
 }
 
 /**
@@ -175380,3 +175381,4 @@ video {
     --tw-backdrop-sepia: sepia(100%);
   }
 }
+

@@ -235,20 +235,10 @@ module.exports = {
     },
     fontFamily: {
       sans: [
-        'ui-sans-serif',
-        'system-ui',
-        '-apple-system',
-        'BlinkMacSystemFont',
-        '"Segoe UI"',
+        
         'Roboto',
-        '"Helvetica Neue"',
-        'Arial',
-        '"Noto Sans"',
-        'sans-serif',
-        '"Apple Color Emoji"',
-        '"Segoe UI Emoji"',
-        '"Segoe UI Symbol"',
-        '"Noto Color Emoji"',
+       
+       
       ],
       serif: ['ui-serif', 'Georgia', 'Cambria', '"Times New Roman"', 'Times', 'serif'],
       mono: [
@@ -422,6 +412,7 @@ module.exports = {
       '3/6': '50%',
       '4/6': '66.666667%',
       '5/6': '83.333333%',
+      '8/9':'95%',
       full: '100%',
       screen: '100vh',
     }),
