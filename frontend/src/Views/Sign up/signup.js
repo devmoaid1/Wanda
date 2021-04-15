@@ -4,9 +4,9 @@ import{Container,Form ,Col,Row,Button,Spinner} from 'react-bootstrap';
 import logphoto from '../../images/loginphoto.jpeg' 
 import {connect} from 'react-redux'
 import {NavLink} from 'react-router-dom'
-import './login.css'
+import '../Login/login.css'
 
-class LoginForm extends Component{
+class SignUpForm extends Component{
     
   
 
@@ -29,7 +29,7 @@ class LoginForm extends Component{
             
             <div>  
                 
-                <div className="mb-10 mt-4 h-full">
+                <div className="mb-10 mt-4 h-full w-full">
 
 
 
@@ -38,33 +38,45 @@ class LoginForm extends Component{
                <Row noGutters={true}>
                    <Col lg={5}> <img src={logphoto} className="img-fluid" alt="logo"></img></Col>
 
-                   <Col className="lg-7 px-5 pt-5">
-                    <h1 className=" text-5xl font-bold mb-3">Wanda</h1>
-                    <h4 >Sign in into your account</h4>
+                   <Col className="lg-8 px-5 pt-5">
+                    <h1 className=" text-5xl font-bold mb-3">Sign Up</h1>
+                    <h4 >Sign Up with a new Account</h4>
                    <Form>
             
 <Form.Group className="form-row" id="formHorizontalEmail">
     <Col lg={7} >
-      <Form.Control type="email" placeholder="Email" className="form-control my-3 p-4" />
+      <Form.Control type="email" placeholder="Email" className="form-control my-2 p-4" />
+    </Col>
+</Form.Group>
+<Form.Group className="form-row" id="formHorizontalEmail">
+    <Col lg={7} >
+      <Form.Control type="password" placeholder="password" className="form-control my-2 p-4" />
+    </Col>
+</Form.Group>
+<Form.Group className="form-row" id="formHorizontalEmail">
+    <Col lg={7} >
+      <Form.Control type="text" placeholder="FullName" className="form-control my-2 p-4" />
     </Col>
 </Form.Group>
 
 <Form.Group className="form-row" id="formHorizontalPassword">
     <Col lg={7}>
-      <Form.Control type="password" placeholder="Password" className="form-control my-3 p-4" />
+      <Form.Control type="text" placeholder="Phone Number" className="form-control my-2 p-4" />
     </Col>
  </Form.Group>
+ <Form.Group className="form-row" id="formHorizontalPassword">
+    <Col lg={7}>
+      <Form.Control type="text" placeholder="Address" className="form-control my-2 p-4" />
+    </Col>
+ </Form.Group> 
+
 
 <Form.Group className="form-row">
     <Col lg={7}>
-      <Button type="submit"  className="btn1">Login</Button>
+      <Button type="submit"  className="btn1">Sign UP</Button>
     </Col>
 </Form.Group>
-<Form.Group className="form-row">
-    <Col lg={7}>
-    <span>Don`t Have an account? </span><NavLink to="/signup/"> <span className="signup">SignUp</span></NavLink>
-    </Col>
-</Form.Group>
+
      
 </Form>
 </Col>
@@ -96,4 +108,4 @@ const mapStateToProps=state=>{
     }
 }
 
-export default connect(mapStateToProps)(LoginForm);
+export default connect(mapStateToProps)(SignUpForm);
