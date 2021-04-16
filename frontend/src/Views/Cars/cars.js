@@ -38,7 +38,7 @@ class CarsView extends Component{
         <div className="font-sans my-6 ml-4">{item.description}</div>
         <span className="block my-6 ml-4 font-bold">{item.price} Egp</span> 
         <div className="inline-block ">
-        <button class="bg-pink-600 hover:bg-pink-300 text-white font-bold py-2 px-4 ml-3 mx-2 rounded">
+        <button class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 ml-3 mx-2 rounded">
   Purchase
 </button>
 <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mx-2 rounded">
