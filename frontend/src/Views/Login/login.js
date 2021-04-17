@@ -3,33 +3,56 @@ import{Spinner} from 'react-bootstrap';
 //import logo from '../images/wanda.svg'
 import logphoto from '../../images/loginphoto.jpeg' 
 import {connect} from 'react-redux'
-import { Form } from 'antd'; 
+
 import * as actions from '../../actions/auth'
+import {Redirect} from 'react-router-dom'
 
 import './login.css'
 
 class LoginForm extends Component{
     
- 
+  state={
+    username:'',
+    password:'',
+    err:true
+  } 
+
+  componentDidMount(){
+    console.log(this.state)
+  }
   
   handleChange=(event)=>{
     let value=event.target.value
     let type=event.target.id 
     
-    if(type==="username"){
+    
+    this.setState({
+      [type]:value,
+      err:false
+    })
+    
+    
+    console.log( this.state,value,event.target.id)
+  }
+
+
+  validate=()=>{
+     let username=this.state.username
+     let password=this.state.password
+     
+    if(username){
+       return this.alertMassage("please Enter a username")
+    }
+    if(password){
+      return this.alertMassage("please Enter a password")
+    } 
+
+    else{
       this.setState({
-        username:value
+        err:false
       })
     }
-    
-    if(type==="password"){
-      this.setState({
-        password:value
-      })
-    }
-    
-    
-    console.log(value,event.target.id)
+
   }
   alertMassage=(title)=>{
     return(
@@ -47,12 +70,16 @@ class LoginForm extends Component{
 
   handleSubmit=e=>{
     e.preventDefault();
-    this.props.form.validateFields((err, values) => {
+    this.validate()
+     let err=this.state.err
+     let username=this.state.username
+     let password=this.state.password
+
       if (!err) {
-        this.props.onAuth(values.userName, values.password);
-        this.props.history.push('/cars/');
-      }
-    });
+         this.props.onAuth(username, password);
+         this.props.history.push("/home/")
+       }
+    
   }
     
   
