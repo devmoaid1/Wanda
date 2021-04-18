@@ -5,7 +5,7 @@ import logphoto from '../../images/loginphoto.jpeg'
 import {connect} from 'react-redux'
 
 import * as actions from '../../actions/auth'
-import {Redirect} from 'react-router-dom'
+
 
 import './login.css'
 
@@ -24,13 +24,19 @@ class LoginForm extends Component{
   handleChange=(event)=>{
     let value=event.target.value
     let type=event.target.id 
-    
+    let username=this.state.username
+    let password=this.state.password
     
     this.setState({
       [type]:value,
-      err:false
+      
     })
     
+    if(username!==''&&password!==''){
+      this.setState({
+           err:false
+      })
+    }
     
     console.log( this.state,value,event.target.id)
   }
@@ -40,18 +46,14 @@ class LoginForm extends Component{
      let username=this.state.username
      let password=this.state.password
      
-    if(username){
-       return this.alertMassage("please Enter a username")
+    if(username===''){
+       return alert('please enter a username')
     }
-    if(password){
-      return this.alertMassage("please Enter a password")
+    if(password===''){
+      return alert("please Enter a password")
     } 
-
-    else{
-      this.setState({
-        err:false
-      })
-    }
+    
+   
 
   }
   alertMassage=(title)=>{
@@ -70,14 +72,14 @@ class LoginForm extends Component{
 
   handleSubmit=e=>{
     e.preventDefault();
-    this.validate()
+    this.validate();
      let err=this.state.err
-     let username=this.state.username
-     let password=this.state.password
+    //  let username=this.state.username
+    //  let password=this.state.password
 
-      if (!err) {
-         this.props.onAuth(username, password);
-         this.props.history.push("/home/")
+      if (err===false) {
+         //this.props.onAuth(username, password);
+         this.props.history.push("/cars/")
        }
     
   }
@@ -115,22 +117,22 @@ class LoginForm extends Component{
                      <form onSubmit={this.handleSubmit} className="w-full mt-6 "> 
                                             
   
-     <div class="mb-2 ml-4 mt-1 mr-2">
-       <label class="block text-gray-700 text-sm font-bold mb-2" for="username">
+     <div className="mb-2 ml-4 mt-1 mr-2">
+       <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="username">
          Username
        </label>
-       <input onChange={this.handleChange} class="border border-transparent focus:outline-none focus:ring-2 focus:ring-pink-400 focus:border-transparent rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:shadow-outline" id="username" type="text" placeholder="username"/>
+       <input onChange={this.handleChange} className="border border-transparent focus:outline-none focus:ring-2 focus:ring-pink-400 focus:border-transparent rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:shadow-outline" id="username" type="text" placeholder="username"/>
       
      </div>
-     <div class="mb-2 ml-4 mr-2">
-       <label class="block text-gray-700 text-sm font-bold mb-2" for="password">
+     <div className="mb-2 ml-4 mr-2">
+       <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="password">
          Password
        </label>
-       <input  onChange={this.handleChange} class="border border-transparent focus:outline-none focus:ring-2 focus:ring-pink-400 focus:border-transparent rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:shadow-outline" id="password" type="password" placeholder="*********************"/>
+       <input  onChange={this.handleChange} className="border border-transparent focus:outline-none focus:ring-2 focus:ring-pink-400 focus:border-transparent rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:shadow-outline" id="password" type="password" placeholder="*********************"/>
        
      </div>
      
-     <button type="submit"class="bg-red-500 hover:bg-red-400 text-white  py-2 px-4 ml-4 mx-2 rounded">
+     <button type="submit"className="bg-red-500 hover:bg-red-400 text-white  py-2 px-4 ml-4 mx-2 rounded">
    Login
  </button>
    <span className="block ml-4 mt-2">Dont have an account? <span className="text-red-500 hover:text-red-700"><a href="/signup/">Sign Up </a></span></span>
