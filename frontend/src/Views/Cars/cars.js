@@ -4,7 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import {connect} from 'react-redux'
 import getCars from '../../actions/cars'
 import propTypes from 'prop-types' 
-
+import {Link} from 'react-router-dom' 
 import './cars.css'
 import bgphoto from'../../images/bgphoto.jpg'
 
@@ -31,7 +31,9 @@ class CarsView extends Component{
     
    renderCarList(){
     const newitems=this.props.cars;
-    return newitems.map((item)=>(
+    //let path=`/catalog/${item.id}`
+    return newitems.map((item)=>( 
+      
       <div className="rounded-md bg-white ml-3 mr-3 overflow-hidden shadow-lg h-5/6  " key={item.id}>
         <img src={item.picture} className="w-full"alt="pic"></img>
         <h1 className="text-2xl font-bold ml-4 my-3">{item.name}</h1>
@@ -41,9 +43,9 @@ class CarsView extends Component{
         <button class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 ml-3 mx-2 rounded">
   Purchase
 </button>
-<button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mx-2 rounded">
+<Link to={`/catalog/${item.id}`}> <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mx-2 rounded">
   View details
-</button>
+</button> </Link>
         </div>     
       </div>
 

@@ -79,7 +79,7 @@ class LoginForm extends Component{
 
       if (err===false) {
          //this.props.onAuth(username, password);
-         this.props.history.push("/cars/")
+         this.props.history.push("/home/")
        }
     
   }

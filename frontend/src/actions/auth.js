@@ -64,14 +64,16 @@ export const authLogin=(username,password)=>{
     }
 }
 
-export const authSignUp=(username,email,password1,password2)=>{
+export const authSignUp=(username,email,password,fullname,phone,address)=>{
     return dispatch=>{
         dispatch(authStart()) 
         axios.post('/rest-auth/registration',{
             username:username,
             email:email,
-            password1:password1,
-            password2:password2
+            password:password,
+            fullname:fullname,
+            phone:phone,
+            address:address
         }).then(res=>{
             const token=res.data.key;
             const expirationDate=new Date(new Date().getTime()+3600 *1000);
