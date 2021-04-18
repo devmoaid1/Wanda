@@ -64,7 +64,7 @@ export const authLogin=(username,password)=>{
     }
 }
 
-export const authSignUp=(username,email,password,fullname,phone,address)=>{
+export const authSignUp=(username,password,email,fullname,phone,address)=>{
     return dispatch=>{
         dispatch(authStart()) 
         axios.post('/rest-auth/registration',{

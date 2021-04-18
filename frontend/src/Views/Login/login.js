@@ -7,79 +7,74 @@ import {connect} from 'react-redux'
 import * as actions from '../../actions/auth'
 
 
-import './login.css'
+
+
+
+
+const intialState={
+  username:'',
+  password:'',
+  usernameError:'',
+  passwordError:''
+}
+
+
+
 
 class LoginForm extends Component{
     
-  state={
-    username:'',
-    password:'',
-    err:true
-  } 
+  state=intialState
 
   componentDidMount(){
     console.log(this.state)
   }
   
   handleChange=(event)=>{
-    let value=event.target.value
-    let type=event.target.id 
-    let username=this.state.username
-    let password=this.state.password
-    
+    const isCheckbox = event.target.type === "checkbox";
     this.setState({
-      [type]:value,
-      
-    })
+      [event.target.name]: isCheckbox
+        ? event.target.checked
+        : event.target.value
+    });
     
-    if(username!==''&&password!==''){
-      this.setState({
-           err:false
-      })
+    console.log( this.state,event.target.value,event.target.name)
+  }
+
+
+  validate = () => {
+    let nameError = "";
+    let passwordError = "";
+    // let passwordError = "";
+
+    if (!this.state.username) {
+      nameError = "username cannot be blank";
     }
-    
-    console.log( this.state,value,event.target.id)
-  }
 
-
-  validate=()=>{
-     let username=this.state.username
-     let password=this.state.password
-     
-    if(username===''){
-       return alert('please enter a username')
+    if (!this.state.password) {
+      passwordError = "password cannot be blank";
     }
-    if(password===''){
-      return alert("please Enter a password")
-    } 
-    
-   
 
-  }
-  alertMassage=(title)=>{
-    return(
-     <div role="alert">
-     <div class="bg-red-500 text-white font-bold rounded-t px-4 py-2">
-       Danger
-     </div>
-     <div class="border border-t-0 border-red-400 rounded-b bg-red-100 px-4 py-3 text-red-700">
-       <p>{title}</p>
-     </div>
-   </div>
-    )
-  }
+    if (passwordError || nameError) {
+      this.setState({usernameError:nameError,passwordError:passwordError  });
+      return false;
+    }
+
+    return true;
+  };
+  
   
 
   handleSubmit=e=>{
     e.preventDefault();
-    this.validate();
-     let err=this.state.err
-    //  let username=this.state.username
-    //  let password=this.state.password
+    const isValid=this.validate();
+     //let err=this.state.err
+     let username=this.state.username
+     let password=this.state.password
 
-      if (err===false) {
-         //this.props.onAuth(username, password);
+      if (isValid) {
+         this.props.onAuth(username, password);
          this.props.history.push("/home/")
+         this.setState(intialState)
        }
     
   }
@@ -121,15 +116,15 @@ class LoginForm extends Component{
        <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="username">
          Username
        </label>
-       <input onChange={this.handleChange} className="border border-transparent focus:outline-none focus:ring-2 focus:ring-pink-400 focus:border-transparent rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:shadow-outline" id="username" type="text" placeholder="username"/>
-      
+       <input onChange={this.handleChange} className="border border-transparent focus:outline-none focus:ring-2 focus:ring-pink-400 focus:border-transparent rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:shadow-outline" name="username" type="text" placeholder="username"/>
+       <p class="text-red-600 mb-3 ">{this.state.usernameError}</p>
      </div>
      <div className="mb-2 ml-4 mr-2">
        <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="password">
          Password
        </label>
-       <input  onChange={this.handleChange} className="border border-transparent focus:outline-none focus:ring-2 focus:ring-pink-400 focus:border-transparent rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:shadow-outline" id="password" type="password" placeholder="*********************"/>
-       
+       <input  onChange={this.handleChange} className="border border-transparent focus:outline-none focus:ring-2 focus:ring-pink-400 focus:border-transparent rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:shadow-outline" name="password" type="password" placeholder="*********************"/>
+       <p class="text-red-600 mb-3">{this.state.passwordError}</p>
      </div>
      
      <button type="submit"className="bg-red-500 hover:bg-red-400 text-white  py-2 px-4 ml-4 mx-2 rounded">

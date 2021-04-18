@@ -5,7 +5,7 @@ import {connect} from 'react-redux'
 import getCars from '../../actions/cars'
 import propTypes from 'prop-types' 
 import {Link} from 'react-router-dom' 
-import './cars.css'
+
 import bgphoto from'../../images/bgphoto.jpg'
 
 class CarsView extends Component{

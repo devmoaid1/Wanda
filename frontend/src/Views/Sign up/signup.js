@@ -3,27 +3,113 @@ import{Spinner} from 'react-bootstrap';
 //import logo from '../images/wanda.svg'
 import logphoto from '../../images/loginphoto.jpeg' 
 import {connect} from 'react-redux'
-
+import * as actions from '../../actions/auth'
 import '../Login/login.css'
+
+
+
+const intialState={
+  username:'',
+  password:'',
+  email:'',
+  fullname:'',
+  address:'',
+  phone:'',
+  usernameError:'',
+  passwordError:'',
+  emailError:'',
+  fullnameError:'',
+  addressError:'',
+  phoneError:'',
+}
+
+
 
 class SignUpForm extends Component{
     
-  
+  state=intialState
 
-   alertMassage=(title)=>{
-     return(
-      <div role="alert">
-      <div class="bg-red-500 text-white font-bold rounded-t px-4 py-2">
-        Danger
-      </div>
-      <div class="border border-t-0 border-red-400 rounded-b bg-red-100 px-4 py-3 text-red-700">
-        <p>{title}</p>
-      </div>
-    </div>
-     )
-   }
-
+  componentDidMount(){
+    console.log(this.state)
+  }
   
+  handleChange=(event)=>{
+    const isCheckbox = event.target.type === "checkbox";
+    this.setState({
+      [event.target.name]: isCheckbox
+        ? event.target.checked
+        : event.target.value
+    });
+    
+    console.log( this.state,event.target.value,event.target.name)
+  }
+
+  validate = () => {
+    let usernameError = "";
+    let passwordError = "";
+    let nameError = "";
+    let emailError="";
+    let phoneError="";
+    let addressError="";
+
+    if (!this.state.username) {
+      usernameError = "username cannot be blank";
+    }
+
+    if (!this.state.password) {
+      passwordError = "password cannot be blank";
+    }
+
+    if (!this.state.fullname) {
+      nameError = "fullname cannot be blank";
+    }
+
+    if (!this.state.email) {
+      emailError = "email cannot be blank";
+    }
+    if (!this.state.phone) {
+      phoneError = "phone number cannot be blank";
+    }
+
+    if (!this.state.address) {
+      addressError = "address cannot be blank";
+    }
+   
+
+    if (passwordError || usernameError || nameError || emailError || phoneError || addressError) {
+      this.setState({
+        usernameError:usernameError,
+        passwordError:passwordError,
+        emailError:emailError,
+        fullnameError:nameError,
+        phoneError:phoneError,
+        addressError:addressError  });
+      return false;
+    }
+
+    return true;
+  };
+  
+  handelSubmit=e=>{
+    e.preventDefault()
+    let isValid=this.validate()
+    let username=this.state.username
+    let password=this.state.password
+    let fullname=this.state.fullname
+    let email=this.state.email
+    let phone=this.state.phone
+    let address=this.state.address
+    if(isValid){ 
+      this.props.onAuth(username,password,fullname,email,phone,address)
+      this.props.history.push("/home/")
+      this.setState(intialState)
+    }
+  } 
+
+
+
+
+
 
     render(){
 
@@ -44,27 +130,32 @@ class SignUpForm extends Component{
             
             <div className="w-full h-full ">  
                 
-                <div className="mb-10 mt-4 rounded-md overflow-hidden shadow-lg w-2/3 mx-auto flex flex row">
+                <div className="mb-10 mt-4 rounded-md overflow-hidden shadow-lg w-2/3 h-full mx-auto flex flex row">
 
                 <img src={logphoto} alt="logphoto"></img> 
                 <div className=" mb-3  py-3">
                     <h1 className="text-5xl text-bold ml-4 mt-3">Sign Up</h1> 
                     <h1 className='ml-4 mt-3'> Sign up with new account </h1>
                     
-                    <form className="w-full"> 
+                    <form onSubmit={this.handelSubmit} className="w-full"> 
                       <div className="flex flex wrap ml-3  "> 
+                      
                       <div class=" ml-2 mt-3 ">
+      
+      
       <label class="block text-gray-700 text-sm font-bold mb-2" for="username">
         Username
       </label>
-      <input class="border border-transparent focus:outline-none focus:ring-2 focus:ring-red-400 focus:border-transparent rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:shadow-outline" id="username" type="text" placeholder="Username" name="username"/>
-    </div>
+      <input onChange={this.handleChange}   class="border border-transparent focus:outline-none focus:ring-2 focus:ring-red-400 focus:border-transparent rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:shadow-outline" id="username" type="text" placeholder="Username" name="username"/>
+      <p className="text-red-600">{this.state.usernameError}</p>
+    
+      </div>
     <div class="mb-2 ml-2 mt-3">
       <label class="block text-gray-700 text-sm font-bold mb-2" for="password">
         Password
       </label>
-      <input class="border border-transparent focus:outline-none focus:ring-2 focus:ring-red-400 focus:border-transparent rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:shadow-outline" id="password" type="password" placeholder="****************" name="password"/>
-      
+      <input onChange={this.handleChange}   class="border border-transparent focus:outline-none focus:ring-2 focus:ring-red-400 focus:border-transparent rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:shadow-outline" id="password" type="password" placeholder="****************" name="password"/>
+      <p className="text-red-600">{this.state.passwordError}</p>
     </div>
                        
                       </div>
@@ -74,29 +165,29 @@ class SignUpForm extends Component{
       <label class="block text-gray-700 text-sm font-bold mb-2" for="fullname">
         Full Name
       </label>
-      <input class="border border-transparent focus:outline-none focus:ring-2 focus:ring-red-400 focus:border-transparent rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:shadow-outline" id="fullname" type="text" placeholder="Full Name" name="fullname"/>
-      
+      <input  onChange={this.handleChange}   class="border border-transparent focus:outline-none focus:ring-2 focus:ring-red-400 focus:border-transparent rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:shadow-outline" id="fullname" type="text" placeholder="Full Name" name="fullname"/>
+      <p className="text-red-600">{this.state.fullnameError}</p>
     </div>
     <div class="mb-2 ml-4 mt-2 mr-2">
       <label class="block text-gray-700 text-sm font-bold mb-2" for="emailaddress">
         Email Address
       </label>
-      <input class="border border-transparent focus:outline-none focus:ring-2 focus:ring-red-400 focus:border-transparent rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:shadow-outline" id="emailaddress" type="password" placeholder="Email Address" name="emailaddress"/>
-      
+      <input  onChange={this.handleChange}    class="border border-transparent focus:outline-none focus:ring-2 focus:ring-red-400 focus:border-transparent rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:shadow-outline" id="emailaddress" type="email" placeholder="Email Address" name="email"/>
+      <p className="text-red-600">{this.state.emailError}</p>
     </div>
      <div class="mb-2 ml-4 mt-2 mr-2">
       <label class="block text-gray-700 text-sm font-bold mb-2" for="Phone Number">
         Phone Number
       </label>
-      <input class="border border-transparent focus:outline-none focus:ring-2 focus:ring-red-400 focus:border-transparent rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:shadow-outline" id="phonenumber" type="text" placeholder=" phone number"  name="phonenumber"/>
-      
+      <input onChange={this.handleChange} class="border border-transparent focus:outline-none focus:ring-2 focus:ring-red-400 focus:border-transparent rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:shadow-outline" id="phonenumber" type="text" placeholder=" phone number"  name="phone"/>
+      <p className="text-red-600">{this.state.phoneError}</p>
     </div>
     <div class="mb-2 ml-4 mt-2 mr-2">
       <label class="block text-gray-700 text-sm font-bold mb-2" for="address">
        Address
       </label>
-      <input class="border border-transparent focus:outline-none focus:ring-2 focus:ring-red-400 focus:border-transparent rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:shadow-outline" id="address" type="text" placeholder="Address" name="address"/>
-      
+      <input onChange={this.handleChange}   class="border border-transparent focus:outline-none focus:ring-2 focus:ring-red-400 focus:border-transparent rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:shadow-outline" id="address" type="text" placeholder="Address" name="address"/>
+      <p className="text-red-600">{this.state.addressError}</p>
     </div>
     <button type="submit"class="bg-red-500 hover:bg-red-600 text-white  py-2 px-4 ml-4 mx-2 rounded">
   Sign Up
@@ -123,10 +214,16 @@ class SignUpForm extends Component{
 
 
 const mapStateToProps=state=>{
-    return{
-        loading:state.loading,
-        error:state.error
-    }
+  return{
+      loading:state.loading,
+      error:state.error
+  }
+} 
+
+const mapDispatchToProps = dispatch => {
+return {
+    onAuth: (username, password,email,fullname,phone,address) => dispatch(actions.authSignUp(username, password,email,fullname,phone,address)) 
+}
 }
 
-export default connect(mapStateToProps)(SignUpForm);
+export default connect(mapStateToProps,mapDispatchToProps)(SignUpForm);
