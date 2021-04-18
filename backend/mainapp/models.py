@@ -1,6 +1,20 @@
 from django.db import models
-from django.contrib.auth.models import User
+from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, BaseUserManager
 # Create your models here.
+
+
+class UserAccountManager(BaseUserManager):
+    def create_user(self, email, password=None, **extra_fields):
+        if not email:
+            raise ValueError('Users must have an email address')
+
+        email = self.normalize_email(email)
+        user = self.model(email=email, **extra_fields)
+
+        user.set_password(password)
+        user.save()
+
+        return user
 
 
 class Car(models.Model):
@@ -32,10 +46,11 @@ class Dealership(models.Model):
     cars = models.ManyToManyField(Car)
 
 
-class Customer(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE, null=True)
+class Customer(AbstractBaseUser, PermissionsMixin):
+
     name = models.CharField(max_length=50)
-    email = models.EmailField(max_length=100)
+    username = models.CharField(max_length=50)
+    email = models.EmailField(max_length=100, unique=True)
     phone = models.CharField(max_length=100)
     address = models.CharField(max_length=100)
     pic = models.ImageField(null=True, blank=True)
@@ -43,3 +58,8 @@ class Customer(models.Model):
 
     def __str__(self):
         return self.name
+
+    objects = UserAccountManager()
+
+    USERNAME_FIELD = 'email'
+    REQUIRED_FIELDS = ['name']

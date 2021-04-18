@@ -12,6 +12,10 @@ pylint-django = "*"
 django-cors-headers = "*"
 dnspython = "*"
 pillow = "*"
+django-rest-auth = "*"
+django-allauth = "*"
+djoser = "*"
+djangorestframework-simplejwt = "*"
 
 [dev-packages]
 autopep8 = "*"
