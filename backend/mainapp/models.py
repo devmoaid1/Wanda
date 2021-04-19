@@ -4,12 +4,13 @@ from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, BaseU
 
 
 class UserAccountManager(BaseUserManager):
-    def create_user(self, email, password=None, **extra_fields):
+    def create_user(self, email, password=None, username='', pic='', phone='', address='', name=''):
         if not email:
             raise ValueError('Users must have an email address')
 
         email = self.normalize_email(email)
-        user = self.model(email=email, **extra_fields)
+        user = self.model(email=email, pic=pic, phone=phone,
+                          address=address, name=name, username=username)
 
         user.set_password(password)
         user.save()
@@ -62,4 +63,4 @@ class Customer(AbstractBaseUser, PermissionsMixin):
     objects = UserAccountManager()
 
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['name']
+    REQUIRED_FIELDS = ['name', 'phone', 'address', 'pic']

@@ -16,6 +16,8 @@ django-rest-auth = "*"
 django-allauth = "*"
 djoser = "*"
 djangorestframework-simplejwt = "*"
+django-filter = "*"
+markdown = "*"
 
 [dev-packages]
 autopep8 = "*"
