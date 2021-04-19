@@ -34,10 +34,10 @@ class CarsView extends Component{
     //let path=`/catalog/${item.id}`
     return newitems.map((item)=>( 
       
-      <div className="rounded-md bg-white ml-3 mr-3 overflow-hidden shadow-lg h-5/6  " key={item.id}>
-        <img src={item.picture} className="w-full"alt="pic"></img>
+      <div className="rounded-md bg-white ml-3 mr-3 overflow-hidden shadow-lg h-8/9 " key={item.id}>
+        <img src={item.picture} className="w-full h-1/2"alt="pic"></img>
         <h1 className="text-2xl font-bold ml-4 my-3">{item.name}</h1>
-        <div className="font-sans my-6 ml-4">{item.description}</div>
+        <div className="font-sans my-6 ml-1 px-3 h-1/6">{item.description}</div>
         <span className="block my-6 ml-4 font-bold">{item.price} Egp</span> 
         <div className="inline-block ">
         <button class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 ml-3 mx-2 rounded">
