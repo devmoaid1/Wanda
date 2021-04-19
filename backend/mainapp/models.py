@@ -12,6 +12,8 @@ class UserAccountManager(BaseUserManager):
         user = self.model(email=email, pic=pic, phone=phone,
                           address=address, name=name, username=username)
 
+        # Customer.is_staff = False
+
         user.set_password(password)
         user.save()
 
@@ -47,7 +49,7 @@ class Dealership(models.Model):
     cars = models.ManyToManyField(Car)
 
 
-class Customer(AbstractBaseUser):
+class Customer(AbstractBaseUser, PermissionsMixin):
 
     name = models.CharField(max_length=50)
     username = models.CharField(max_length=50)
@@ -61,6 +63,6 @@ class Customer(AbstractBaseUser):
         return self.name
 
     objects = UserAccountManager()
-
+    is_staff = models.BooleanField(('staff status'), default=False)
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['name', 'phone', 'address', 'pic']

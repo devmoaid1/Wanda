@@ -104,9 +104,11 @@ class SignUpForm extends Component{
       this.props.history.push("/home/")
       this.setState(intialState)
     }
+
+    console.log(this.props.err)
   } 
 
-
+  
 
 
 
