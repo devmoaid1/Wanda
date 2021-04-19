@@ -47,7 +47,7 @@ export const logout=()=>{
 export const authLogin=(username,password)=>{
     return dispatch=>{
         dispatch(authStart()) 
-        axios.post('/rest-auth/login',{
+        axios.post('/api/v1/token/login/',{
             username:username,
             password:password
         }).then(res=>{

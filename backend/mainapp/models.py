@@ -47,7 +47,7 @@ class Dealership(models.Model):
     cars = models.ManyToManyField(Car)
 
 
-class Customer(AbstractBaseUser, PermissionsMixin):
+class Customer(AbstractBaseUser):
 
     name = models.CharField(max_length=50)
     username = models.CharField(max_length=50)
