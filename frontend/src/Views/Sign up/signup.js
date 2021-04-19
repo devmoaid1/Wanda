@@ -5,6 +5,7 @@ import logphoto from '../../images/loginphoto.jpeg'
 import {connect} from 'react-redux'
 import * as actions from '../../actions/auth'
 import '../Login/login.css'
+import { withRouter } from "react-router-dom";
 
 
 
@@ -228,4 +229,4 @@ return {
 }
 }
 
-export default connect(mapStateToProps,mapDispatchToProps)(SignUpForm);
+export default connect(mapStateToProps,mapDispatchToProps)(withRouter(SignUpForm));

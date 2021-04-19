@@ -67,7 +67,7 @@ export const authLogin=(username,password)=>{
 export const authSignUp=(username,password,email,fullname,phone,address)=>{
     return dispatch=>{
         dispatch(authStart()) 
-        axios.post('/api/v1/users/',{
+        axios.post('http://127.0.0.1:8000/api/v1/token/login/',{
             username:username,
             email:email,
             password:password,

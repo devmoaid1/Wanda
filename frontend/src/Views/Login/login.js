@@ -68,8 +68,8 @@ class LoginForm extends Component{
     e.preventDefault();
     const isValid=this.validate();
      //let err=this.state.err
-     let username=this.state.username
-     let password=this.state.password
+      let username=this.state.username
+      let password=this.state.password
 
       if (isValid) {
          this.props.onAuth(username, password);
@@ -116,14 +116,14 @@ class LoginForm extends Component{
        <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="username">
          Username
        </label>
-       <input onChange={this.handleChange} className="border border-transparent focus:outline-none focus:ring-2 focus:ring-pink-400 focus:border-transparent rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:shadow-outline" name="username" type="text" placeholder="username"/>
+       <input value={this.state.username} onChange={this.handleChange} className="border border-transparent focus:outline-none focus:ring-2 focus:ring-pink-400 focus:border-transparent rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:shadow-outline" name="username" type="text" placeholder="username"/>
        <p class="text-red-600 mb-3 ">{this.state.usernameError}</p>
      </div>
      <div className="mb-2 ml-4 mr-2">
        <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="password">
          Password
        </label>
-       <input  onChange={this.handleChange} className="border border-transparent focus:outline-none focus:ring-2 focus:ring-pink-400 focus:border-transparent rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:shadow-outline" name="password" type="password" placeholder="*********************"/>
+       <input value={this.state.password} onChange={this.handleChange} className="border border-transparent focus:outline-none focus:ring-2 focus:ring-pink-400 focus:border-transparent rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:shadow-outline" name="password" type="password" placeholder="*********************"/>
        <p class="text-red-600 mb-3">{this.state.passwordError}</p>
      </div>
      
