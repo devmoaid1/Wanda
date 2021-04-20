@@ -4,7 +4,7 @@ import{Spinner} from 'react-bootstrap';
 import logphoto from '../../images/loginphoto.jpeg' 
 import {connect} from 'react-redux'
 
-import * as actions from '../../actions/auth'
+import * as actions from '../../actions/signup'
 
 
 
@@ -64,20 +64,20 @@ class LoginForm extends Component{
   
   
 
-  handleSubmit=e=>{
-    e.preventDefault();
-    const isValid=this.validate();
-     //let err=this.state.err
-      let username=this.state.username
-      let password=this.state.password
+  // handleSubmit=e=>{
+  //   e.preventDefault();
+  //   const isValid=this.validate();
+  //    //let err=this.state.err
+  //     let username=this.state.username
+  //     let password=this.state.password
 
-      if (isValid) {
-         this.props.onAuth(username, password);
-         this.props.history.push("/home/")
-         this.setState(intialState)
-       }
+  //     if (isValid) {
+  //        this.props.onAuth(username, password);
+  //        this.props.history.push("/home/")
+  //        this.setState(intialState)
+  //      }
     
-  }
+  // }
     
   
   render(){
@@ -158,10 +158,10 @@ const mapStateToProps=state=>{
     }
 } 
 
-const mapDispatchToProps = dispatch => {
-  return {
-      onAuth: (username, password) => dispatch(actions.authLogin(username, password)) 
-  }
-}
+// const mapDispatchToProps = dispatch => {
+//   return {
+//       onAuth: (username, password) => dispatch(actions.authLogin(username, password)) 
+//   }
+// }
 
-export default connect(mapStateToProps,mapDispatchToProps)(LoginForm);
+export default connect(mapStateToProps)(LoginForm);

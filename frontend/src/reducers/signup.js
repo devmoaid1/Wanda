@@ -1,12 +1,11 @@
 import * as actionTypes from '../actions/types';
 //import {updateObject} from '../utilities';
 
-const initialState={
-    token:null,
-    error:null,
-    loading:false
-}
-
+const initialState = {
+  usernameError: "",
+  passwordError: "",
+  isSubimtted: false
+};
 //  const authStart=(state,action)=>{
 //     return updateObject(state,{
 //          error:null,

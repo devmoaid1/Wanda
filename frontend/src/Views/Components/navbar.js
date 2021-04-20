@@ -2,7 +2,7 @@ import React,{Component} from 'react';
 import logo from'../../images/wandalogo.svg'
 import './navbar.css'
 import {connect} from 'react-redux'
-import * as actions from '../../actions/auth'
+import * as actions from '../../actions/signup'
 
 //import {NavLink} from 'react-router-dom';
 // import {
@@ -30,10 +30,10 @@ class NavBarComponent extends Component {
            <div className="inline-block">
              <span className="text-xl mr-4  focus:ring-white"><a className=" hover:purple-700" href="/home/">Home</a></span>
              <span  className="text-xl mr-4"><a href="/cars/">Cars</a></span>
-             { this.props.isAuthenticated?
-             <span  className="text-xl mr-4"><a href="/login/" onClick={this.props.logout}>Logout</a></span>:
+             {/* { this.props.isAuthenticated? */}
+            {/* //  <span  className="text-xl mr-4"><a href="/login/" onClick={this.props.logout}>Logout</a></span>: */}
              <span  className="text-xl mr-4"><a href="/login/">Login</a></span> 
-             }
+             {/* } */}
            </div>
   
         </div>
@@ -46,13 +46,13 @@ class NavBarComponent extends Component {
 
 
 
-const mapDispatchToProps = dispatch => {
-return {
-    logout: () => dispatch(actions.logout()) 
-}
-}
+// const mapDispatchToProps = dispatch => {
+// return {
+//     logout: () => dispatch(actions.logout()) 
+// }
+// }
 
-export default connect(null,mapDispatchToProps)(NavBarComponent);
+export default connect(null,null)(NavBarComponent);
 
 /*
  <Navbar bg="dark" variant="dark">
