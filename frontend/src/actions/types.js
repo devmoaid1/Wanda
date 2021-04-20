@@ -12,4 +12,7 @@ export default GET_CARS;
 export  const AUTH_START='AUTH_START';
 export  const AUTH_SUCCSESS='AUTH_SUCCSESS';
 export  const AUTH_FAIL='AUTH_FAIL';
-export  const AUTH_LOGOUT='AUTH_LOGOUT';
+export  const AUTH_LOGOUT='AUTH_LOGOUT'; 
+export  const CREATE_USER_SUBMITTED='CREATE_USER_SUBMITTED'
+export  const CREATE_USER_SUCCESS = "CREATE_USER_SUCCESS";
+export  const CREATE_USER_ERROR = "CREATE_USER_ERROR";
