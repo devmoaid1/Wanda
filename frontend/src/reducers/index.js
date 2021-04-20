@@ -1,6 +1,15 @@
 import {combineReducers} from 'redux'; 
+import { connectRouter } from 'connected-react-router';
 import carsReducer from './cars' 
-import authReducer from'./auth'
-export default combineReducers({cars:carsReducer
-    ,auth:authReducer
-})
+//import signUpReducer from'./signup'
+ 
+const createRootReducer=history=>
+
+    combineReducers({
+        router:connectRouter(history),
+        cars:carsReducer,
+        
+    })
+
+
+export default createRootReducer

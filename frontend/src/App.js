@@ -5,29 +5,30 @@ import React,{Component} from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'; 
 //import {Provider} from 'react-redux'
 //import store from './store'
-import {BrowserRouter} from 'react-router-dom';
+import {Router} from 'react-router-dom';
 import BaseRouter from './routes'
 import {connect} from 'react-redux'
 import NavBarComponent from './Views/Components/navbar'
 import * as actions from './actions/auth'
+import Root from './store';
 
 
 //import authReducer from './reducers/auth'
 
 class App extends Component {
   
-  componentDidMount(){
-    this.props.onTryAutoSignUp()
-  }
+  // componentDidMount(){
+  //   this.props.onTryAutoSignUp()
+  // }
   render(){
     return (
   
       <div className="min-h-full">
         <div className="h-screen flex flex-col">
-         <BrowserRouter {...this.props}>
+         <Root >
          <NavBarComponent />
          <BaseRouter />
-         </BrowserRouter> 
+         </Root> 
          </div> 
       </div>
 
@@ -37,16 +38,16 @@ class App extends Component {
 }
 
 
-const mapStateToProps=state=>{
-  return {
-    isAuthenticated:state.token!==null
-   }
-} 
+// const mapStateToProps=state=>{
+//   return {
+//     isAuthenticated:state.token!==null
+//    }
+// } 
 
-const mapDispatchToProps=dispatch=>{
-  return {
-    onTryAutoSignUp:()=>dispatch(actions.authCheckState())
-   }
-}
+// const mapDispatchToProps=dispatch=>{
+//   return {
+//     onTryAutoSignUp:()=>dispatch(actions.authCheckState())
+//    }
+// }
   
-export default connect(mapStateToProps,mapDispatchToProps)(App);
+export default App;

@@ -4,15 +4,15 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import reportWebVitals from './reportWebVitals'; 
 import 'bootstrap/dist/css/bootstrap.min.css'; 
-import Store from './store'
-import {Provider} from 'react-redux'
+// import Store from './store'
+// import {Provider} from 'react-redux'
 import './style/main.css'
 
 
 const app=(
-  <Provider store={Store}>
+  <div>
     <App/>
-  </Provider>
+  </div>
 
 )
 
