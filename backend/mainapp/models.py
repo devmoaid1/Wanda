@@ -4,13 +4,12 @@ from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, BaseU
 
 
 class UserAccountManager(BaseUserManager):
-    def create_user(self, email, password=None, username='', pic='', phone='', address='', name=''):
+    def create_user(self, email, password=None, **extra_fields):
         if not email:
             raise ValueError('Users must have an email address')
 
         email = self.normalize_email(email)
-        user = self.model(email=email, pic=pic, phone=phone,
-                          address=address, name=name, username=username)
+        user = self.model(email=email, **extra_fields)
 
         # Customer.is_staff = False
 
@@ -52,7 +51,7 @@ class Dealership(models.Model):
 class Customer(AbstractBaseUser, PermissionsMixin):
 
     name = models.CharField(max_length=50)
-    username = models.CharField(max_length=50)
+    username = models.CharField(max_length=50, unique=True)
     email = models.EmailField(max_length=100, unique=True)
     phone = models.CharField(max_length=100)
     address = models.CharField(max_length=100)
@@ -64,5 +63,5 @@ class Customer(AbstractBaseUser, PermissionsMixin):
 
     objects = UserAccountManager()
     is_staff = models.BooleanField(('staff status'), default=False)
-    USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['name', 'phone', 'address', 'pic']
+    USERNAME_FIELD = 'username'
+    REQUIRED_FIELDS = ['name', 'email', 'phone', 'address', 'pic']
