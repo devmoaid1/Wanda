@@ -64,20 +64,20 @@ class LoginForm extends Component{
   
   
 
-  // handleSubmit=e=>{
-  //   e.preventDefault();
-  //   const isValid=this.validate();
-  //    //let err=this.state.err
-  //     let username=this.state.username
-  //     let password=this.state.password
+  handleSubmit=e=>{
+    e.preventDefault();
+    const isValid=this.validate();
+     //let err=this.state.err
+      // let username=this.state.username
+      // let password=this.state.password
 
-  //     if (isValid) {
-  //        this.props.onAuth(username, password);
-  //        this.props.history.push("/home/")
-  //        this.setState(intialState)
-  //      }
+      if (isValid) {
+        //  this.props.onAuth(username, password);
+         this.props.history.push("/home/")
+         this.setState(intialState)
+       }
     
-  // }
+  }
     
   
   render(){
