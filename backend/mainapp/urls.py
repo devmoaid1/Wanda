@@ -13,7 +13,3 @@ router.register('api/dealerships', DealershipViewSet, 'dealerships')
 # router.register('api/customers', CustomerViewSet, 'customers')
 
 urlpatterns = router.urls
-urlpatterns += [
-    url(r'^api/v1/', include('djoser.urls')),
-    url(r'^api/v1/', include('djoser.urls.authtoken')),
-]

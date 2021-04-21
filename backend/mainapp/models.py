@@ -50,12 +50,12 @@ class Dealership(models.Model):
 
 class Customer(AbstractBaseUser, PermissionsMixin):
 
-    name = models.CharField(max_length=50)
+    name = models.CharField(max_length=250)
     username = models.CharField(max_length=50, unique=True)
-    email = models.EmailField(max_length=100, unique=True)
-    phone = models.CharField(max_length=100)
-    address = models.CharField(max_length=100)
-    pic = models.ImageField(null=True, blank=True)
+    email = models.EmailField(max_length=250,)
+    phone = models.CharField(max_length=250)
+    address = models.CharField(max_length=250)
+    # pic = models.ImageField(null=True, blank=True)
     bookings = models.ManyToManyField(Booking)
 
     def __str__(self):
@@ -64,4 +64,4 @@ class Customer(AbstractBaseUser, PermissionsMixin):
     objects = UserAccountManager()
     is_staff = models.BooleanField(('staff status'), default=False)
     USERNAME_FIELD = 'username'
-    REQUIRED_FIELDS = ['name', 'email', 'phone', 'address', 'pic']
+    REQUIRED_FIELDS = ['name', 'email', 'phone', 'address']
