@@ -22,8 +22,8 @@ class DealershipSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-class CustomerSerializer(serializers.ModelSerializer):
-    class Meta:
+# class CustomerSerializer(serializers.ModelSerializer):
+#     class Meta:
 
-        model = Customer
-        fields = '__all__'
+#         model = Customer
+#         fields = '__all__'

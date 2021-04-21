@@ -22,7 +22,7 @@ class DealershipViewSet(viewsets.ModelViewSet):
     serializer_class = DealershipSerializer
 
 
-class CustomerViewSet(viewsets.ModelViewSet):
-    queryset = Customer.objects.all()
-    permission_classes = [permissions.AllowAny]
-    serializer_class = CustomerSerializer
+# class CustomerViewSet(viewsets.ModelViewSet):
+#     queryset = Customer.objects.all()
+#     permission_classes = [permissions.AllowAny]
+#     serializer_class = CustomerSerializer

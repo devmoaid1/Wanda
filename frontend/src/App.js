@@ -5,14 +5,15 @@ import React,{Component} from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'; 
 //import {Provider} from 'react-redux'
 //import store from './store'
-import {Router} from 'react-router-dom';
+//
 import BaseRouter from './routes'
-import {connect} from 'react-redux'
+//import {connect} from 'react-redux'
 import NavBarComponent from './Views/Components/navbar'
-import * as actions from './actions/signup'
+//import * as actions from './actions/signup'
 import Root from './store';
 import { ToastContainer } from "react-toastify";
-
+import axios from "axios";
+axios.defaults.baseURL = "http://127.0.0.1:8000";
 //import authReducer from './reducers/auth'
 
 class App extends Component {
