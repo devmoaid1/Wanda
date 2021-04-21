@@ -44,7 +44,7 @@ class SignUpForm extends Component{
       username:"",
       password:"",
       email:'',
-      fullname:'',
+      name:'',
       address:'',
       phone:'',
 
@@ -117,7 +117,7 @@ class SignUpForm extends Component{
     let userdate={
       username:this.state.username,
       password:this.state.password,
-      fullname:this.state.fullname,
+      name:this.state.name,
       email:this.state.email,
       phone:this.state.phone,
       address:this.state.address,
@@ -196,10 +196,10 @@ class SignUpForm extends Component{
                     
  
     <div class="mb-2 ml-4 mt-1 mr-2">
-      <label class="block text-gray-700 text-sm font-bold mb-2" for="fullname">
+      <label class="block text-gray-700 text-sm font-bold mb-2" for="name">
         Full Name
       </label>
-      <input  onChange={this.handleChange}   class="border border-transparent focus:outline-none focus:ring-2 focus:ring-red-400 focus:border-transparent rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:shadow-outline" id="fullname" type="text" placeholder="Full Name" name="fullname"/>
+      <input  onChange={this.handleChange}   class="border border-transparent focus:outline-none focus:ring-2 focus:ring-red-400 focus:border-transparent rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:shadow-outline" id="fullname" type="text" placeholder="Full Name" name="name"/>
       {/* <p className="text-red-600">{this.state.fullnameError}</p> */}
     </div>
     <div class="mb-2 ml-4 mt-2 mr-2">
