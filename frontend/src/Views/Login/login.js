@@ -1,104 +1,95 @@
 import React,{Component} from 'react'; 
 import{Spinner} from 'react-bootstrap'; 
-//import logo from '../images/wanda.svg'
-import logphoto from '../../images/loginphoto.jpeg' 
-import {connect} from 'react-redux'
-
-import * as actions from '../../actions/signup'
-
-
+import PropTypes from "prop-types";  
+import logphoto from '../../images/loginphoto.jpeg'; 
+import {connect} from 'react-redux';
+import { withRouter } from "react-router-dom";
+import {login} from '../../actions/login'
 
 
 
 
-const intialState={
-  username:'',
-  password:'',
-  usernameError:'',
-  passwordError:''
-}
 
 
 
 
-class LoginForm extends Component{
+
+
+
+class LoginForm extends Component{ 
+
+  constructor(props){
+    super(props);
+    this.state={
+      username:'',
+      password:''
+    }
+  }
     
-  state=intialState
 
   componentDidMount(){
     console.log(this.state)
   }
   
   handleChange=(event)=>{
-    const isCheckbox = event.target.type === "checkbox";
+    
     this.setState({
-      [event.target.name]: isCheckbox
-        ? event.target.checked
-        : event.target.value
+      [event.target.name]: event.target.value
+        
     });
     
     console.log( this.state,event.target.value,event.target.name)
   }
 
 
-  validate = () => {
-    let nameError = "";
-    let passwordError = "";
-    // let passwordError = "";
+  // validate = () => {
+  //   let nameError = "";
+  //   let passwordError = "";
+  //   // let passwordError = "";
 
-    if (!this.state.username) {
-      nameError = "username cannot be blank";
-    }
+  //   if (!this.state.username) {
+  //     nameError = "username cannot be blank";
+  //   }
 
-    if (!this.state.password) {
-      passwordError = "password cannot be blank";
-    }
+  //   if (!this.state.password) {
+  //     passwordError = "password cannot be blank";
+  //   }
 
-    if (passwordError || nameError) {
-      this.setState({usernameError:nameError,passwordError:passwordError  });
-      return false;
-    }
+  //   if (passwordError || nameError) {
+  //     this.setState({usernameError:nameError,passwordError:passwordError  });
+  //     return false;
+  //   }
 
-    return true;
-  };
+  //   return true;
+  // };
   
   
 
   handleSubmit=e=>{
     e.preventDefault();
-    const isValid=this.validate();
-     //let err=this.state.err
-      // let username=this.state.username
-      // let password=this.state.password
+    const userData={
+      username:this.state.username,
+      password:this.state.password
+    }
 
-      if (isValid) {
-        //  this.props.onAuth(username, password);
-         this.props.history.push("/home/")
-         this.setState(intialState)
-       }
-    
+    this.props.login(userData,"/home")
   }
     
   
   render(){
     
     
-    let errorMessage = null;
-    if (this.props.error) {
-        errorMessage = (
-            <p>{this.props.error.message}</p>
-        );
-    } 
+     
     
   
         return(
          <div>  
-            {this.errorMassage} 
-          {
-                 this.props.loading?
+            
+          
+          
             
             
-                 <Spinner animation="border" variant="danger" />:
+               
             
                  <div className="w-full h-full  ">  
                 
@@ -142,7 +133,7 @@ class LoginForm extends Component{
                  
                   </div>
             
-    }
+    
 
 </div>
         )
@@ -151,17 +142,15 @@ class LoginForm extends Component{
 
 
 
-const mapStateToProps=state=>{
-    return{
-        loading:state.loading,
-        error:state.error
-    }
-} 
+LoginForm.propTypes = {
+  login: PropTypes.func.isRequired,
+  auth: PropTypes.object.isRequired
+};
 
-// const mapDispatchToProps = dispatch => {
-//   return {
-//       onAuth: (username, password) => dispatch(actions.authLogin(username, password)) 
-//   }
-// }
+const mapStateToProps=state=>({
+  auth:state.auth
+})
 
-export default connect(mapStateToProps)(LoginForm);
+
+
+export default connect(mapStateToProps,{login})(withRouter(LoginForm));

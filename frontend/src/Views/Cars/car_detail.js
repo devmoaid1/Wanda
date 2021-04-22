@@ -25,11 +25,11 @@ class CarDetail extends Component{
           return(
 
         <div >
-        <div className="w-full h-full ">
-            <video className="w-full" autoPlay loop muted >
+        
+            <video className=" mx-auto w-full h-1/3 shadow-md  overflow-hidden" autoPlay loop muted >
                 <source src={video} type="video/mp4"></source>
             </video>
-        </div>
+        
        <div className="w-full h-full">
         <div className=" text-4xl boldfont-sans text-justify my-6 ml-4 mt-10 h-full w-3/4 mx-auto ">{car.description}</div>
         <div className="flex flex-row mx-auto w-3/4 mt-30 divide-y divide-grey-600 ">

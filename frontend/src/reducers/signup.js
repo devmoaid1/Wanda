@@ -1,42 +1,11 @@
 import * as actionTypes from '../actions/types';
-//import {updateObject} from '../utilities';
+
 
 const initialState = {
   usernameError: "",
   passwordError: "",
   isSubimtted: false
 };
-//  const authStart=(state,action)=>{
-//     return updateObject(state,{
-//          error:null,
-//          loading:true
-//     });
-// }
-
-//  const authSuccess=(state,action)=>{
-//     return updateObject(state,{
-//          token:action.token,
-//          error:false,
-//          loading:false
-//     });
-// } 
-
-
-//  const authFail=(state,action)=>{
-//     return updateObject(state,{
-//         token:action.token,
-//         error:false,
-//         loading:false
-//    });
-// }
-
-
-// const authLogout=(state,action)=>{
-//     return updateObject(state,{
-//         token:null,
-        
-//    });
-// }
 
 export const signupReducer = (state = initialState, action) => {
     switch (action.type) {
