@@ -63,9 +63,9 @@ class CarsView extends Component{
     return( 
         
         
-        <Fragment>
+        <div className="w-full h-full">
           <div 
-          className="relative flex items-center justify-center h-full bg-cover bg-center bg-fixed bg-no-repeat "
+          className="relative flex items-center justify-center w-full h-full bg-cover bg-center bg-fixed bg-no-repeat "
           style={{
             backgroundImage:`url(${bgphoto})`
 
@@ -86,7 +86,7 @@ class CarsView extends Component{
        
         
        
-        </Fragment>
+        </div>
        
 
 

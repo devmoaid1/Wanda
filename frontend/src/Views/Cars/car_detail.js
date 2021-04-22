@@ -24,18 +24,18 @@ class CarDetail extends Component{
         const car=this.state.car
           return(
 
-        <div >
+        <div className="w-full h-full" >
         
-            <video className=" mx-auto w-full h-1/3 shadow-md  overflow-hidden" autoPlay loop muted >
+            <video className="  w-full " autoPlay loop muted >
                 <source src={video} type="video/mp4"></source>
             </video>
         
-       <div className="w-full h-full">
+       <div className="w-full ">
         <div className=" text-4xl boldfont-sans text-justify my-6 ml-4 mt-10 h-full w-3/4 mx-auto ">{car.description}</div>
-        <div className="flex flex-row mx-auto w-3/4 mt-30 divide-y divide-grey-600 ">
+        <div className="flex flex-row mx-auto w-3/4 mt-10 divide-y divide-grey-600 ">
             <span className="font-bold text-2xl mx-2">CO2 emissions</span><span className="text-2xl ">259–238 g/km (combined)</span>
             <span className=" ml -4 mx-2 font-bold text-2xl">Fuel consumption </span><span className="text-2xl ">11.3–10.4 l/100 km (combined) </span>
-        </div> 
+        </div>
         <h1 className="text-5xl font-bold  w-1/2  mt-20 mx-auto">{car.name} Product Highlight</h1> 
         <div className="flex flex-row w-full h-3/4 shadow-sm overflow-hidden mx-auto my-7"> 
         <img  className="w-3/4"src={car.picture} alt="car "> 

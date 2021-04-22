@@ -11,7 +11,7 @@ import { withRouter } from "react-router-dom";
 class NavBarComponent extends Component {
   
 
-   onlogout(){
+   onLogout=()=>{
      this.props.logout()
    }
 
@@ -19,7 +19,9 @@ class NavBarComponent extends Component {
   
   render(){
     const {user}=this.props.auth
+    
     return (
+      
       <div style={{background:'#091c29'}}>
         <div className="flex items-center justify-between w-10/12 mx-auto py-1 text-white"> 
           <div className="flex flex-row justify-left pt-3  text-white"><img width="50"
@@ -32,7 +34,7 @@ class NavBarComponent extends Component {
              <span  className="text-xl mr-4"><a href="/cars/">Cars</a></span>
              {/* { this.props.isAuthenticated? */}
             {/* //  <span  className="text-xl mr-4"><a href="/login/" onClick={this.props.logout}>Logout</a></span>: */}
-             <span  className="text-xl mr-4"><a href="/" onClick={this.onLogout}>Logout</a></span>
+             <span  className="text-xl mr-4"><a  onClick={this.onLogout}>Logout</a></span>
              <span  className="text-xl mr-4"><a href="/login/" onClick={this.onLogout}>{user.name}</a></span> 
              {/* } */}
            </div>
@@ -47,14 +49,15 @@ class NavBarComponent extends Component {
 
 
 NavBarComponent.propTypes={
-
+ isAuthenticated:PropTypes.bool.isRequired,
  logout:PropTypes.func.isRequired,
  auth:PropTypes.object.isRequired
 }
 
 
 const mapStateToProps=state=>({
-  auth:state.auth
+  auth:state.auth,
+  isAuthenticated:state.auth.isAuthenticated
 })
 
 

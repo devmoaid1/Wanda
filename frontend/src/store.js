@@ -4,7 +4,7 @@ import thunk from 'redux-thunk'
 import { composeWithDevTools } from "redux-devtools-extension";
 import {Provider} from 'react-redux'
 import { createBrowserHistory } from "history"; 
-import { routerMiddleware, ConnectedRouter } from "connected-react-router";
+import { routerMiddleware, ConnectedRouter} from "connected-react-router";
 import {isEmpty} from './utilities';
 import {setCurrentUser,setToken} from './actions/login'
 
@@ -12,8 +12,9 @@ import {setCurrentUser,setToken} from './actions/login'
 
 
 const Root = ({ children, initialState = {} }) => {
-    const history = createBrowserHistory();
-    const middleware = [thunk, routerMiddleware(history)];
+  const history = createBrowserHistory();
+  const middleware = [thunk, routerMiddleware(history)];
+
   
     const store = createStore(
       rootReducer(history),
@@ -30,9 +31,9 @@ const Root = ({ children, initialState = {} }) => {
     }
   
     return (
-      <Provider store={store}>
-        <ConnectedRouter history={history}>{children}</ConnectedRouter>
-      </Provider>
+    <Provider store={store}>
+      <ConnectedRouter history={history}>{children}</ConnectedRouter>
+    </Provider>
     );
   };
 

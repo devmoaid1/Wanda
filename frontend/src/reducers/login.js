@@ -19,7 +19,7 @@ const LoginReducer=(state=initialState,action)=>{
            return{...state,isAuthenticated:true,token:action.payload};
    
        case actionTypes.SET_CURRENT_USER:
-           return{...state,user:action.payload,isAuthenticated:true};
+           return{...state,user:action.payload};
 
        case actionTypes.UNSET_CURRENT_USER:
            return initialState; 
