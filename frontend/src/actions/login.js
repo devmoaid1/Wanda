@@ -13,7 +13,7 @@ export const login=(userData,redirectTo)=>dispatch=>{
         dispatch(getCurrentUser(redirectTo));
     }).catch(err=>{
       dispatch(unsetCurrentUser());
-      toastOnError(err);
+      toastOnError(JSON.stringify(err));
     });
         
 } 

@@ -9,13 +9,13 @@ const signUpNewUser=userData=>dispatch=>{
   axios.post('/api/users/' ,userData).then(res=>{
       console.log(userData)
       toast.success(
-          'Account for'+userData.username+'created succefully'
+          'Account for '+userData.username+' created succefully'
       ); 
       dispatch({type:actionTypes.CREATE_USER_SUCCESS});
 
   }).catch(err=>{
 
-    if (err.resposne) {
+    if (err.response) {
         // The request was made and the server responded with a status code
         // that falls out of the range of 2xx
         toast.error(JSON.stringify(err.response.data));

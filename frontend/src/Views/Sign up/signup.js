@@ -18,20 +18,6 @@ import './signup.css'
 
 
 
-// const intialState={
-//   username:'',
-//   password:'',
-//   email:'',
-//   fullname:'',
-//   address:'',
-//   phone:'',
-//   usernameError:'',
-//   passwordError:'',
-//   emailError:'',
-//   fullnameError:'',
-//   addressError:'',
-//   phoneError:'',
-// }
 
 
 
@@ -66,51 +52,7 @@ class SignUpForm extends Component{
     console.log( this.state,event.target.value,event.target.name)
   }
 
-  validate = () => {
-    let usernameError = "";
-    let passwordError = "";
-    let nameError = "";
-    let emailError="";
-    let phoneError="";
-    let addressError="";
-
-    if (!this.state.username) {
-      usernameError = "username cannot be blank";
-    }
-
-    if (!this.state.password) {
-      passwordError = "password cannot be blank";
-    }
-
-    if (!this.state.fullname) {
-      nameError = "fullname cannot be blank";
-    }
-
-    if (!this.state.email) {
-      emailError = "email cannot be blank";
-    }
-    if (!this.state.phone) {
-      phoneError = "phone number cannot be blank";
-    }
-
-    if (!this.state.address) {
-      addressError = "address cannot be blank";
-    }
-   
-
-    if (passwordError || usernameError || nameError || emailError || phoneError || addressError) {
-      this.setState({
-        usernameError:usernameError,
-        passwordError:passwordError,
-        emailError:emailError,
-        fullnameError:nameError,
-        phoneError:phoneError,
-        addressError:addressError  });
-      return false;
-    }
-
-    return true;
-  };
+ 
   
   handelSubmit=e=>{
     e.preventDefault();
@@ -123,20 +65,9 @@ class SignUpForm extends Component{
       address:this.state.address,
     }
     this.props.signUpNewUser(userdate);
-    // let isValid=this.validate()
-    // let username=this.state.username
-    // let password=this.state.password
-    // let fullname=this.state.fullname
-    // let email=this.state.email
-    // let phone=this.state.phone
-    // let address=this.state.address
-    // if(isValid){ 
-    //   this.props.onAuth(username,password,fullname,email,phone,address)
-    //   this.props.history.push("/home/")
-    //   this.setState(intialState)
-    // }
+   
 
-    // console.log(this.props.err)
+   
   } 
 
   
@@ -160,14 +91,14 @@ class SignUpForm extends Component{
             
             <div className="w-full h-full ">  
                 
-                <div className="mb-10 mt-4 rounded-md overflow-hidden shadow-lg w-2/3 h-full mx-auto flex flex row">
+                <div className="mb-10 mt-4 rounded-md overflow-hidden shadow-lg w-2/3 h-8/9 mx-auto flex flex row">
 
                 <img src={logphoto} alt="logphoto"></img> 
                 <div className=" mb-3  py-3">
                     <h1 className="text-5xl text-bold ml-4 mt-3">Sign Up</h1> 
                     <h1 className='ml-4 mt-3'> Sign up with new account </h1>
                     
-                    <form onSubmit={this.handelSubmit} className="w-full"> 
+                    <form onSubmit={this.handelSubmit} className="w-full h-8/9  "> 
                       <div className="flex flex wrap ml-3  "> 
                       
                       <div class=" ml-2 mt-3 ">

@@ -12,7 +12,7 @@ import NavBarComponent from './Views/Components/navbar'
 //import * as actions from './actions/signup'
 import Root from './store';
 import { ToastContainer } from "react-toastify";
-
+import requireAuth from './Authenticated'
 //import authReducer from './reducers/auth'
 
 class App extends Component {
@@ -25,9 +25,9 @@ class App extends Component {
   
       <div className="min-h-full">
         <div className="h-screen flex flex-col">
-          <ToastContainer hideProgressBar={true} newestOnTop={true}/>
+        <ToastContainer hideProgressBar={true} newestOnTop={true}/>
          <Root >
-         <NavBarComponent />
+         {requireAuth(NavBarComponent)}
          <BaseRouter />
          </Root> 
          </div> 

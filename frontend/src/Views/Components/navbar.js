@@ -2,23 +2,23 @@ import React,{Component} from 'react';
 import logo from'../../images/wandalogo.svg'
 import './navbar.css'
 import {connect} from 'react-redux'
-import * as actions from '../../actions/signup'
+import {logout} from '../../actions/login' 
+import PropTypes from 'prop-types'
+import { withRouter } from "react-router-dom";
 
-//import {NavLink} from 'react-router-dom';
-// import {
-  
-//   Navbar,
- 
-//   Nav,
-  
-  
-// } from 'react-bootstrap';
 
 
 class NavBarComponent extends Component {
   
+
+   onlogout(){
+     this.props.logout()
+   }
+
+
   
   render(){
+    const {user}=this.props.auth
     return (
       <div style={{background:'#091c29'}}>
         <div className="flex items-center justify-between w-10/12 mx-auto py-1 text-white"> 
@@ -32,7 +32,8 @@ class NavBarComponent extends Component {
              <span  className="text-xl mr-4"><a href="/cars/">Cars</a></span>
              {/* { this.props.isAuthenticated? */}
             {/* //  <span  className="text-xl mr-4"><a href="/login/" onClick={this.props.logout}>Logout</a></span>: */}
-             <span  className="text-xl mr-4"><a href="/login/">Login</a></span> 
+             <span  className="text-xl mr-4"><a href="/" onClick={this.onLogout}>Logout</a></span>
+             <span  className="text-xl mr-4"><a href="/login/" onClick={this.onLogout}>{user.name}</a></span> 
              {/* } */}
            </div>
   
@@ -45,30 +46,17 @@ class NavBarComponent extends Component {
 }
 
 
+NavBarComponent.propTypes={
 
-// const mapDispatchToProps = dispatch => {
-// return {
-//     logout: () => dispatch(actions.logout()) 
-// }
-// }
+ logout:PropTypes.func.isRequired,
+ auth:PropTypes.object.isRequired
+}
 
-export default connect(null,null)(NavBarComponent);
 
-/*
- <Navbar bg="dark" variant="dark">
-    <Navbar.Brand ><img
-        src={logo}
-        width="50"
-        height="50"
-        className="d-inline-block align-top"
-        alt="wanda logo"
-      /></Navbar.Brand>
-    <Nav className="mr-auto">
-      <Nav.Link href="/home/">Home</Nav.Link>
-      <Nav.Link href="/cars/">Cars</Nav.Link> 
-      <Nav.Link href="/login/">Login</Nav.Link>
-     
-    </Nav>
-   
-  </Navbar>
-    </Fragment>*/
+const mapStateToProps=state=>({
+  auth:state.auth
+})
+
+
+export default connect(mapStateToProps,{logout})( withRouter(NavBarComponent));
+
