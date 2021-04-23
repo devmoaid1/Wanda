@@ -1,5 +1,5 @@
 import React,{Component} from 'react'; 
-import{Spinner} from 'react-bootstrap'; 
+
 import PropTypes from "prop-types";  
 import logphoto from '../../images/loginphoto.jpeg'; 
 import {connect} from 'react-redux';
