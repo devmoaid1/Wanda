@@ -14,7 +14,7 @@ const initialState={
 
 const LoginReducer=(state=initialState,action)=>{
 
-   switch(action.types){
+   switch(action.type){
        case actionTypes.SET_TOKEN:
            return{...state,isAuthenticated:true,token:action.payload};
    

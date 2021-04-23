@@ -1,24 +1,26 @@
 import React,{Component} from 'react'; 
 import logo from'../../images/wandalogo.svg'
 import './navbar.css'
-import {connect} from 'react-redux'
-import {logout} from '../../actions/login' 
-import PropTypes from 'prop-types'
-import { withRouter } from "react-router-dom";
 
 
 
 class NavBarComponent extends Component {
   
 
+  
+
    onLogout=()=>{
      this.props.logout()
    }
+    
 
+   componentDidMount(){
+     console.log(this.props.user.user)
+   }
 
   
   render(){
-    const {user}=this.props.auth
+    const user=this.props.user.user
     
     return (
       
@@ -34,8 +36,8 @@ class NavBarComponent extends Component {
              <span  className="text-xl mr-4"><a href="/cars/">Cars</a></span>
              {/* { this.props.isAuthenticated? */}
             {/* //  <span  className="text-xl mr-4"><a href="/login/" onClick={this.props.logout}>Logout</a></span>: */}
-             <span  className="text-xl mr-4"><a  onClick={this.onLogout}>Logout</a></span>
-             <span  className="text-xl mr-4"><a href="/login/" onClick={this.onLogout}>{user.name}</a></span> 
+             <span  className="text-xl mr-4 hover:purple-700"><a  onClick={this.onLogout}>Logout</a></span>
+             <span  className="text-xl mr-4"><a href="/login/">{user.username}</a></span> 
              {/* } */}
            </div>
   
@@ -48,18 +50,8 @@ class NavBarComponent extends Component {
 }
 
 
-NavBarComponent.propTypes={
- isAuthenticated:PropTypes.bool.isRequired,
- logout:PropTypes.func.isRequired,
- auth:PropTypes.object.isRequired
-}
 
 
-const mapStateToProps=state=>({
-  auth:state.auth,
-  isAuthenticated:state.auth.isAuthenticated
-})
 
-
-export default connect(mapStateToProps,{logout})( withRouter(NavBarComponent));
+export default NavBarComponent;
 

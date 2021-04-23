@@ -8,11 +8,11 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 import BaseRouter from './routes'
 //import {connect} from 'react-redux'
-import NavBarComponent from './Views/Components/navbar'
+
 //import * as actions from './actions/signup'
 import Root from './store';
 import { ToastContainer } from "react-toastify";
-import  requireAuth from './Authenticated'
+
 //import authReducer from './reducers/auth'
 
 class App extends Component {
@@ -25,9 +25,9 @@ class App extends Component {
   
       <div className="min-h-full">
         <div className="h-screen flex flex-col">
-        <ToastContainer hideProgressBar={false} newestOnTop={true}/>
+        <ToastContainer hideProgressBar={false}  newestOnTop={true}/>
          <Root>
-         <NavBarComponent/>
+        
         
          <BaseRouter />
         

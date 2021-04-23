@@ -5,27 +5,22 @@ import {connect} from 'react-redux'
 import getCars from '../../actions/cars'
 import propTypes from 'prop-types' 
 import {Link} from 'react-router-dom' 
-
-import bgphoto from'../../images/bgphoto.jpg'
+import NavBarComponent from '../Components/navbar'
+import bgphoto from'../../images/bgphoto.jpg' 
+import {logout} from '../../actions/login' 
+import { withRouter } from "react-router-dom";
 
 class CarsView extends Component{
  
-   /*constructor(props){
-
-     super(props); 
-     this.state={
-         cars:[]
-     }
-
-
-    }
-     */
+  componentDidUpdate(prevProps, prevState) {
+    console.log(this.props.auth.user)
+  }
     
     
     componentDidMount(){
       
      this.props.getCars(); 
-     console.log(this.props);
+     console.log(this.props.auth);
       
     }
     
@@ -55,7 +50,8 @@ class CarsView extends Component{
    } 
 
    static propTypes={
-     cars:propTypes.array.isRequired
+     cars:propTypes.array.isRequired,
+     logout:propTypes.func.isRequired
    }
  
     render(){
@@ -63,7 +59,9 @@ class CarsView extends Component{
     return( 
         
         
-        <div className="w-full h-full">
+        <div className="w-full h-full"> 
+        <NavBarComponent logout={this.props.logout} user={this.props.auth}/>
+        
           <div 
           className="relative flex items-center justify-center w-full h-full bg-cover bg-center bg-fixed bg-no-repeat "
           style={{
@@ -97,7 +95,8 @@ class CarsView extends Component{
 } 
 
 const mapStateToProps=state=>({
- cars:state.cars.cars
+ cars:state.cars.cars,
+ auth:state.auth
 })
 
-export default connect(mapStateToProps,{getCars})(CarsView);
+export default connect(mapStateToProps,{getCars,logout})(withRouter(CarsView));
