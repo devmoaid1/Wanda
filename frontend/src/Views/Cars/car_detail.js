@@ -6,6 +6,8 @@ import propTypes from 'prop-types'
 import {logout} from'../../actions/login' 
 import {connect} from 'react-redux'
 import {withRouter} from 'react-router-dom'
+import Footer from '../Components/footer'
+
 class CarDetail extends Component{
    
      state={
@@ -69,9 +71,7 @@ class CarDetail extends Component{
         <div className="ml-20 w-1/2 text-xl mr-10 ">
             {car.description}
         </div>
-        <div style={{background:'#091c29'}} className=" text-white mt-20 h-full w-full text-xl mx-auto bg-red-300 text-center py-10 ">
-             Copyrights reserved 2021
-        </div>
+        <Footer/>
        </div>
        </div>
        </Fragment> 

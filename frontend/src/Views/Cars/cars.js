@@ -8,7 +8,8 @@ import {Link} from 'react-router-dom'
 import NavBarComponent from '../Components/navbar'
 import bgphoto from'../../images/bgphoto.jpg' 
 import {logout} from '../../actions/login' 
-import { withRouter } from "react-router-dom";
+import { withRouter } from "react-router-dom"; 
+import Footer from '../Components/footer'
 
 class CarsView extends Component{
  
@@ -32,14 +33,14 @@ class CarsView extends Component{
       <div className="rounded-md bg-white ml-3 mr-3 overflow-hidden shadow-lg h-8/9 " key={item.id}>
         <img src={item.picture} className="w-full h-1/2"alt="pic"></img>
         <h1 className="text-2xl font-bold ml-4 my-3">{item.name}</h1>
-        <div className="font-sans my-6 ml-1 px-3 h-1/6">{item.description}</div>
+        <div className="font-sans my-6 ml-1 px-3 h-1/6 text-justify">{item.description}</div>
         <span className="block my-6 ml-4 font-bold">{item.price} Egp</span> 
         <div className="inline-block ">
-        <button class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 ml-3 mx-2 rounded">
-  Purchase
+        <button class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-8 ml-3 mx-2 rounded">
+  Book Now
 </button>
 <Link to={`/catalog/${item.id}`}> <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mx-2 rounded">
-  View details
+  View Catalog
 </button> </Link>
         </div>     
       </div>
@@ -63,7 +64,7 @@ class CarsView extends Component{
         <NavBarComponent logout={this.props.logout} user={this.props.auth}/>
         
           <div 
-          className="relative flex items-center justify-center w-full h-full bg-cover bg-center bg-fixed bg-no-repeat "
+          className="relative flex items-center justify-center w-full h-1/2 bg-cover bg-center bg-fixed bg-no-repeat "
           style={{
             backgroundImage:`url(${bgphoto})`
 
@@ -76,9 +77,16 @@ class CarsView extends Component{
            </div>
 
            <div><h1 className="text-3xl bold ml-20 mt-10">Latest Cars</h1></div>  
-          <div className=" w-full h-full mx-auto my-10  grid grid-cols-3 gap-3">
+          <div className=" w-full h-1/2 mx-auto my-10  grid grid-cols-3 gap-3">
          
           {this.renderCarList()}
+          </div>
+          <div className=" w-full h-1/2 mx-auto my-10  grid grid-cols-3 gap-3">
+         
+         {this.renderCarList()}
+         </div>
+          <div className="w-full ">
+          <Footer/>
           </div>
           
           
