@@ -19,35 +19,6 @@ class UserAccountManager(BaseUserManager):
         return user
 
 
-class Car(models.Model):
-
-    picture = models.URLField(max_length=200)
-    name = models.CharField(max_length=50)
-    Manfacture = models.CharField(max_length=100)
-    price = models.FloatField()
-    color = models.CharField(max_length=100)
-    year = models.IntegerField()
-    description = models.TextField()
-    quantity = models.PositiveIntegerField()
-
-    def __str__(self):
-        return self.name
-
-
-class Booking(models.Model):
-
-    date = models.DateTimeField(auto_now_add=True)
-    cars = models.OneToOneField(Car, on_delete=models.CASCADE)
-
-
-class Dealership(models.Model):
-
-    name = models.CharField(max_length=50)
-    address = models.CharField(max_length=100)
-    phone = models.CharField(max_length=50)
-    cars = models.ManyToManyField(Car)
-
-
 class Customer(AbstractBaseUser, PermissionsMixin):
 
     name = models.CharField(max_length=250)
@@ -56,7 +27,7 @@ class Customer(AbstractBaseUser, PermissionsMixin):
     phone = models.CharField(max_length=250)
     address = models.CharField(max_length=250)
     # pic = models.ImageField(null=True, blank=True)
-    bookings = models.ManyToManyField(Booking)
+    # bookings = models.ManyToManyField(Booking)
 
     def __str__(self):
         return self.name
@@ -65,3 +36,51 @@ class Customer(AbstractBaseUser, PermissionsMixin):
     is_staff = models.BooleanField(('staff status'), default=False)
     USERNAME_FIELD = 'username'
     REQUIRED_FIELDS = ['name', 'email', 'phone', 'address']
+
+
+class Car(models.Model):
+
+    picture = models.URLField(max_length=200)
+    picture2 = models.URLField(max_length=200)
+    name = models.CharField(max_length=50)
+    Manfacture = models.CharField(max_length=100)
+    price = models.FloatField()
+    color = models.CharField(max_length=100)
+    year = models.IntegerField()
+    description = models.TextField()
+    description2 = models.TextField()
+    co2 = models.CharField(max_length=250)
+    fuel = models.CharField(max_length=250)
+    quantity = models.PositiveIntegerField()
+
+    def __str__(self):
+        return self.name
+
+
+class Dealership(models.Model):
+
+    name = models.CharField(max_length=250)
+    pic = models.CharField(max_length=250)
+    address = models.CharField(max_length=250)
+    phone = models.CharField(max_length=50)
+    stock = models.PositiveIntegerField()
+    cars = models.ManyToManyField(Car)
+
+    def __str__(self):
+        return self.name
+
+
+class Booking(models.Model):
+    pending = 'pending'
+    active = 'active'
+
+    denied = 'denied'
+
+    status_choices = ((pending, "pending"),
+                      (active, "active"), (denied, "denied"))
+    date = models.DateTimeField(auto_now_add=True)
+    status = models.CharField(
+        max_length=10, choices=status_choices, default="pending")
+    car = models.OneToOneField(Car, on_delete=models.CASCADE)
+    dealership = models.OneToOneField(Dealership, on_delete=models.CASCADE)
+    created_by = models.ForeignKey(Customer, on_delete=models.CASCADE)
