@@ -15,7 +15,7 @@ class NavBarComponent extends Component {
     
 
    componentDidMount(){
-     console.log(this.props.user.user)
+     console.log(this.props.user.user.me)
    }
 
   

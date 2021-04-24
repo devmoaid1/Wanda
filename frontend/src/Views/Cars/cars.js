@@ -74,9 +74,10 @@ class CarsView extends Component{
           
           />
            </div>
-           
+
+           <div><h1 className="text-3xl bold ml-20 mt-10">Latest Cars</h1></div>  
           <div className=" w-full h-full mx-auto my-10  grid grid-cols-3 gap-3">
-            
+         
           {this.renderCarList()}
           </div>
           

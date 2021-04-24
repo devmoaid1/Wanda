@@ -1,7 +1,11 @@
-import React ,{ Component } from "react"
+import React ,{ Component, Fragment } from "react"
 import axios from 'axios'
 import video from '../../videos/Overview- The innovative features of the all-new BMW 7 Series.---youtube-downloader---www.download.tube.mp4'
-
+import NavBarComponent from "../Components/navbar" 
+import propTypes from 'prop-types'
+import {logout} from'../../actions/login' 
+import {connect} from 'react-redux'
+import {withRouter} from 'react-router-dom'
 class CarDetail extends Component{
    
      state={
@@ -19,12 +23,18 @@ class CarDetail extends Component{
       console.log(video)
         
 
-     }
+     } 
+
+     static propTypes={
+        
+        logout:propTypes.func.isRequired
+      }
     render() {
         const car=this.state.car
           return(
-
+           <Fragment>  
         <div className="w-full h-full" >
+           <NavBarComponent logout={this.props.logout} user={this.props.auth} />
         
             <video className="  w-full " autoPlay loop muted >
                 <source src={video} type="video/mp4"></source>
@@ -59,14 +69,19 @@ class CarDetail extends Component{
         <div className="ml-20 w-1/2 text-xl mr-10 ">
             {car.description}
         </div>
-        <div style={{background:'#091c29'}} className=" text-white mt-20 h-1/4 w-full text-xl mx-auto bg-red-300 text-center py-10 ">
+        <div style={{background:'#091c29'}} className=" text-white mt-20 h-full w-full text-xl mx-auto bg-red-300 text-center py-10 ">
              Copyrights reserved 2021
         </div>
        </div>
        </div>
+       </Fragment> 
         ) 
     }
 }
 
 
-export default CarDetail
+const mapStateToProps=state=>({
+  auth:state.auth  
+})
+
+export default connect(mapStateToProps,{logout})(withRouter(CarDetail))
