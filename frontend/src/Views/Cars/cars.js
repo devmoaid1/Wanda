@@ -11,6 +11,7 @@ import {logout} from '../../actions/login'
 import { withRouter } from "react-router-dom"; 
 import Footer from '../Components/footer'
 
+
 class CarsView extends Component{
  
   componentDidUpdate(prevProps, prevState) {
@@ -34,11 +35,11 @@ class CarsView extends Component{
         <img src={item.picture} className="w-full h-1/2"alt="pic"></img>
         <h1 className="text-2xl font-bold ml-4 my-3">{item.name}</h1>
         <div className="font-sans my-6 ml-1 px-3 h-1/6 text-justify">{item.description}</div>
-        <span className="block my-6 ml-4 font-bold">{item.price} Egp</span> 
+        <span className="block my-14 ml-4 font-bold">{item.price} Egp</span> 
         <div className="inline-block ">
-        <button class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-8 ml-3 mx-2 rounded">
+        <Link to={`/select/${item.id}`}> <button class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-8 ml-3 mx-2 rounded">
   Book Now
-</button>
+</button></Link>
 <Link to={`/catalog/${item.id}`}> <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mx-2 rounded">
   View Catalog
 </button> </Link>
