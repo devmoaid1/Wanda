@@ -93,7 +93,7 @@ class LoginForm extends Component{
             
                  <div className="w-full h-full  ">  
                 
-                 <div className="mb-15 mt-4 rounded-md overflow-hidden shadow-lg w-2/3   mx-auto flex flex row">
+                 <div className=" mt-20 rounded-md overflow-hidden shadow-lg w-2/3   mx-auto my-100 flex flex row">
  
                  <div className="h-full"><img src={logphoto} alt="logphoto"></img></div> 
                  <div className=" mt-5 mb-3  pl-3">

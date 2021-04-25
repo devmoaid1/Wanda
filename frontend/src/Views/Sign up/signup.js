@@ -91,7 +91,7 @@ class SignUpForm extends Component{
             
             <div className="w-full h-full ">  
                 
-                <div className="mb-10 mt-4 rounded-md overflow-hidden shadow-lg w-2/3 h-8/9 mx-auto flex flex row">
+                <div className=" mt-20 rounded-md overflow-hidden shadow-lg w-2/3 h-8/9 mx-auto flex flex row">
 
                 <img src={logphoto} alt="logphoto"></img> 
                 <div className=" mb-3  py-3">
