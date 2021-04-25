@@ -65,10 +65,12 @@ componentDidUpdate(){
              <NavBarComponent user={this.props.auth} logout={this.props.logout}/>
          </header>
         
-         <div className="w-full h-screen flex flex-row"> 
+         <div className="w-full h-full flex flex-row"> 
+         <div className=" flex flex-col w-1/2 my-10 shadow-md overflow-hidden">
+         <img  className="w-full h-1/2" src={car.picture} alt="carphoto"></img> 
+         <h1 className="text-3xl text-bold">{car.name}</h1>
+         </div>
          
-         <img  className="w-1/2" src={car.picture} alt="carphoto"></img> 
-         <h1>{car.name}</h1>
          <div className="flex flex-col  w-full h-full ml-30 shadow-md bg-red-300 "> 
          <div className="mx-auto"> <h1 className="text-3xl text-bold "> Select Dealer</h1></div>   
          {this.renderCarList()}
