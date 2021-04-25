@@ -4,6 +4,7 @@ import carsReducer from './cars'
 import signUpReducer from'./signup'
 import LoginReducer from './login'
 import dealershipsReducer from './dealerships'
+import bookingReducer from './booking'
  
 const createRootReducer=history=>
 
@@ -12,7 +13,8 @@ const createRootReducer=history=>
         cars:carsReducer,
         createUser:signUpReducer,
         auth:LoginReducer,
-        dealerships:dealershipsReducer
+        dealerships:dealershipsReducer,
+        booking:bookingReducer
         
     })
 
