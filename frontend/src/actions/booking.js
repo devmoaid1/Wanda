@@ -1,7 +1,7 @@
 import axios from "axios";
 import { toastOnError } from "../utilities";
-import  { GET_DEALERSHIP,GET_CAR } from "./types"; 
-
+import  { GET_DEALERSHIP,GET_CAR,MAKE_BOOKING } from "./types"; 
+import { toast } from "react-toastify"; 
 
 export const getDealership=(dealerId,carId)=>dispatch=>{
 
@@ -31,4 +31,15 @@ export const getCar=(id)=>dispatch=>{
         toastOnError(err);
     })
     
-} 
+}  
+
+export const makeBooking=(booking,user)=>dispatch=>{
+    axios.post('/api/bookings/',booking).then(res=>{
+        toast.success(
+            'Booking for '+ user.username+' created succefully'
+        ); 
+        dispatch({type:MAKE_BOOKING})
+    }).catch(err=>{
+        toastOnError(err);
+    })
+}

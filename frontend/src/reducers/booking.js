@@ -1,4 +1,4 @@
-import  { GET_DEALERSHIP,GET_CAR } from "../actions/types"; 
+import  { GET_DEALERSHIP,GET_CAR,MAKE_BOOKING } from "../actions/types"; 
 
 
 const initialState={
@@ -16,7 +16,9 @@ const bookingReducer=(state=initialState,action)=>{
         case GET_CAR: 
            
         return{...state,car:action.payload};
- 
+        
+        case MAKE_BOOKING:
+         return {...state}
        
  
          default:

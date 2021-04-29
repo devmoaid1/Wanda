@@ -78,9 +78,9 @@ class Booking(models.Model):
 
     status_choices = ((pending, "pending"),
                       (active, "active"), (denied, "denied"))
-    date = models.DateTimeField(auto_now_add=True)
+    date = models.DateTimeField()
     status = models.CharField(
         max_length=10, choices=status_choices, default="pending")
     car = models.OneToOneField(Car, on_delete=models.CASCADE)
     dealership = models.OneToOneField(Dealership, on_delete=models.CASCADE)
-    created_by = models.ForeignKey(Customer, on_delete=models.CASCADE)
+    created_by = models.CharField(max_length=30)
