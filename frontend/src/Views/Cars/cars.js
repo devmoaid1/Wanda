@@ -31,11 +31,12 @@ class CarsView extends Component{
     //let path=`/catalog/${item.id}`
     return newitems.map((item)=>( 
       
-      <div className="rounded-md bg-white ml-3 mr-3 overflow-hidden shadow-lg h-8/9 " key={item.id}>
-        <img src={item.picture} className="w-full h-1/2"alt="pic"></img>
+      <div className=" flex flex-col rounded-md bg-white ml-3 mr-3 overflow-hidden shadow-lg h-3/4 " key={item.id}>
+        <img src={item.picture} className="w-full h-1/3"alt="pic"></img>
         <h1 className="text-2xl font-bold ml-4 my-3">{item.name}</h1>
         <div className="font-sans my-6 ml-1 px-3 h-1/6 text-justify">{item.description}</div>
         <span className="block mt-20 mb-6 ml-4 font-bold">{item.price} Egp</span> 
+
         <div className="inline-block ">
         <Link to={`/select/${item.id}`}> <button class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-8 ml-3 mx-2 rounded">
   Book Now
@@ -65,7 +66,7 @@ class CarsView extends Component{
         <NavBarComponent logout={this.props.logout} user={this.props.auth}/>
         
           <div 
-          className="relative flex items-center justify-center w-full h-1/3 bg-cover bg-center bg-fixed bg-no-repeat "
+          className="relative flex items-center justify-center w-full h-68 bg-cover bg-center bg-fixed bg-no-repeat "
           style={{
             backgroundImage:`url(${bgphoto})`
 
