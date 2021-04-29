@@ -6,14 +6,17 @@ import {withRouter} from 'react-router-dom'
 import {Link} from 'react-router-dom' 
 import {logout} from '../../actions/login' 
 import NavBarComponent from '../Components/navbar' 
-import Footer from '../Components/footer'
+import Footer from '../Components/footer' 
+import clockPhoto from '../../images/booking.jpeg'
 
 
 class BookingView extends Component{
     
 
-    componentDidMount(){
-        this.props.getDealership(1,1)
+    componentDidMount(){ 
+        const car=this.props.match.params.carID
+        const dealer=this.props.match.params.dealerID
+        this.props.getDealership(car,dealer)
     } 
 
     componentDidUpdate(){
@@ -26,17 +29,30 @@ class BookingView extends Component{
     } 
   render(){
       return( 
-          <Fragment>        <header>
+          <div className="bg-gray-100">        <header>
         <NavBarComponent user={this.props.auth} logout={this.props.logout}/>
     </header>
-          <div>
-              this booking view
+          <div className="w-full h-screen bg-gray-100 ">
+              <div className=" flex flex-row w-3/4 h-3/4 bg-red-300 mx-auto my-20 rounded overflow-hidden shadow-lg">
+                
+           <img className="w-1/2 h-full " src={clockPhoto} alt="clock"></img> 
+           <div className=" flex flex-col w-1/2 h-full bg-green-400 py-4 px-2">
+            
+            <div className="mx-auto flex flex-row"> <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+            </svg>  <h1 className=" ml-2 inline-block font-bold text-3xl">Booking details</h1></div>
+             <div className="mx-auto mt-6"><h1 className="text-xl">Specify booking date and time</h1></div>
+           </div> 
+             
+
+                  
+              </div>
           </div> 
 
           <footer >
          <Footer/>
          </footer>
-          </Fragment>
+          </div>
 
       )
   }

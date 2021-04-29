@@ -16,7 +16,7 @@ const BaseRouter = () => (
       <Route  path="/home/" component={CarsView} />
       <Route  path="/signup/" component={SignUpForm} />
       <Route  path="/select/:carID" component={SelectDealership} />
-      <Route  path="/book/" component={BookingView} />
+      <Route  path="/book/:carID/:dealerID" component={BookingView} />
       
     </div>
   );

@@ -22,7 +22,7 @@ export const getDealerships=(id)=>dispatch=>{
 
 export const getCar=(id)=>dispatch=>{
     
-    axios.get(`http://127.0.0.1:8000/api/cars/${id}`).then(res=>{
+    axios.get(`/api/cars/${id}`).then(res=>{
       dispatch(
           {
               type:GET_CAR,
