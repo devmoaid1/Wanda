@@ -2,6 +2,7 @@ import axios from "axios";
 import { toastOnError } from "../utilities";
 import  { GET_DEALERSHIP,GET_CAR,MAKE_BOOKING } from "./types"; 
 import { toast } from "react-toastify"; 
+import { push } from "connected-react-router";
 
 export const getDealership=(dealerId,carId)=>dispatch=>{
 
@@ -39,6 +40,7 @@ export const makeBooking=(booking,user)=>dispatch=>{
             'Booking for '+ user.username+' created succefully'
         ); 
         dispatch({type:MAKE_BOOKING})
+        dispatch(push("/home"));
     }).catch(err=>{
         toastOnError(err);
     })

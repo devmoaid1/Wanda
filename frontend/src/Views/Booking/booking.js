@@ -61,7 +61,7 @@ class BookingView extends Component{
     const booking=this.state 
 
     this.props.makeBooking(booking,user) 
-    this.props.history.push("/home")
+    
 
     }
     static propTypes={
