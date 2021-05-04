@@ -26,7 +26,7 @@ class Customer(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(max_length=250,)
     phone = models.CharField(max_length=250)
     address = models.CharField(max_length=250)
-    # pic = models.ImageField(null=True, blank=True)
+    pic = models.ImageField(null=True)
     # bookings = models.ManyToManyField(Booking)
 
     def __str__(self):
@@ -35,7 +35,7 @@ class Customer(AbstractBaseUser, PermissionsMixin):
     objects = UserAccountManager()
     is_staff = models.BooleanField(('staff status'), default=False)
     USERNAME_FIELD = 'username'
-    REQUIRED_FIELDS = ['name', 'email', 'phone', 'address']
+    REQUIRED_FIELDS = ['name', 'email', 'phone', 'address', 'pic']
 
 
 class Car(models.Model):
