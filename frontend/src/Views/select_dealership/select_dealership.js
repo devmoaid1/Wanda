@@ -1,4 +1,4 @@
-import React ,{Component, Fragment} from 'react'
+import React ,{Component, Fragment,useState} from 'react'
 import {getDealerships} from '../../actions/dealerships'
 import propTypes from 'prop-types'
 import {connect} from 'react-redux'
@@ -7,7 +7,9 @@ import {Link} from 'react-router-dom'
 import {logout} from '../../actions/login' 
 import NavBarComponent from '../Components/navbar' 
 import Footer from '../Components/footer'
+import Modal from 'react-modal'
 
+Modal.setAppElement("#root")
 class SelectDealership extends Component{
 
  static propTypes={
@@ -16,9 +18,37 @@ class SelectDealership extends Component{
      dealerships:propTypes.object.isRequired
  } 
 
- 
+ state={
+   isOpen:false
+ }
 
+ ModalHandler=(dealer)=>{ 
+   console.log(dealer.name)
+   if(dealer.id===1){
+    return(
+      <div>    <Modal  isOpen={this.state.isOpen} onRequestClose={this.onClose}>
+           <h1>Are You sure you want to select {dealer.name} ?</h1>
+           <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-2 mx-2 rounded">
+             Confirm
+         </button>  
+         <button onClick={this.onClose}>close</button>
+         </Modal> 
+         </div>
+  
+    )
+  }
+  
+  
+   
 
+  
+}
+onSelect=()=>{
+  this.setState({isOpen:true})
+}
+onClose=()=>{
+  this.setState({isOpen:false})
+}
  componentDidMount(){ 
     // const car= this.props.dealerships.car
     const carId=this.props.match.params.carID
@@ -33,8 +63,8 @@ componentDidUpdate(){
 
  renderCarList(){
     const {dealerships}=this.props.dealerships; 
-    const carId=this.props.match.params.carID
-    //let path=`/catalog/${item.id}`
+    
+   
     return dealerships.map((item)=>( 
       
       <div className=" card hover:shadow-lg flex flex-row rounded-md   bg-white overflow-hidden shadow-md mt-7 w-3/4 h-60 mx-auto " key={item.id}>
@@ -68,13 +98,14 @@ componentDidUpdate(){
 
 
         <div className="   flex flex-row mt-4 justfiy-center  ">
-       <Link to={`/book/${carId}/${item.id}`}> <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-2 mx-2 rounded">
-        Select
-       </button> </Link>
+        <button onClick={this.onSelect}  class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-2 mx-2 rounded">
+        Select {item.name}
+       </button>
      </div>  
         
 
         </div>  
+        {this.ModalHandler(item)}
         </div>
       
 
@@ -138,6 +169,7 @@ componentDidUpdate(){
 
 } 
 
+ 
 
 const mapStateToProps=state=>({
    dealerships:state.dealerships,

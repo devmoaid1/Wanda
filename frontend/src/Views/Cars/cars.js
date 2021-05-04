@@ -38,10 +38,10 @@ class CarsView extends Component{
         <span className="block mt-20 mb-6 ml-4 font-bold">{item.price} Egp</span> 
 
         <div className="inline-block ">
-        <Link to={`/select/${item.id}`}> <button class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-8 ml-3 mx-2 rounded">
+        <Link to={`/select/${item.id}`}> <button class="bg-red-500 hover:bg-red-600 text-white font-semibold py-2 px-8 ml-3 mx-2 rounded">
   Book Now
 </button></Link>
-<Link to={`/catalog/${item.id}`}> <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mx-2 rounded">
+<Link to={`/catalog/${item.id}`}> <button class="bg-blue-500 hover:bg-blue-700 text-white font-semibold py-2 px-4 mx-2 rounded">
   View Catalog
 </button> </Link>
         </div>     
@@ -66,7 +66,7 @@ class CarsView extends Component{
         <NavBarComponent logout={this.props.logout} user={this.props.auth}/>
         
           <div 
-          className="relative flex items-center justify-center w-full h-68 bg-cover bg-center bg-fixed bg-no-repeat "
+          className="relative flex items-center justify-center w-full h-1/3 object-contain bg-cover bg-center bg-fixed bg-no-repeat "
           style={{
             backgroundImage:`url(${bgphoto})`
 
