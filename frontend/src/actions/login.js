@@ -27,7 +27,8 @@ export const getCurrentUser=redirectTo=>dispatch=>{
          email:res.data.email,
          name:res.data.name,
          phone:res.data.phone,
-         address:res.data.address
+         address:res.data.address,
+         pic:res.data.pic
      }; 
 
      dispatch(setCurrentUser(user,redirectTo));
