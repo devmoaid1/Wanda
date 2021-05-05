@@ -39,9 +39,14 @@ class NavBarComponent extends Component {
            </div> 
              <div className=" inline-block w-2/3 bg-red-300"></div>
            <div className="inline-block ">
-           <a href="/editprofile/" class="block relative">
-             <img alt="profile" src={user.pic} class="mx-auto object-cover rounded-full h-12 w-12 "/>
-           </a>
+         
+           
+              <a href="/editprofile/" class="block relative">
+              <img alt="profile" src={user.pic} class="mx-auto object-cover rounded-full h-12 w-12 "/>
+            </a>
+           
+           
+             
            </div>
   
         </div>
