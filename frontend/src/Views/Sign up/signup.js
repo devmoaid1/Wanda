@@ -49,7 +49,7 @@ class SignUpForm extends Component{
   handleChange=(event)=>{
     if(event.target.name==="pic"){
       this.setState({
-        pic: event.target.files
+        pic: event.target.files[0]
           //  event.target.checked
           // : event.target.value
       });
@@ -69,16 +69,25 @@ class SignUpForm extends Component{
   
   handelSubmit=e=>{
     e.preventDefault();
-    let userdate={
-      username:this.state.username,
-      password:this.state.password,
-      name:this.state.name,
-      email:this.state.email,
-      phone:this.state.phone,
-      address:this.state.address,
-      pic:this.state.pic[0]
-    }
-    this.props.signUpNewUser(userdate);
+    let formdata= new FormData()
+    formdata.append('username',this.state.username)
+    formdata.append('password',this.state.password)
+    formdata.append('name',this.state.name)
+    formdata.append('email',this.state.email)
+    formdata.append('phone',this.state.phone)
+    formdata.append('address',this.state.address)
+    formdata.append('pic',this.state.pic)
+
+    // let userdate={
+    //   username:this.state.username,
+    //   password:this.state.password,
+    //   name:this.state.name,
+    //   email:this.state.email,
+    //   phone:this.state.phone,
+    //   address:this.state.address,
+    //   pic:this.state.pic[0]
+    // }
+    this.props.signUpNewUser(formdata);
    
 
    
@@ -173,9 +182,8 @@ class SignUpForm extends Component{
       <label class="block text-gray-700 text-sm font-bold mb-2" for="address">
       Picture
       </label>
-      <input onChange={this.handleChange}  accept="image/*" class="   rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:shadow-outline" id="address" type="file" placeholder="Address" name="pic"/>
-     
-    </div>
+      <input onChange={this.handleChange}  accept="image/*" class="   rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:shadow-outline" id="address" type="file"  name="pic"/>
+      </div>
 
     <button type="submit"class="bg-red-500 hover:bg-red-600 text-white  py-2 px-4 ml-4 mx-2 rounded">
   Sign Up

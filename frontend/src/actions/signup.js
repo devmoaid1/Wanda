@@ -6,10 +6,10 @@ import { toast } from "react-toastify";
 const signUpNewUser=userData=>dispatch=>{
   dispatch({type:actionTypes.CREATE_USER_SUBMITTED}); 
 
-  axios.post('http://127.0.0.1:8000/api/users/' ,userData).then(res=>{
-      console.log(userData)
+  axios.post('http://127.0.0.1:8000/api/users/' ,userData,{headers:{'content-Type':'multipart/form-data'}}).then(res=>{
+      console.log(userData) 
       toast.success(
-          'Account for '+userData.username+' created succefully'
+          'Account for '+userData.get("username")+' created succefully'
       ); 
       dispatch({type:actionTypes.CREATE_USER_SUCCESS});
 
