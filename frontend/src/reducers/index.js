@@ -5,7 +5,7 @@ import signUpReducer from'./signup'
 import LoginReducer from './login'
 import dealershipsReducer from './dealerships'
 import bookingReducer from './booking'
- 
+import EditProfileReducer from './edit_profile'
 const createRootReducer=history=>
 
     combineReducers({
@@ -14,7 +14,9 @@ const createRootReducer=history=>
         createUser:signUpReducer,
         auth:LoginReducer,
         dealerships:dealershipsReducer,
-        booking:bookingReducer
+        booking:bookingReducer,
+        editProfile:EditProfileReducer
+
         
     })
 

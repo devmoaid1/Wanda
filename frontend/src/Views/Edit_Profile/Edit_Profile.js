@@ -14,8 +14,30 @@ class EditProfile extends Component {
         
     } 
 
+    state={
+        email:"",
+        phone:"",
+        address:"",
+        pic:null
+    }
+
     handleChange=(e)=>{
-         console.log(e.target.value)
+        if(e.target.name==="pic"){
+            this.setState({
+              pic: e.target.files[0]
+                //  event.target.checked
+                // : event.target.value
+            });
+          }else{
+            this.setState({
+              [e.target.name]: e.target.value
+                //  event.target.checked
+                // : event.target.value
+            });
+          }
+          
+          
+          console.log( this.state,e.target.value,e.target.name)
     }
 
     render() {
