@@ -42,26 +42,7 @@ class LoginForm extends Component{
   }
 
 
-  // validate = () => {
-  //   let nameError = "";
-  //   let passwordError = "";
-  //   // let passwordError = "";
-
-  //   if (!this.state.username) {
-  //     nameError = "username cannot be blank";
-  //   }
-
-  //   if (!this.state.password) {
-  //     passwordError = "password cannot be blank";
-  //   }
-
-  //   if (passwordError || nameError) {
-  //     this.setState({usernameError:nameError,passwordError:passwordError  });
-  //     return false;
-  //   }
-
-  //   return true;
-  // };
+  
   
   
 

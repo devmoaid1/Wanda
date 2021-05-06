@@ -13,6 +13,11 @@ class EditProfile extends Component {
         logout:propTypes.func.isRequired,
         
     } 
+
+    handleChange=(e)=>{
+         console.log(e.target.value)
+    }
+
     render() {
         const user=this.props.auth.user
         return (
@@ -23,6 +28,9 @@ class EditProfile extends Component {
 
 
                 <div className="w-full h-screen flex flex-row items-start px-10 py-10 justify-left">
+                  
+
+                  {/* profile card */}
 
                 <div className=" divide-y divide-gray-300 flex flex-col justify-start py-7 px-7 w-1/3 h-68  rounded shadow-lg">
                 <div className="pb-3">
@@ -57,10 +65,45 @@ class EditProfile extends Component {
                    <span className="text-2xl ml-1">{user.email}</span>
 
                 </div>
+                </div>                
                 </div>
-                
+
+                {/* edit profile form */}
+                <div className=" flex flex-col w-1/3 h-3/4 mx-7 py-3 px-5 rounded shadow-lg">
+
+                    <h1 className="text-3xl font-semibold"> Edit Profile</h1>
+                    <div className="h-5"></div>
+                     <form className="flex flex-col">
+                     <label className="block text-gray-700 text-sm font-semibold mb-2" htmlFor="email">
+         Email
+       </label>
+       <input  onChange={this.handleChange} className="border border-transparent focus:outline-none focus:ring-2 focus:ring-pink-400 focus:border-transparent rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:shadow-outline" name="email" type="email" placeholder={user.email}/>
+                        
+       <label className="block text-gray-700 text-sm font-semibold mb-2" htmlFor="phone">
+         Phone Number
+       </label>
+       <input  onChange={this.handleChange} className="border border-transparent focus:outline-none focus:ring-2 focus:ring-pink-400 focus:border-transparent rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:shadow-outline" name="phone" type="text" placeholder={user.phone}/>
+
+       <label className="block text-gray-700 text-sm font-semibold mb-2" htmlFor="phone">
+         Address
+       </label>
+       <input  onChange={this.handleChange} className="border border-transparent focus:outline-none focus:ring-2 focus:ring-pink-400 focus:border-transparent rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:shadow-outline" name="address" type="text" placeholder={user.address}/>
+
+       <label className="block text-gray-700 text-sm font-semibold mb-2" htmlFor="phone">
+        Profile Picture
+       </label>
+       <input  onChange={this.handleChange} className=" rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:shadow-outline" name="pic" type="file" placeholder={user.pic}/>
+
+       <button type="submit"className="bg-red-500 hover:bg-red-400 text-white text-xl  py-2 px-4 ml-4 mx-2 rounded">
+   Edit
+ </button>
+                     </form>
                 </div>
-                <div className="w-1/2 h-1/4 mx-4 bg-red-300"></div> 
+
+
+
+
+
                 </div>
                 
 
