@@ -20,6 +20,12 @@ const LoginReducer=(state=initialState,action)=>{
    
        case actionTypes.SET_CURRENT_USER:
            return{...state,user:action.payload};
+        
+        case actionTypes.EDIT_PROFILE:
+            return{...state,user:action.payload};
+            
+        case actionTypes.GET_CUSTOMER:
+            return{...state,user:action.payload};
 
        case actionTypes.UNSET_CURRENT_USER:
            return initialState; 

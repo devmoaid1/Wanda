@@ -91,4 +91,44 @@ export const logout=()=>dispatch=>{
       dispatch(unsetCurrentUser());
       toastOnError(error);
     });
+} 
+
+
+export const updateProfile=(data)=>dispatch=>{
+
+  axios.patch('http://127.0.0.1:8000/api/users/me/',data,{headers:{'content-Type':'multipart/form-data'}}).then(res=>{
+    
+    dispatch({
+        type:actionTypes.EDIT_PROFILE,
+        payload:res.data
+    })
+    toast.success("Profile edited successfully")
+    dispatch(push("/home/"))
+    // dispatch(getCustomer())
+  }).catch(err=>{
+      toastOnError(err)
+  })
+
+} 
+
+
+export const getCustomer=()=>dispatch=>{
+
+    axios.get("/api/users/me/").then(res=>{
+        const user={
+            username:res.data.username,
+            email:res.data.email,
+            name:res.data.name,
+            phone:res.data.phone,
+            address:res.data.address,
+            pic:res.data.pic
+        }; 
+        dispatch({
+            type:actionTypes.GET_CUSTOMER,
+            payload:user
+        }) 
+    }).catch(err=>{
+        toastOnError(err)
+    })
+
 }

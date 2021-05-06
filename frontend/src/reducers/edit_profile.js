@@ -1,36 +1,36 @@
-import * as actionTypes from '../actions/types'
+// import * as actionTypes from '../actions/types'
 
 
-const initialState={
+// const initialState={
    
-    user:{},
+//     user:{},
     
-}
+// }
 
 
 
 
 
 
-const EditProfileReducer=(state=initialState,action)=>{
+// const EditProfileReducer=(state=initialState,action)=>{
 
-   switch(action.type){
+//    switch(action.type){
       
    
-       case actionTypes.GET_CUSTOMER:
-           return{...state,user:action.payload};
+//        case actionTypes.GET_CUSTOMER:
+           
+//            return {...state}; 
+//            case actionTypes.EDIT_PROFILE:
+//            return{...state,user:action.payload};
 
-       case actionTypes.EDIT_PROFILE:
-           return {...state}; 
-
-        default:
-            return state;
+//         default:
+//             return state;
    
    
    
    
-        }
+//         }
 
-} 
+// } 
 
-export default EditProfileReducer
+// export default EditProfileReducer

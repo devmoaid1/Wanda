@@ -5,12 +5,14 @@ import propTypes from 'prop-types'
 import {connect} from 'react-redux'
 import {withRouter} from 'react-router-dom' 
 // import {Link} from 'react-router-dom' 
-import {logout} from '../../actions/login' 
+import {logout} from '../../actions/login'
+import {updateProfile} from '../../actions/login' 
 class EditProfile extends Component {
    
     static propTypes={
         
         logout:propTypes.func.isRequired,
+        updateProfile:propTypes.func.isRequired
         
     } 
 
@@ -39,6 +41,20 @@ class EditProfile extends Component {
           
           console.log( this.state,e.target.value,e.target.name)
     }
+    
+
+    handleSubmit=(e)=>{
+        e.preventDefault()
+        let formdata= new FormData() 
+       
+       formdata.append('email',this.state.email)
+       formdata.append('phone',this.state.phone)
+       formdata.append('address',this.state.address)
+       formdata.append('pic',this.state.pic)
+
+       this.props.updateProfile(formdata)
+
+    }
 
     render() {
         const user=this.props.auth.user
@@ -55,8 +71,8 @@ class EditProfile extends Component {
                   {/* profile card */}
 
                 <div className=" divide-y divide-gray-300 flex flex-col justify-start py-7 px-7 w-1/3 h-68  rounded shadow-lg">
-                <div className="pb-3">
-                <img alt="profile" src={user.pic} class="mx-auto object-cover rounded-full h-26 w-26 "/>
+                <div className=" mx-auto pb-3 w-2/3 h-2/3">
+                <img alt="profile" src={user.pic} class="mx-auto object-cover rounded-full "/>
                 </div>
                 <div>
                 <h1 className="text-3xl font-semibold mt-4">Profile Details</h1>
@@ -95,7 +111,7 @@ class EditProfile extends Component {
 
                     <h1 className="text-3xl font-semibold"> Edit Profile</h1>
                     <div className="h-5"></div>
-                     <form className="flex flex-col">
+                     <form onSubmit={this.handleSubmit} className="flex flex-col">
                      <label className="block text-gray-700 text-sm font-semibold mb-2" htmlFor="email">
          Email
        </label>
@@ -139,7 +155,8 @@ class EditProfile extends Component {
 
 const mapStateToProps=state=>({
     
-    auth:state.auth
+    auth:state.auth,
+    editProfile:state.editProfile
  }) 
 
- export default connect(mapStateToProps,{logout})(withRouter(EditProfile))
+ export default connect(mapStateToProps,{logout,updateProfile})(withRouter(EditProfile))
