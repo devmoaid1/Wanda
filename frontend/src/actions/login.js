@@ -103,7 +103,8 @@ export const updateProfile=(data)=>dispatch=>{
         payload:res.data
     })
     toast.success("Profile edited successfully")
-    dispatch(push("/home/"))
+    // dispatch(getCustomer())
+    dispatch(push("/editprofile/"))
     // dispatch(getCustomer())
   }).catch(err=>{
       toastOnError(err)

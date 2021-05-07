@@ -27,14 +27,12 @@ class EditProfile extends Component {
         if(e.target.name==="pic"){
             this.setState({
               pic: e.target.files[0]
-                //  event.target.checked
-                // : event.target.value
+                
             });
           }else{
             this.setState({
               [e.target.name]: e.target.value
-                //  event.target.checked
-                // : event.target.value
+                
             });
           }
           
@@ -46,7 +44,7 @@ class EditProfile extends Component {
     handleSubmit=(e)=>{
         e.preventDefault()
         let formdata= new FormData() 
-       
+        
        formdata.append('email',this.state.email)
        formdata.append('phone',this.state.phone)
        formdata.append('address',this.state.address)

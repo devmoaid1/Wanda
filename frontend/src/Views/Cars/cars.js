@@ -16,6 +16,7 @@ class CarsView extends Component{
  
   componentDidUpdate(prevProps, prevState) {
     console.log(this.props.auth.user)
+    console.log(this.props.auth.token)
   }
     
     
