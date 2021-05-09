@@ -50,7 +50,8 @@ class EditProfile extends Component {
        formdata.append('address',this.state.address)
        formdata.append('pic',this.state.pic)
 
-       this.props.updateProfile(formdata)
+       this.props.updateProfile(formdata) 
+       
 
     }
 
@@ -63,14 +64,14 @@ class EditProfile extends Component {
                 </header>
 
 
-                <div className="w-full h-screen flex flex-row items-start px-10 py-10 justify-left">
+                <div className="w-full h-screen flex flex-row items-start space-x-10 px-10 py-10 justify-left">
                   
 
                   {/* profile card */}
 
-                <div className=" divide-y divide-gray-300 flex flex-col justify-start py-7 px-7 w-1/3 h-68  rounded shadow-lg">
-                <div className=" mx-auto pb-3 w-2/3 h-2/3">
-                <img alt="profile" src={user.pic} class="mx-auto object-cover rounded-full "/>
+                <div className=" divide-y divide-gray-300 flex flex-col justify-start py-7 px-7 w-1/3 h-68  rounded shadow-md hover:shadow-lg">
+                <div className=" mx-auto pb-3 ">
+                <img alt="profile" src={user.pic} class="mx-auto object-cover rounded-full w-2/3 h-2/3"/>
                 </div>
                 <div>
                 <h1 className="text-3xl font-semibold mt-4">Profile Details</h1>
@@ -105,7 +106,7 @@ class EditProfile extends Component {
                 </div>
 
                 {/* edit profile form */}
-                <div className=" flex flex-col w-1/3 h-3/4 mx-7 py-3 px-5 rounded shadow-lg">
+                <div className=" flex flex-col w-1/3 h-3/4 mx-7 py-3 px-5 rounded shadow-md hover:shadow-lg">
 
                     <h1 className="text-3xl font-semibold"> Edit Profile</h1>
                     <div className="h-5"></div>

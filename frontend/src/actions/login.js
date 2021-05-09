@@ -102,10 +102,10 @@ export const updateProfile=(data)=>dispatch=>{
         type:actionTypes.EDIT_PROFILE,
         payload:res.data
     })
-    toast.success("Profile edited successfully")
-    // dispatch(getCustomer())
+    toast.success("Profile edited successfully and re-login is Requires")
+    
     dispatch(push("/editprofile/"))
-    // dispatch(getCustomer())
+    // dispatch(logout())
   }).catch(err=>{
       toastOnError(err)
   })
