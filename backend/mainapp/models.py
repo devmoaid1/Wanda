@@ -44,7 +44,7 @@ class Car(models.Model):
     picture2 = models.URLField(max_length=200)
     name = models.CharField(max_length=50)
     Manfacture = models.CharField(max_length=100)
-    price = models.FloatField()
+    price = models.IntegerField()
     color = models.CharField(max_length=100)
     year = models.IntegerField()
     description = models.TextField()
@@ -64,6 +64,7 @@ class Dealership(models.Model):
     address = models.CharField(max_length=250)
     phone = models.CharField(max_length=50)
     stock = models.PositiveIntegerField()
+    sales = models.IntegerField()
     cars = models.ManyToManyField(Car)
 
     def __str__(self):
@@ -73,7 +74,6 @@ class Dealership(models.Model):
 class Booking(models.Model):
     pending = 'pending'
     active = 'active'
-
     denied = 'denied'
 
     status_choices = ((pending, "pending"),
@@ -83,4 +83,4 @@ class Booking(models.Model):
         max_length=10, choices=status_choices, default="pending")
     car = models.OneToOneField(Car, on_delete=models.CASCADE)
     dealership = models.OneToOneField(Dealership, on_delete=models.CASCADE)
-    created_by = models.CharField(max_length=30)
+    created_by = models.CharField(max_length=30, unique=True)
