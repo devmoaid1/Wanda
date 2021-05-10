@@ -32,20 +32,24 @@ class CarsView extends Component{
     //let path=`/catalog/${item.id}`
     return newitems.map((item)=>( 
       
-      <div className=" flex flex-col rounded-md bg-white ml-3 mr-3 overflow-hidden shadow-lg h-3/4 " key={item.id}>
-        <img src={item.picture} className="w-full h-1/3"alt="pic"></img>
-        <h1 className="text-2xl font-bold ml-4 my-3">{item.name}</h1>
-        <div className="font-sans my-6 ml-1 px-3 h-1/6 text-justify">{item.description}</div>
-        <span className="block mt-20 mb-6 ml-4 font-bold">{item.price} Egp</span> 
+      <div className=" flex flex-col   rounded-md bg-white ml-3 mr-3 overflow-hidden shadow-lg hover:shadow-xlg h-full " key={item.id}>
+        <div className="w-full h-1/2">
+        <img src={item.picture} className="w-full h-full" alt="pic"></img>
+        </div>
+        <div className="flex flex-col px-3 space-y-6">
+        <h1 className="text-2xl font-semibold ">{item.name}</h1>
+      
+        <span className="block font-medium text-gray-600">{item.price} Egp</span> 
 
         <div className="inline-block ">
-        <Link to={`/select/${item.id}`}> <button class="bg-red-500 hover:bg-red-600 text-white font-semibold py-2 px-8 ml-3 mx-2 rounded">
+        <Link to={`/select/${item.id}`}> <button class="bg-red-600 hover:bg-red-700 text-white font-large py-2 px-8  rounded">
   Book Now
 </button></Link>
-<Link to={`/catalog/${item.id}`}> <button class="bg-blue-500 hover:bg-blue-700 text-white font-semibold py-2 px-4 mx-2 rounded">
+<Link to={`/catalog/${item.id}`}> <button class="bg-gray-800 hover:bg-gray-700 text-white font-large py-2 px-4  rounded">
   View Catalog
 </button> </Link>
         </div>     
+        </div>
       </div>
 
 
@@ -67,7 +71,7 @@ class CarsView extends Component{
         <NavBarComponent logout={this.props.logout} user={this.props.auth}/>
         
           <div 
-          className="relative flex items-center justify-center w-full h-1/3 object-contain bg-cover bg-center bg-fixed bg-no-repeat "
+          className="relative flex items-center justify-center w-full h-4/6 object-contain bg-cover bg-center bg-fixed bg-no-repeat "
           style={{
             backgroundImage:`url(${bgphoto})`
 
@@ -80,17 +84,14 @@ class CarsView extends Component{
            </div>
 
            <div><h1 className="text-3xl bold ml-20 mt-10">Latest Cars</h1></div>  
-          <div className=" w-full h-1/2 mx-auto my-10  grid grid-cols-3 gap-3">
+          <div className=" w-full h-1/2 my-10  grid grid-cols-3 gap-3">
          
           {this.renderCarList()}
           </div>
-          <div className=" w-full h-1/2 mx-auto my-10  grid grid-cols-3 gap-3">
-         
-         {this.renderCarList()}
-         </div>
-          <div className="w-full ">
+        
+          <footer>
           <Footer/>
-          </div>
+          </footer>
           
           
        
