@@ -63,7 +63,7 @@ componentDidUpdate(){
 
  renderCarList(){
     const {dealerships}=this.props.dealerships; 
-    
+    const carID=this.props.match.params.carID
    
     return dealerships.map((item)=>( 
       
@@ -98,9 +98,10 @@ componentDidUpdate(){
 
 
         <div className="   flex flex-row mt-4 justfiy-center  ">
-        <button onClick={this.onSelect}  class="bg-red-600 hover:bg-red-700 text-white font-large py-2 px-2 mx-2 rounded">
+       <Link to={`/book/${carID}/${item.id}`} > <button onClick={this.onSelect}  class="bg-red-600 hover:bg-red-700 text-white font-large py-2 px-2 mx-2 rounded">
         Select 
        </button>
+       </Link>
      </div>  
         
 
