@@ -5,12 +5,13 @@ import { toast } from "react-toastify";
 import * as actionTypes from '../actions/types' 
 
 export const login=(userData,redirectTo)=>dispatch=>{
-  
+       dispatch(setLoading())  
     axios.post('api/token/login/',userData).then(res=>{
         const {auth_token}=res.data; 
         setAxiosAuthToken(auth_token);
         dispatch(setToken(auth_token));
         dispatch(getCurrentUser(redirectTo));
+        dispatch(unsetLoading())
     }).catch(err=>{
       dispatch(unsetCurrentUser());
       toastOnError(JSON.stringify(err));
@@ -20,7 +21,7 @@ export const login=(userData,redirectTo)=>dispatch=>{
 
 
 export const getCurrentUser=redirectTo=>dispatch=>{
-
+  
   axios.get("api/users/me/").then(res=>{
      const user={
          username:res.data.username,
@@ -95,7 +96,7 @@ export const logout=()=>dispatch=>{
 
 
 export const updateProfile=(data)=>dispatch=>{
-
+  dispatch(setLoading())
   axios.patch('http://127.0.0.1:8000/api/users/me/',data,{headers:{'content-Type':'multipart/form-data'}}).then(res=>{
     
     dispatch({
@@ -103,9 +104,9 @@ export const updateProfile=(data)=>dispatch=>{
         payload:res.data
     })
     toast.success("Profile edited successfully and re-login is Requires")
-    
+    dispatch(unsetLoading())
     dispatch(push("/editprofile/"))
-    // dispatch(logout())
+    
   }).catch(err=>{
       toastOnError(err)
   })
@@ -131,5 +132,23 @@ export const getCustomer=()=>dispatch=>{
     }).catch(err=>{
         toastOnError(err)
     })
+
+} 
+
+export const setLoading=()=>dispatch=>{
+
+    dispatch({
+      type:actionTypes.SET_LOADING,
+      payload:true
+    })
+
+} 
+
+export const unsetLoading=()=>dispatch=>{
+
+  dispatch({
+    type:actionTypes.UNSET_LOADING,
+    payload:false
+  })
 
 }

@@ -3,6 +3,7 @@ import * as actionTypes from '../actions/types'
 
 const initialState={
     isAuthenticated:false,
+    loading:false,
     user:{},
     token:""
 }
@@ -20,7 +21,14 @@ const LoginReducer=(state=initialState,action)=>{
    
        case actionTypes.SET_CURRENT_USER:
            return{...state,user:action.payload};
-        
+
+       case actionTypes.SET_LOADING:
+            return{...state,loading:action.payload};
+            
+       case actionTypes.UNSET_LOADING:
+                return{...state,loading:action.payload};   
+       
+           
         case actionTypes.EDIT_PROFILE:
             return{...state,user:action.payload};
             

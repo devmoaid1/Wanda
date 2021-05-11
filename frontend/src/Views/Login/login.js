@@ -5,7 +5,7 @@ import logphoto from '../../images/loginphoto.jpeg';
 import {connect} from 'react-redux';
 import { withRouter } from "react-router-dom";
 import {login} from '../../actions/login'
-
+import {Spinner} from 'react-bootstrap'
 
 
 
@@ -28,7 +28,10 @@ class LoginForm extends Component{
     
 
   componentDidMount(){
-    console.log(this.state)
+    console.log(this.props.auth)
+  }
+  componentDidUpdate(){
+    console.log(this.props.auth)
   }
   
   handleChange=(event)=>{
@@ -104,10 +107,23 @@ class LoginForm extends Component{
        <p class="text-red-600 mb-3">{this.state.passwordError}</p>
      </div>
      
-     <button type="submit"className="bg-red-500 hover:bg-red-400 text-white  py-2 px-4 ml-4 mx-2 rounded">
+     <button type="submit"className="  bg-red-500 hover:bg-red-400 text-white  py-2 px-6 ml-4 mx-2 rounded" > 
+      { 
+      this.props.auth.loading===true?       
+      
+      <Spinner
+      as="span"
+      animation="border"
+      size="sm"
+      role="status"
+      aria-hidden="true"
+      className="mr-2"
+      
+    />:null
+      }
    Login
  </button>
-   <span className="block ml-4 mt-2">Dont have an account? <span className="text-red-500 hover:text-red-700"><a href="/signup/">Sign Up </a></span></span>
+   <span className="block ml-4 mt-2">Dont have an account? <span className="text-red-600 hover:text-red-800"><a href="/signup/">Sign Up </a></span></span>
   
                      </form>
  
