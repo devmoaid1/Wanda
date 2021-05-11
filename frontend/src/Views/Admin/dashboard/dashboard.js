@@ -3,22 +3,31 @@ import { connect } from 'react-redux'
 import { withRouter } from "react-router-dom"; 
 import propTypes from 'prop-types'
 import {logout} from '../../../actions/login'
-import NavBarComponent from '../../Components/navbar'
+import NavBarAdmin from '../../Components/navbar_admin'
 import Footer from'../../Components/footer'
-export class DashboardScreen extends Component {
+import {getDealers} from '../../../actions/dashboard'
+ class DashboardScreen extends Component {
     
-    
+    componentDidMount(){
+        this.props.getDealers()
+    }
+
+    componentDidUpdate(){
+        console.log(this.props.dashboard)
+        console.log(this.props.auth)
+    }
     
     
     static propTypes={
         
-        logout:propTypes.func.isRequired
+        logout:propTypes.func.isRequired,
+        getDealers:propTypes.func.isRequired
       }
     render() {
         return (
             <>
             <header>
-                <NavBarComponent logout={this.props.logout} user={this.props.auth}/>
+                <NavBarAdmin logout={this.props.logout} user={this.props.auth}/>
             </header>
             <div className="w-full h-full">
                 <div className="grid grid-cols-3 px-3 py-3 gap-4">
@@ -50,8 +59,9 @@ export class DashboardScreen extends Component {
 
 const mapStateToProps=state=>({
     
-    auth:state.auth
+    auth:state.auth,
+    dashboard:state.dashboard
    })
 
 
-export default connect(mapStateToProps,{logout})(withRouter(DashboardScreen))
+export default connect(mapStateToProps,{logout,getDealers})(withRouter(DashboardScreen))

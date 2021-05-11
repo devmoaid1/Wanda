@@ -5,6 +5,7 @@ import signUpReducer from'./signup'
 import LoginReducer from './login'
 import dealershipsReducer from './dealerships'
 import bookingReducer from './booking'
+import dashboardReducer from './dashboard'
 // import EditProfileReducer from './edit_profile'
 const createRootReducer=history=>
 
@@ -15,6 +16,7 @@ const createRootReducer=history=>
         auth:LoginReducer,
         dealerships:dealershipsReducer,
         booking:bookingReducer,
+        dashboard:dashboardReducer
         // editProfile:EditProfileReducer
 
         
