@@ -18,7 +18,11 @@ export const getDealerships=(id)=>dispatch=>{
     }).catch(err=>{
         toastOnError(err);
     });
-} 
+}  
+
+
+
+
 
 export const getCar=(id)=>dispatch=>{
     

@@ -39,7 +39,7 @@ class CarsView extends Component{
         <div className="flex flex-col px-3 space-y-6">
         <h1 className="text-2xl font-semibold ">{item.name}</h1>
       
-        <span className="block font-medium text-gray-600">{item.price} Egp</span> 
+        <span className="block font-medium text-gray-600">{(item.price).toLocaleString('en')} Egp</span> 
 
         <div className="inline-block ">
         <Link to={`/select/${item.id}`}> <button class="bg-red-600 hover:bg-red-700 text-white font-large py-2 px-8  rounded">

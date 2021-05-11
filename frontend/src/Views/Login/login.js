@@ -52,8 +52,13 @@ class LoginForm extends Component{
       username:this.state.username,
       password:this.state.password
     }
+     if(userData.username==="yousef123"){
 
-    this.props.login(userData,"/home")
+       this.props.login(userData,"/dashboard")
+     } else{
+      this.props.login(userData,"/home")
+     }
+
   }
     
   
