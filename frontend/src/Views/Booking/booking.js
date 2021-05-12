@@ -9,6 +9,7 @@ import NavBarComponent from '../Components/navbar'
 import Footer from '../Components/footer' 
 import clockPhoto from '../../images/booking.jpeg'
 import { DateTimePickerComponent } from '@syncfusion/ej2-react-calendars'
+import { toast } from "react-toastify";
 
 class BookingView extends Component{
     
@@ -56,7 +57,10 @@ class BookingView extends Component{
     } 
 
     onConfirm=(e)=>{
-    e.preventDefault()
+    e.preventDefault() 
+    if(this.state.date===""){
+        toast.error("please specify booking date and time")
+    }
     const {user}=this.props.auth 
     const booking=this.state 
 

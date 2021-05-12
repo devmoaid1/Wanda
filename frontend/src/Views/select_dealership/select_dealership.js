@@ -117,7 +117,8 @@ componentDidUpdate(){
    
  render(){ 
 
-    const {car}=this.props.dealerships
+    const {car}=this.props.dealerships 
+    var nf = new Intl.NumberFormat();
      return( 
            <Fragment>
          <header>
@@ -136,7 +137,7 @@ componentDidUpdate(){
          </div>
          <div>
          
-         <span className="text-md text-gray-700  mt-15 ">{car.price} <span className="font-bold">EGP</span></span>
+         <span className="text-md text-gray-700  mt-15 ">{nf.format(car.price)} <span className="font-bold">EGP</span></span>
          </div> 
        
          </div>
