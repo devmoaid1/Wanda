@@ -76,7 +76,8 @@ class BookingView extends Component{
     } 
   render(){
       return( 
-          <div className="bg-gray-100">        <header>
+          <div className="bg-gray-100">       
+        <header>
         <NavBarComponent user={this.props.auth} logout={this.props.logout}/>
     </header>
           <div className="w-full h-screen bg-gray-100 ">

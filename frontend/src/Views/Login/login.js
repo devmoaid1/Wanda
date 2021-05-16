@@ -27,12 +27,7 @@ class LoginForm extends Component{
   }
     
 
-  componentDidMount(){
-    console.log(this.props.auth)
-  }
-  componentDidUpdate(){
-    console.log(this.props.auth)
-  }
+  
   
   handleChange=(event)=>{
     

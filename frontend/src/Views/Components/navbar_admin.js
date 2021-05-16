@@ -1,30 +1,18 @@
 import React,{Component} from 'react'; 
 import logo from'../../images/wandalogo.svg'
 import './navbar.css'
+import {useDispatch} from 'react-redux'
 
 
 
-class NavBarAdmin extends Component {
+function NavBarAdmin (props){ 
   
-
+  const dispatch=useDispatch()
   
+  const {user}=props.user 
 
-   onLogout=()=>{
-     this.props.logout()
-   }
-    
-
-   componentDidMount(){
-     console.log(this.props.user.user.me)
-   }
-
-  
-  render(){
-    const user=this.props.user.user
-    
-    return (
-      
-      <div style={{background:'#091c29'}}>
+  return(
+    <div style={{background:'#091c29'}}>
         <div className="flex flex-row items-center  w-10/12 mx-auto py-1 text-white"> 
           <div className="flex flex-row justify-left pt-3  text-white"><img width="50"
           height="50"  src={logo} alt="logo"></img>        
@@ -35,7 +23,7 @@ class NavBarAdmin extends Component {
            <div className="inline-block justify-left ml-7">
              <span className="text-xl mr-4  focus:ring-white"><a className=" hover:purple-700" href="/dashboard/">Dashboard</a></span>
              <span  className="text-xl mr-4"><a href="/cars/">Bookings</a></span>
-           <span  className="text-xl mr-4 hover:purple-700"><a  onClick={this.onLogout} href="#">Logout</a></span>
+           <span  className="text-xl mr-4 hover:purple-700"><a  onClick={()=>dispatch(props.logout)} href="#">Logout</a></span>
            </div> 
              <div className=" inline-block w-2/3 bg-red-300"></div>
            <div className="inline-block ">
@@ -51,9 +39,11 @@ class NavBarAdmin extends Component {
   
         </div>
       </div>
-    )
- 
-  }
+  )
+  
+
+  
+
   
 }
 
