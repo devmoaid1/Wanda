@@ -1,9 +1,9 @@
-import React ,{Component, Fragment} from 'react'
+import React ,{Component} from 'react'
 import {getDealership,makeBooking} from '../../actions/booking'
 import propTypes from 'prop-types'
 import {connect} from 'react-redux'
 import {withRouter} from 'react-router-dom' 
-import {Link} from 'react-router-dom' 
+
 import {logout} from '../../actions/login' 
 import NavBarComponent from '../Components/navbar' 
 import Footer from '../Components/footer' 

@@ -1,4 +1,4 @@
-import React,{Component} from 'react'; 
+import React from 'react'; 
 import logo from'../../images/wandalogo.svg'
 import './navbar.css'
 import {useDispatch} from 'react-redux'

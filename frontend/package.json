@@ -5,6 +5,11 @@
   "proxy": "http://127.0.0.1:8000",
   "dependencies": {
     "@craco/craco": "^6.1.1",
+    "@fortawesome/fontawesome-svg-core": "^1.2.35",
+    "@fortawesome/free-brands-svg-icons": "^5.15.3",
+    "@fortawesome/free-regular-svg-icons": "^5.15.3",
+    "@fortawesome/free-solid-svg-icons": "^5.15.3",
+    "@fortawesome/react-fontawesome": "^0.1.14",
     "@headlessui/react": "^1.0.0",
     "@heroicons/react": "^1.0.1",
     "@syncfusion/ej2-react-calendars": "^19.1.56",
@@ -63,7 +68,7 @@
   },
   "devDependencies": {
     "@tailwindcss/postcss7-compat": "^2.1.0",
-    "autoprefixer": "^9.8.6",
+    "autoprefixer": "^10.2.5",
     "babel-eslint": "^10.1.0",
     "postcss-cli": "^8.3.1",
     "tailwindcss": "^2.1.1"

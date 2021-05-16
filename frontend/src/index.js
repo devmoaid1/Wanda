@@ -14,7 +14,12 @@ import "../node_modules/@syncfusion/ej2-react-calendars/styles/material.css";
 import "react-toastify/dist/ReactToastify.css";
 // import Store from './store'
 // import {Provider} from 'react-redux'
-import './style/main.css'
+import './style/main.css' 
+import { library } from '@fortawesome/fontawesome-svg-core'
+
+import { faCheckSquare, faCoffee,faStore,faDollarSign } from '@fortawesome/free-solid-svg-icons'
+
+library.add( faCheckSquare, faCoffee,faStore,faDollarSign)
 
 
 const app=(
