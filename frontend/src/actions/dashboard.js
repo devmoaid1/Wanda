@@ -1,6 +1,6 @@
 import axios from "axios";
 import { toastOnError } from "../utilities";
-import  { GET_DEALERSHIPS,GET_DEALERSHIP } from "./types"; 
+import  { GET_DEALERSHIPS,GET_DEALERSHIP,GET_TOTAL_SALES ,GET_DEALERS_SALES} from "./types"; 
 
 
 
@@ -14,7 +14,9 @@ export const getDealers=()=>dispatch=>{
             }
             );
           const dealers=res.data
-          dispatch(getMostSales(dealers))        
+          dispatch(getMostSales(dealers))
+          dispatch(getTotalSales(dealers))
+          dispatch(getSalesList(dealers))        
             
     }).catch(err=>{
         toastOnError(err);
@@ -41,6 +43,42 @@ export const getMostSales=(dealers)=>dispatch=>{
     dispatch({
         type:GET_DEALERSHIP,
         payload:biggest
+    })        
+
+} 
+
+export const getTotalSales=(dealers)=>dispatch=>{
+          
+    let total=0;
+    
+    
+    for(let i=0;i<dealers.length;i++){
+       total+=dealers[i].sales
+    }
+    
+    
+    dispatch({
+        type:GET_TOTAL_SALES,
+        payload:total
+    })        
+
+}
+
+export const getSalesList=(dealers)=>dispatch=>{
+          
+    let dealer={name:'',
+value:0};
+     let salesList=[]
+    
+    for(let i=0;i<dealers.length;i++){
+       dealer={name:dealers[i].name,value:dealers[i].sales} 
+       salesList.push(dealer)
+    }
+    
+    
+    dispatch({
+        type:GET_DEALERS_SALES,
+        payload:salesList
     })        
 
 }
