@@ -233,7 +233,8 @@ module.exports = {
       0: '0',
       DEFAULT: '1',
     },
-    fontFamily: {
+    fontFamily: { 
+      body:['Overpass'],
       sans: [
         
         'Roboto',

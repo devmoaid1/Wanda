@@ -95,7 +95,7 @@ export const logout=()=>dispatch=>{
 } 
 
 
-export const updateProfile=(data)=>dispatch=>{
+export const updateProfile=(data,redirectTo)=>dispatch=>{
   dispatch(setLoading())
   axios.patch('http://127.0.0.1:8000/api/users/me/',data,{headers:{'content-Type':'multipart/form-data'}}).then(res=>{
     
@@ -105,7 +105,7 @@ export const updateProfile=(data)=>dispatch=>{
     })
     toast.success("Profile edited successfully and re-login is Requires")
     dispatch(unsetLoading())
-    dispatch(push("/editprofile/"))
+    dispatch(push(redirectTo))
     
   }).catch(err=>{
       toastOnError(err)

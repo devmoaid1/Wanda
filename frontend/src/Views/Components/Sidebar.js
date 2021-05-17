@@ -7,10 +7,10 @@ function Sidebar(props) {
         <div className="flex flex-col space-y-16 bg-gray-800 text-white px-4 py-10 h-full col-span-1">
                
                
-        <div className="flex flex-row space-x-2">
-         <div>
-        <img alt="profile" src={user.pic} class="mx-auto object-cover rounded-full h-14 w-14 "/>
-         </div>
+        <div className="flex flex-row space-x-1 mr-3">
+        <div className=" mx-auto pb-3 overflow-hidden rounded-full w-16 h-16 max-h-40 ">
+                <img alt="profile" src={user.pic} class=" rounded-full "/>
+                </div>
         <div className="flex flex-col space-y-1">
         <span className="font-semibold text-xl">{user.name}</span>
         <span className="font-small text-md">Admin</span>

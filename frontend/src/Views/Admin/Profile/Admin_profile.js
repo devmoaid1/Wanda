@@ -25,23 +25,9 @@ function AdminProfile() {
           formData.set("phone",phone)
           formData.set("addres",address)
           formData.set("pic",pic)
-          dispatch(updateProfile(formData))    
+          dispatch(updateProfile(formData,"/adminprofile/"))    
     }
-    const onChange = (e) => {
-        const reader = new FileReader();
-    
-        reader.onload = () => {
-          if (reader.readyState === 2) {
-            setPic(reader.result);
-            
-          }
-        };
-        if (e.target.files) {
-          if (e.target.files[0].size <= 10000000) {
-            reader.readAsDataURL(e.target.files[0]);
-          } else return toast.error("file size is too big");
-        }
-      };
+   
    
     return (
         <div className="grid grid-cols-5 ">
@@ -55,12 +41,19 @@ function AdminProfile() {
 
                   {/* profile card */}
 
-                <div className=" divide-y divide-gray-300 flex flex-col justify-start py-7 px-7 w-1/3 h-68  rounded shadow-lg hover:shadow-xl">
-                <div className=" mx-auto pb-3 ">
-                <img alt="profile" src={auth.user.pic} class="mx-auto object-cover rounded-full w-2/3 h-2/3"/>
+                <div className=" divide-y divide-gray-300 flex flex-col justify-start space-y-5 py-7 px-7 w-1/3 h-68  rounded shadow-lg hover:shadow-xl"> 
+
+                <div className="h-1/2 w-full  ">
+
+                <div className=" mx-auto pb-3 overflow-hidden rounded-full w-40 h-40 max-h-40 ">
+                <img alt="profile" src={auth.user.pic} class=" rounded-full "/>
                 </div>
-                <div>
-                <h1 className="text-3xl font-semibold mt-4">Profile Details</h1>
+
+                
+                 </div> 
+
+                 <div>
+                 <h1 className="text-3xl font-semibold mt-4">Profile Details</h1>
                 <div className="h-6"></div>
                 <div className="flex flex-row">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" viewBox="0 0 20 20" fill="#f75454">
@@ -88,7 +81,9 @@ function AdminProfile() {
                    <span className="text-2xl ml-1">{auth.user.email}</span>
 
                 </div>
-                </div>                
+                
+                 </div>
+                                
                 </div>
 
                 {/* edit profile form */}
