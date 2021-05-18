@@ -1,6 +1,6 @@
 import axios from "axios";
 import { toastOnError } from "../utilities";
-import  { GET_DEALERSHIP,GET_CAR,MAKE_BOOKING } from "./types"; 
+import  { GET_DEALERSHIP,GET_CAR,MAKE_BOOKING,GET_BOOKINGS } from "./types"; 
 import { toast } from "react-toastify"; 
 import { push } from "connected-react-router";
 
@@ -44,4 +44,23 @@ export const makeBooking=(booking,user)=>dispatch=>{
     }).catch(err=>{
         toastOnError(err);
     })
+} 
+
+export const getBookings=()=>dispatch=>{
+
+   axios.get('/api/bookings/').then(res=>{
+         
+    dispatch({
+        type:GET_BOOKINGS,
+        payload:res.data
+    })
+
+
+
+   }).catch(err=>{
+       toastOnError(err)
+   })
+
+
+
 }

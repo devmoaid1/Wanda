@@ -1,9 +1,10 @@
-import  { GET_DEALERSHIP,GET_CAR,MAKE_BOOKING } from "../actions/types"; 
+import  { GET_DEALERSHIP,GET_CAR,MAKE_BOOKING,GET_BOOKINGS } from "../actions/types"; 
 
 
 const initialState={
     dealership:{},
-    car:{}
+    car:{},
+    bookings:[]
 } 
 
 
@@ -18,7 +19,10 @@ const bookingReducer=(state=initialState,action)=>{
         return{...state,car:action.payload};
         
         case MAKE_BOOKING:
-         return {...state}
+         return {...state} 
+        
+         case GET_BOOKINGS:
+            return {...state,bookings:action.payload}
        
  
          default:

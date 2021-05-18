@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { useSelector,useDispatch} from 'react-redux'
 import PieChar from './DongutChart'
 import Sidebar from '../../Components/Sidebar'
-import {logout} from '../../../actions/login'
+
 
 import {getDealers} from '../../../actions/dashboard'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -13,7 +13,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
       const auth=useSelector((state)=>state.auth)
       const dashboard=useSelector((state)=>state.dashboard)
       var nf = new Intl.NumberFormat();
-      const logoutFunction=logout()
+    
       useEffect(()=>{
         dispatch(getDealers())          
          console.log(dashboard)
@@ -23,7 +23,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
         <div className="grid grid-cols-5">
 
 
-          <Sidebar user={auth.user}/>
+          <Sidebar user={auth.user} />
 
 
 

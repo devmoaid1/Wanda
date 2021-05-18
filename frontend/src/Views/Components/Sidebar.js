@@ -1,7 +1,11 @@
 import React from 'react'
+import {useDispatch} from "react-redux" 
+import {logout} from "../../actions/login"
 
 function Sidebar(props) {
     const user=props.user
+    const dispatch=useDispatch() 
+    
     return (
         
         <div className="flex flex-col space-y-16 bg-gray-800 text-white px-4 py-10 h-full col-span-1">
@@ -41,7 +45,7 @@ function Sidebar(props) {
          </a>
      </li>
      <li>
-         <a href="#" class="flex items-center space-x-3 text-gray-300 p-2 rounded-md font-medium hover:bg-gray-200 focus:bg-gray-200 focus:shadow-outline">
+         <a href="/bookings/" class="flex items-center space-x-3 text-gray-300 p-2 rounded-md font-medium hover:bg-gray-200 focus:bg-gray-200 focus:shadow-outline">
              <span class="text-gray-300">
              <svg xmlns="http://www.w3.org/2000/svg" class="h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
@@ -53,7 +57,7 @@ function Sidebar(props) {
      
      
                  <li>
-         <a href="#" class="flex items-center space-x-3 text-gray-300 p-2 rounded-md font-medium hover:bg-gray-200 focus:bg-gray-200 focus:shadow-outline">
+         <a  onClick={()=>dispatch(logout())}    href="#" class="flex items-center space-x-3 text-gray-300 p-2 rounded-md font-medium hover:bg-gray-200 focus:bg-gray-200 focus:shadow-outline">
              <span class="text-gray-300">
                  <svg class="h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />

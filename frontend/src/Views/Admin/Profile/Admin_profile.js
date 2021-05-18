@@ -52,9 +52,9 @@ function AdminProfile() {
                 
                  </div> 
 
-                 <div>
+                 <div className="flex flex-col space-y-3">
                  <h1 className="text-3xl font-semibold mt-4">Profile Details</h1>
-                <div className="h-6"></div>
+                <div className="h-3"></div>
                 <div className="flex flex-row">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" viewBox="0 0 20 20" fill="#f75454">
                <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" />
@@ -112,7 +112,7 @@ function AdminProfile() {
        </label>
        <input  onChange={(e)=>setPic(e.target.files[0])} className=" rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:shadow-outline" name="pic" type="file" placeholder={auth.user.pic}/>
 
-       <button type="submit"className="bg-red-500 hover:bg-red-400 text-white text-xl  py-2 px-4 ml-4 mx-2 rounded">
+       <button type="submit"className="bg-red-500 hover:bg-red-400 text-white text-xl  py-2 px-4  mx-2 rounded">
        { 
       auth.loading===true?       
       
