@@ -1,11 +1,10 @@
 import React,{Component,Fragment} from 'react'; 
-//import{Spinner} from 'react-bootstrap'; 
-//import logo from '../images/wanda.svg'
+
 import logphoto from '../../images/loginphoto.jpeg' 
 import {connect} from 'react-redux'
-//import * as actions from '../../actions/signup'
+import { push } from "connected-react-router";
 import '../Login/login.css'
-import { withRouter } from "react-router-dom";
+import { withRouter,Link } from "react-router-dom";
 import PropTypes from "prop-types"; 
 import signUpNewUser from '../../actions/signup' 
 import {
@@ -78,15 +77,6 @@ class SignUpForm extends Component{
     formdata.append('address',this.state.address)
     formdata.append('pic',this.state.pic)
 
-    // let userdate={
-    //   username:this.state.username,
-    //   password:this.state.password,
-    //   name:this.state.name,
-    //   email:this.state.email,
-    //   phone:this.state.phone,
-    //   address:this.state.address,
-    //   pic:this.state.pic[0]
-    // }
     this.props.signUpNewUser(formdata);
    
 
@@ -100,12 +90,7 @@ class SignUpForm extends Component{
 
     render(){
 
-        // let errorMassage=null;
-        // if(this.props.error){
-        //     errorMassage=(<p> {this.props.error.massage}</p>)
-                
-            
-        // }
+       
         return(
             <Fragment>
                
@@ -153,28 +138,28 @@ class SignUpForm extends Component{
       <label class="block text-gray-700 text-sm font-bold mb-2" for="name">
         Full Name
       </label>
-      <input  onChange={this.handleChange}   class="border border-transparent focus:outline-none focus:ring-2 focus:ring-red-400 focus:border-transparent rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:shadow-outline" id="fullname" type="text" placeholder="Full Name" name="name"/>
+      <input  onChange={this.handleChange}  required="true" class="border border-transparent focus:outline-none focus:ring-2 focus:ring-red-400 focus:border-transparent rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:shadow-outline" id="fullname" type="text" placeholder="Full Name" name="name"/>
     
     </div>
     <div class="mb-2 ml-4 mt-2 mr-2">
       <label class="block text-gray-700 text-sm font-bold mb-2" for="emailaddress">
         Email Address
       </label>
-      <input  onChange={this.handleChange}    class="border border-transparent focus:outline-none focus:ring-2 focus:ring-red-400 focus:border-transparent rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:shadow-outline" id="emailaddress" type="email" placeholder="Email Address" name="email"/>
+      <input  onChange={this.handleChange}  required="true"  class="border border-transparent focus:outline-none focus:ring-2 focus:ring-red-400 focus:border-transparent rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:shadow-outline" id="emailaddress" type="email" placeholder="Email Address" name="email"/>
       
     </div>
      <div class="mb-2 ml-4 mt-2 mr-2">
       <label class="block text-gray-700 text-sm font-bold mb-2" for="Phone Number">
         Phone Number
       </label>
-      <input onChange={this.handleChange} class="border border-transparent focus:outline-none focus:ring-2 focus:ring-red-400 focus:border-transparent rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:shadow-outline" id="phonenumber" type="text" placeholder=" phone number"  name="phone"/>
+      <input onChange={this.handleChange} required="true" class="border border-transparent focus:outline-none focus:ring-2 focus:ring-red-400 focus:border-transparent rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:shadow-outline" id="phonenumber" type="tel" pattern="[0-9]{11}" placeholder=" phone number"  name="phone"/>
      
     </div>
     <div class="mb-2 ml-4 mt-2 mr-2">
       <label class="block text-gray-700 text-sm font-bold mb-2" for="address">
        Address
       </label>
-      <input onChange={this.handleChange}   class="border border-transparent focus:outline-none focus:ring-2 focus:ring-red-400 focus:border-transparent rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:shadow-outline" id="address" type="text" placeholder="Address" name="address"/>
+      <input onChange={this.handleChange} required="true"  class="border border-transparent focus:outline-none focus:ring-2 focus:ring-red-400 focus:border-transparent rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:shadow-outline" id="address" type="text" placeholder="Address" name="address"/>
     
     </div>
 
@@ -185,10 +170,15 @@ class SignUpForm extends Component{
       <input onChange={this.handleChange}  accept="image/*" class="   rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:shadow-outline" id="address" type="file"  name="pic"/>
       </div>
 
-    <button type="submit"class="bg-red-500 hover:bg-red-600 text-white  py-2 px-4 ml-4 mx-2 rounded">
+    <button type="submit"className="bg-red-500 hover:bg-red-600 text-white w-1/3 py-2 px-4 ml-4 mx-2 rounded">
   Sign Up
 </button>
- 
+<Link to="/">
+<button  className=" block bg-red-500 hover:bg-red-600 text-white my-2 py-2 px-4 ml-4 rounded w-1/3" > 
+     
+   Login
+ </button>
+ </Link>
  
                     </form>
 
@@ -216,10 +206,6 @@ const mapStateToProps = state => ({
   createUser: state.createUser
 });
 
-// const mapDispatchToProps = dispatch => {
-// return {
-//     onAuth: (username, password,email,fullname,phone,address) => dispatch(actions.authSignUp(username, password,email,fullname,phone,address)) 
-// }
-// }
+
 
 export default connect(mapStateToProps,{signUpNewUser})(withRouter(SignUpForm));

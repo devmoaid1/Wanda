@@ -88,14 +88,14 @@ class LoginForm extends Component{
                                             
   
      <div className="mb-2 ml-4 mt-1 mr-2">
-       <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="username">
+       <label className="block text-gray-700 text-sm font-semibold mb-2" htmlFor="username">
          Username
        </label>
        <input value={this.state.username} onChange={this.handleChange} className="border border-transparent focus:outline-none focus:ring-2 focus:ring-pink-400 focus:border-transparent rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:shadow-outline" name="username" type="text" placeholder="username"/>
        <p class="text-red-600 mb-3 ">{this.state.usernameError}</p>
      </div>
      <div className="mb-2 ml-4 mr-2">
-       <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="password">
+       <label className="block text-gray-700 text-sm font-semibold mb-2" htmlFor="password">
          Password
        </label>
        <input value={this.state.password} onChange={this.handleChange} className="border border-transparent focus:outline-none focus:ring-2 focus:ring-pink-400 focus:border-transparent rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:shadow-outline" name="password" type="password" placeholder="*********************"/>
