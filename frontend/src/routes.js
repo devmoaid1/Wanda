@@ -12,6 +12,7 @@ import EditProfile from './Views/Edit_Profile/Edit_Profile'
 import DashboardScreen from './Views/Admin/dashboard/dashboard'
 import AdminProfile from './Views/Admin/Profile/Admin_profile'
 import ManageBookings from './Views/Admin/Bookings/ManageBookings'
+import ReportsView from './Views/Admin/Reports/ReportsView'
 const BaseRouter = () => (
     <div>
      
@@ -25,6 +26,7 @@ const BaseRouter = () => (
       <Route  path="/dashboard/" component={DashboardScreen} />
       <Route  path="/adminprofile/" component={AdminProfile} />
       <Route  path="/bookings/" component={ManageBookings} />
+      <Route  path="/reports/" component={ReportsView} />
       
     </div>
   );

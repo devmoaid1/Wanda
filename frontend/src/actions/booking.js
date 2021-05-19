@@ -58,7 +58,7 @@ export const getBookings=()=>dispatch=>{
 
      dispatch(getCars())
      dispatch(getDealershipsList())
-     dispatch(unsetLoading())
+     
 
    }).catch(err=>{
        toastOnError(err)
@@ -69,7 +69,7 @@ export const getBookings=()=>dispatch=>{
 } 
 
 export const getDealershipsList=()=>dispatch=>{
-    dispatch(setLoading())
+    
     axios.get('http://127.0.0.1:8000/api/dealerships/').then(res=>{
         dispatch(
             {

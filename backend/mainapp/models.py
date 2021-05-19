@@ -1,6 +1,5 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, BaseUserManager
-# Create your models here.
 
 
 class UserAccountManager(BaseUserManager):
@@ -85,3 +84,9 @@ class Booking(models.Model):
     dealership = models.ForeignKey(
         Dealership, on_delete=models.CASCADE)
     created_by = models.CharField(max_length=30,)
+
+
+class Report(models.Model):
+    title = models.CharField(max_length=80)
+    description = models.TextField()
+    date = models.DateField(auto_now=True)

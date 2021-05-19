@@ -1,11 +1,11 @@
 import axios from "axios";
 import { toastOnError } from "../utilities";
 import  { GET_DEALERSHIPS,GET_DEALERSHIP,GET_TOTAL_SALES ,GET_DEALERS_SALES} from "./types"; 
-
+import {setLoading,unsetLoading} from './login'
 
 
 export const getDealers=()=>dispatch=>{
-
+    dispatch(setLoading())
     axios.get('http://127.0.0.1:8000/api/dealerships/').then(res=>{
         dispatch(
             {
@@ -17,7 +17,7 @@ export const getDealers=()=>dispatch=>{
           dispatch(getMostSales(dealers))
           dispatch(getTotalSales(dealers))
           dispatch(getSalesList(dealers))        
-            
+        dispatch(unsetLoading())
     }).catch(err=>{
         toastOnError(err);
     });

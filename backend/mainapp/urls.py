@@ -10,6 +10,6 @@ router.register('api/bookings', BookingViewSet, 'bookings')
 router.register('api/dealerships', DealershipViewSet, 'dealerships')
 
 
-# router.register('api/customers', CustomerViewSet, 'customers')
+router.register('api/reports', ReportViewSet, 'reports')
 
 urlpatterns = router.urls

@@ -97,16 +97,16 @@ class SignUpForm extends Component{
            
                 
             
-            <div className="w-full h-screen ">  
+            <div className="grid grid-cols-6 py-4 ">  
                 
-                <div className=" mt-20 rounded-md overflow-hidden shadow-lg w-2/3 h-8/9 mx-auto flex flex row">
+                <div className="  rounded-md overflow-hidden shadow-lg col-start-2 col-span-4  flex flex row ">
 
-                <img src={logphoto} alt="logphoto"></img> 
-                <div className=" mb-3  py-2">
+                <img  src={logphoto} alt="logphoto"></img> 
+                <div className=" col-span-1 row-span-4 mb-3  py-2">
                     <h1 className="text-5xl text-bold ml-4 mt-3">Sign Up</h1> 
                     <h1 className='ml-4 mt-3'> Sign up with new account </h1>
                     
-                    <form onSubmit={this.handelSubmit} className="w-full h-5/6  "> 
+                    <form onSubmit={this.handelSubmit} className="w-full h-full  "> 
                       <div className="flex flex wrap ml-3  "> 
                       
                       <div class=" ml-2 mt-3 ">

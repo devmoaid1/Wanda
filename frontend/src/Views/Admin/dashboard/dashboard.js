@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { useSelector,useDispatch} from 'react-redux'
 import PieChar from './DongutChart'
 import Sidebar from '../../Components/Sidebar'
-
+import Loader from '../../Components/loader'
 
 import {getDealers} from '../../../actions/dashboard'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -20,6 +20,14 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
       },[])
    
     return (
+
+
+      <>
+
+      {
+        dashboard.loading?
+        <Loader/>:
+      
         <div className="grid grid-cols-5">
 
 
@@ -94,8 +102,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
         </div>
 
        </div>
-        
-        
+  }  
+        </>
     ) }
  
 
