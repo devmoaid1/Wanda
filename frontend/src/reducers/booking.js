@@ -1,4 +1,4 @@
-import  GET_CARS, { GET_DEALERSHIP,GET_CAR,MAKE_BOOKING,GET_BOOKINGS,SET_LOADING,UNSET_LOADING, GET_DEALERSHIPS } from "../actions/types"; 
+import  GET_CARS, { GET_DEALERSHIP,GET_CAR,MAKE_BOOKING,GET_BOOKINGS,SET_LOADING,UNSET_LOADING, GET_DEALERSHIPS,CONFIRM_BOOKING,CANCEL_BOOKING } from "../actions/types"; 
 
 
 const initialState={
@@ -65,6 +65,16 @@ export const manageBookingsReducer=(state=bookingsState,action)=>{
         
          case GET_BOOKINGS:
              return {...state,bookings:action.payload} 
+          
+        case CONFIRM_BOOKING:
+            const updatedBookings = state.bookings.map(item => {
+                if (item.id === action.payload.id) {
+                  return { ...item, ...action.payload };
+                }
+                return item;
+              });
+            return{...state,bookings:updatedBookings}   
+
 
         case SET_LOADING:
              return{...state,loading:action.payload}

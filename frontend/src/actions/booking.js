@@ -1,6 +1,6 @@
 import axios from "axios";
 import { toastOnError } from "../utilities";
-import { GET_DEALERSHIP,GET_CAR,MAKE_BOOKING,GET_BOOKINGS,GET_DEALERSHIPS} from "./types"; 
+import { GET_DEALERSHIP,GET_CAR,MAKE_BOOKING,GET_BOOKINGS,GET_DEALERSHIPS,CONFIRM_BOOKING,CANCEL_BOOKING} from "./types"; 
 import { toast } from "react-toastify"; 
 import { push } from "connected-react-router";
 import {setLoading,unsetLoading} from "./login"  
@@ -102,6 +102,34 @@ export const getBookingDetails=(carsList,dealersList,car,dealer)=>{
     )
     )
     return [bCar.name,bDealer.name]
+
+
+
+}
+
+export const approveBooking=(id)=>dispatch=>{ 
+    let data={status:"active"}
+    dispatch(setLoading())
+    axios.patch(`/api/bookings/${id}/`,data).then(res=>{
+    
+        dispatch({
+            type:CONFIRM_BOOKING,
+            payload:res.data
+        })
+         
+        console.log(res.data)
+       
+        toast.success("Booking Approved Succefully")
+        dispatch(unsetLoading())
+        
+        
+      }).catch(err=>{
+          toastOnError(err)
+      })
+
+     
+  
+
 
 
 

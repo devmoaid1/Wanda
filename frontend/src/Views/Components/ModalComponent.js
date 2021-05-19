@@ -1,6 +1,9 @@
 import React from 'react'
 import {Modal,Button} from 'react-bootstrap'
+import {useDispatch} from 'react-redux'
 function ModalComponent(props) {
+    
+    const dispatch=useDispatch()
     return (
       <Modal
         {...props}
@@ -16,7 +19,7 @@ function ModalComponent(props) {
         <Modal.Body>
          
           <h1>
-            Are You Sure You want to {props.action} Booking?
+            Are You Sure You want to {props.action} Booking {props.id}?
           </h1>
         </Modal.Body>
         <Modal.Footer>
