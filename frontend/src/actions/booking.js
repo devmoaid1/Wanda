@@ -125,12 +125,26 @@ export const approveBooking=(id)=>dispatch=>{
         
       }).catch(err=>{
           toastOnError(err)
-      })
+      })    
+} 
 
-     
-  
-
-
-
-
+export const cancelBooking=(id)=>dispatch=>{ 
+    let data={status:"denied"}
+    dispatch(setLoading())
+    axios.patch(`/api/bookings/${id}/`,data).then(res=>{
+    
+        dispatch({
+            type:CANCEL_BOOKING,
+            payload:res.data
+        })
+         
+        console.log(res.data)
+       
+        toast.success("Booking Cancled Succefully")
+        dispatch(unsetLoading())
+        
+        
+      }).catch(err=>{
+          toastOnError(err)
+      })    
 }

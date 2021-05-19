@@ -74,7 +74,14 @@ export const manageBookingsReducer=(state=bookingsState,action)=>{
                 return item;
               });
             return{...state,bookings:updatedBookings}   
-
+            case CANCEL_BOOKING:
+                const canceledBookings = state.bookings.map(item => {
+                    if (item.id === action.payload.id) {
+                      return { ...item, ...action.payload };
+                    }
+                    return item;
+                  });
+                return{...state,bookings:canceledBookings}   
 
         case SET_LOADING:
              return{...state,loading:action.payload}

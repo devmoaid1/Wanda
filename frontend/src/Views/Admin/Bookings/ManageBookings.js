@@ -1,7 +1,7 @@
 import React ,{useEffect,useState} from 'react'
 import Sidebar from '../../Components/Sidebar'
 import { useSelector,useDispatch} from 'react-redux'
-import {getBookings,getBookingDetails,approveBooking} from "../../../actions/booking" 
+import {getBookings,getBookingDetails,approveBooking,cancelBooking} from "../../../actions/booking" 
 
 import Loader from '../../Components/loader'
 import Moment from 'react-moment';
@@ -28,11 +28,30 @@ function ManageBookings() {
         setModalShow(true)
     }
     
+    const bookingStatus=(status)=>{
+        if(status==="pending"){
+
+           return <span class="rounded bg-yellow-500 py-1 px-3 text-xs text-white font-semibold">{status}</span>
+        }else if(status==="active"){
+
+            return <span class="rounded bg-green-500 py-1 px-3 text-xs text-white font-semibold">{status}</span>
+        }
+         
+    else if(status==="denied"){
+
+        return <span class="rounded bg-red-500 py-1 px-3 text-xs text-white font-semibold">{status}</span>
+
+    }
+          
+    }
 
     const handleAction=()=>{
         if(action==="Approve"){
             setModalShow(false)
             dispatch(approveBooking(id))
+        }else if(action==="Cancel"){
+            setModalShow(false)
+            dispatch(cancelBooking(id))
         }
     }
    
@@ -77,10 +96,7 @@ function ManageBookings() {
             </td>
             <td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b text-center block lg:table-cell relative lg:static">
                 <span class="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">Status</span>
-                {booking.status==="pending"?
-                <span class="rounded bg-yellow-500 py-1 px-3 text-xs text-white font-semibold">{booking.status}</span>:
-                <span class="rounded bg-green-500 py-1 px-3 text-xs text-white font-semibold">{booking.status}</span> 
-            }
+               {bookingStatus(booking.status)}
             </td>
             <td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b text-center block lg:table-cell relative lg:static">
                 <span class="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">Actions</span>
