@@ -69,7 +69,7 @@ function ManageBookings() {
 
             
             <tbody key={booking.id}>       
-                <ModalComponent onAction={handleAction} id={id} action={action} show={modalShow} onHide={()=>setModalShow(false)}/>
+                <ModalComponent onAction={handleAction}  action={action} show={modalShow} onHide={()=>setModalShow(false)}/>
     
             <tr class="bg-white text-medium font-body lg:hover:bg-gray-100 flex lg:table-row flex-row lg:flex-row flex-wrap lg:flex-no-wrap mb-10 lg:mb-0">
             <td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">

@@ -5,7 +5,7 @@ import signUpReducer from'./signup'
 import LoginReducer from './login'
 import dealershipsReducer from './dealerships'
 import {bookingReducer,manageBookingsReducer} from './booking'
-
+import {reportsReducer} from "./reports"
 import dashboardReducer from './dashboard'
 // import EditProfileReducer from './edit_profile'
 const createRootReducer=history=>
@@ -18,8 +18,8 @@ const createRootReducer=history=>
         dealerships:dealershipsReducer,
         booking:bookingReducer,
         dashboard:dashboardReducer,
-        manageBookings:manageBookingsReducer
-        // editProfile:EditProfileReducer
+        manageBookings:manageBookingsReducer,
+        reports:reportsReducer
 
         
     })
