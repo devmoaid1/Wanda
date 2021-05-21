@@ -134,7 +134,7 @@ function ManageBookings() {
                    bookingsState.loading?
                    <Loader/>
                    :
-                      <div className="grid grid-cols-5">
+                      <div className="grid grid-cols-5 bg-gray-100">
                       <Sidebar user={auth.user} /> 
           
                       <div className=" flex flex-col space-y-20 py-10 px-10 col-span-4 h-screen">

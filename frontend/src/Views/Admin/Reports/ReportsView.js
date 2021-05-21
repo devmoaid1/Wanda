@@ -1,7 +1,7 @@
 import React,{useEffect,useState} from 'react'
 import Sidebar from '../../Components/Sidebar'
 import { useSelector,useDispatch} from 'react-redux'
-import {getReports} from "../../../actions/reports"
+import {getReports,deleteReport} from "../../../actions/reports"
 import Loader from '../../Components/loader'
 import ModalComponent from '../../Components/ModalComponent'
 import Moment from 'react-moment';
@@ -32,7 +32,7 @@ function ReportsView() {
      const handleAction=()=>{
         if(action==="Delete"){
             setModalShow(false)
-          
+            dispatch(deleteReport(id))
        
     }
      }

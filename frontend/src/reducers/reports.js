@@ -1,4 +1,4 @@
-import {GET_REPORTS,SET_LOADING,UNSET_LOADING} from '../actions/types' 
+import {GET_REPORTS,DELETE_REPORT,ADD_REPORT,SET_LOADING,UNSET_LOADING} from '../actions/types' 
 
 
 const initialState={
@@ -13,8 +13,19 @@ export const reportsReducer=(state=initialState,action)=>{
 
 
     case GET_REPORTS:
-         return {...state,reports:action.payload} 
+         return {...state,reports:action.payload}
 
+    case DELETE_REPORT:
+     return {
+          ...state,
+          reports: state.reports.filter((item, index) => item.id !== action.payload)
+        }; 
+     
+    case ADD_REPORT:
+     return {
+          ...state,
+          reports: [...state.reports, action.payload]
+        };
     case SET_LOADING:
          return{...state,loading:action.payload}
             

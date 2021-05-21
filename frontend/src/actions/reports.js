@@ -1,9 +1,13 @@
 import axios from "axios";
 import { toastOnError } from "../utilities";
-import {GET_REPORTS} from "./types"
+import {GET_REPORTS,DELETE_REPORT,ADD_REPORT} from "./types"
 import {setLoading,unsetLoading} from './login' 
+import { toast } from "react-toastify";
+
+//reports model actions
 
 
+// get reports List
 export const getReports=()=>dispatch=>{
     dispatch(setLoading())
 
@@ -18,4 +22,42 @@ export const getReports=()=>dispatch=>{
     }).catch(err=>{
         toastOnError(err)
     })
+} 
+
+
+
+export const addReport=(data)=>dispatch=>{
+     dispatch(setLoading())
+    axios.post("/api/reports/",data).then(res=>{
+      
+        dispatch({
+            type:ADD_REPORT,
+            payload:res.data
+        })
+        
+        dispatch(unsetLoading())
+        toast.success("report created successfully")
+    })
+
+}
+
+
+//delete report 
+export const deleteReport=id=>dispatch=>{
+  dispatch(setLoading())
+  axios.delete(`/api/reports/${id}`).then(res=>{
+
+       dispatch({
+           type:DELETE_REPORT,
+           payload:id
+       }) 
+       dispatch(unsetLoading())
+       toast.success("report deleted successfully")
+
+  }).catch(err=>{
+      toastOnError(err)
+  })
+
+
+
 }
