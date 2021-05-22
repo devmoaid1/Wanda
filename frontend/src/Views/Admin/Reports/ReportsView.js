@@ -5,12 +5,14 @@ import {getReports,deleteReport} from "../../../actions/reports"
 import Loader from '../../Components/loader'
 import ModalComponent from '../../Components/ModalComponent'
 import Moment from 'react-moment';
+import AddReport from './Add_report'
 function ReportsView() {
 
     const dispatch=useDispatch()
     const auth=useSelector((state)=>state.auth)
     const reportsState=useSelector((state)=>state.reports)
     const [modalShow, setModalShow] = useState(false);
+    const [modalFormShow,setmodalFormShow]=useState(false)
     const [action,setAction]= useState('')
     const[id,setId]=useState(0)
     
@@ -67,7 +69,7 @@ function ReportsView() {
         <td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b text-center block lg:table-cell relative lg:static">
             <span class="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">Actions</span>
             <a href="#" onClick={()=>onDelete(report.id)}  class="text-red-500 hover:text-red-700 pl-6">Delete</a> 
-           
+            
         </td>
        </tr>
     
@@ -111,9 +113,9 @@ function ReportsView() {
            {renderReports()}
                   
           </table>
-                 
+            <div><button onClick={()=>setmodalFormShow(true)} className="bg-red-500 hover:bg-red-400 text-white px-6 py-3 rounded">Add Report </button></div> 
             </div>
-            
+            <AddReport show={modalFormShow} onHide={()=>setmodalFormShow(false)} />
         </div> 
            }
         </>
