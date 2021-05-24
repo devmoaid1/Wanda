@@ -67,6 +67,7 @@ componentDidUpdate(){
    
     return dealerships.map((item)=>( 
       
+        item.cars.filter((item)=>item===carID)?      
       <div className=" card hover:shadow-lg flex flex-row rounded-md   bg-white overflow-hidden shadow-md mt-7 w-3/4 h-60 mx-auto " key={item.id}>
         <div > <img src={item.pic} className="w-60 h-60 object-cover"alt="pic"></img></div>
          
@@ -109,8 +110,8 @@ componentDidUpdate(){
         {this.ModalHandler(item)}
         </div>
       
-
-
+          :null
+     
 
     ))
    } 
@@ -126,7 +127,7 @@ componentDidUpdate(){
          </header>
         
          <div className="w-full h-full flex flex-row "> 
-         <div className=" card hover:shadow-lg w-1/2 h-1/3 my-20 ml-12  shadow-md bg-white overflow-hidden ">
+         <div className=" card hover:shadow-lg w-1/2 h-1/2 my-20 ml-12  shadow-md bg-white overflow-hidden ">
          <img  className="w-full h-60 sm:h-64 object-cover " src={car.picture} alt="carphoto"></img> 
         
            <div className="m-4 h-full">

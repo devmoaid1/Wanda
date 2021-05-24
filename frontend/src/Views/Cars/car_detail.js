@@ -59,14 +59,14 @@ class CarDetail extends Component{
        
      
         </div>
-        <div className=" mt-20 h-full"><img className="mx-auto" src={car.picture2} alt="car "> 
+        <div className=" mt-20 mx-auto w-3/4 h-full"><img className="mx-auto" src={car.picture2} alt="car "> 
         </img></div> 
 
         <div className="mx-auto my-10 w-1/2 text-3xl mr-10 ">
             {car.description2}
         </div>
 
-        <div className=" mt-20 h-full"><img className="mx-auto" src={car.picture} alt="car "> 
+        <div className=" mt-20 w-3/4 h-full"><img className="mx-auto" src={car.picture} alt="car "> 
         </img></div> 
         <div className="ml-20 mb-10 w-1/2 text-xl mr-10 ">
             {car.description}

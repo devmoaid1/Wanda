@@ -13,6 +13,7 @@ import DashboardScreen from './Views/Admin/dashboard/dashboard'
 import AdminProfile from './Views/Admin/Profile/Admin_profile'
 import ManageBookings from './Views/Admin/Bookings/ManageBookings'
 import ReportsView from './Views/Admin/Reports/ReportsView'
+import BookingSummary from './Views/Booking/booking_summary'
 const BaseRouter = () => (
     <div>
      
@@ -22,6 +23,7 @@ const BaseRouter = () => (
       <Route  path="/signup/" component={SignUpForm} />
       <Route  path="/select/:carID" component={SelectDealership} />
       <Route  path="/book/:carID/:dealerID" component={BookingView} />
+      <Route  path="/bookingsummary/" component={BookingSummary} />
       <Route  path="/editprofile/" component={EditProfile} />
       <Route  path="/dashboard/" component={DashboardScreen} />
       <Route  path="/adminprofile/" component={AdminProfile} />

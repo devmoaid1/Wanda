@@ -2,7 +2,7 @@ import React ,{Component} from 'react'
 import {getDealership,makeBooking} from '../../actions/booking'
 import propTypes from 'prop-types'
 import {connect} from 'react-redux'
-import {withRouter} from 'react-router-dom' 
+import {withRouter,Link} from 'react-router-dom' 
 
 import {logout} from '../../actions/login' 
 import NavBarComponent from '../Components/navbar' 
@@ -56,16 +56,16 @@ class BookingView extends Component{
         this.setState({date:e.target.value})
     } 
 
-    onConfirm=(e)=>{
-    e.preventDefault() 
-    if(this.state.date===""){
-        toast.error("please specify booking date and time")
-    }
-    const {user}=this.props.auth 
-    const booking=this.state 
+    onConfirm=()=>{
+    // e.preventDefault() 
+    // if(this.state.date===""){
+    //     toast.error("please specify booking date and time")
+    // }
+    // const {user}=this.props.auth 
+    // const booking=this.state 
 
-    this.props.makeBooking(booking,user) 
-    
+    // this.props.makeBooking(booking,user) 
+       <Link to={{ pathname: '/route', state: this.state }}></Link>
 
     }
     static propTypes={
@@ -93,7 +93,7 @@ class BookingView extends Component{
              <div className="h-20"></div> 
              <div className="w-1/2 h-10 mx-auto mt-20 "><DateTimePickerComponent  onChange={this.handleChange} placeholder="choose date and time" ></DateTimePickerComponent> </div> 
              <div className="h-20"></div>
-             <div><button onClick={this.onConfirm} className="bg-red-500 hover:bg-red-700 text-white  py-2 px-20 rounded">Confirm</button></div>
+             <Link to={{ pathname: '/bookingsummary/', state: this.state }}> <div><button onClick={this.onConfirm} className="bg-red-500 hover:bg-red-700 text-white  py-2 px-20 rounded">Confirm</button></div></Link>
 
 
            </div> 
