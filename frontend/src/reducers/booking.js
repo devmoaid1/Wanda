@@ -23,8 +23,7 @@ export const bookingReducer=(state=initialState,action)=>{
         case MAKE_BOOKING:
                 return {...state} 
         
-         case GET_BOOKINGS:
-                return {...state,bookings:action.payload} 
+         
 
         case SET_LOADING:
                 return{...state,loading:action.payload}

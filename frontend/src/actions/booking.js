@@ -38,12 +38,14 @@ export const getCar=(id)=>dispatch=>{
     
 }  
 
-export const makeBooking=(booking,user)=>dispatch=>{
+export const makeBooking=(booking)=>dispatch=>{
+    dispatch(setLoading())
     axios.post('/api/bookings/',booking).then(res=>{
         toast.success(
-            'Booking for '+ user.username+' created succefully'
+            ' Payment was successfull and Booking created succefully'
         ); 
         dispatch({type:MAKE_BOOKING})
+        dispatch(unsetLoading()) 
         dispatch(push("/home"));
     }).catch(err=>{
         toastOnError(err);

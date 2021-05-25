@@ -1,4 +1,4 @@
-import React,{useEffect} from 'react'
+import React,{useEffect,useState} from 'react'
 import { useLocation} from 'react-router'
 import {Link} from 'react-router-dom'
 import { useSelector,useDispatch} from 'react-redux'
@@ -7,11 +7,16 @@ import {getDealership} from '../../actions/booking'
 import NavBarComponent from '../Components/navbar'
 import Footer from "../Components/footer"
 import Moment from 'react-moment';
+import Checkout from './Checkout' 
+
+
+
 function BookingSummary() { 
     const dispatch=useDispatch()
     const auth=useSelector((state)=>state.auth)
     const booking=useSelector((state)=>state.booking)
     const location=useLocation()
+    const [modal,setModal]=useState(false)
     const data=location.state
     useEffect(()=>{
         const car=data.car
@@ -43,7 +48,7 @@ function BookingSummary() {
                        </div>
                        <div className="flex h-1/3 mt-3 flex-row justify-between ">
                          <p className="text-lg font-normal">Date and time :</p>
-                         <Moment  className="text-lg font-medium" format="DD-MM-YYYY HH:mm">
+                         <Moment  className="text-lg font-medium" format="DD-MM-YYYY HH:mm A">
                           {data.date}            
                        </Moment>
                        </div>
@@ -56,9 +61,10 @@ function BookingSummary() {
                          <p className="text-lg font-medium">{booking.dealership.name}</p>
                        </div>
                        </div>
-                       <div className="flex h-1/5 mt-3 flex-row justify-between ">
+                       <div className="flex h-1/5 mt-3 w-full flex-row justify-between ">
                          <p className="hidden">Checkout</p>
-                        <Link to="/checkout/"> <button className="bg-red-500 hover:bg-red-400 text-white py-2 px-6 rounded">Checkout</button></Link>
+                         <button onClick={()=>setModal(true)} className=" w-full bg-red-500 hover:bg-red-400 text-white py-2 px-6 rounded">Checkout</button>
+                         <Checkout show={modal} bookingDetails={data} onHide={()=>setModal(false)}/>
                        </div>
                    </div> 
                    
