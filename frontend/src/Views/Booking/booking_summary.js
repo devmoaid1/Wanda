@@ -1,5 +1,6 @@
 import React,{useEffect} from 'react'
-import { useLocation } from 'react-router'
+import { useLocation} from 'react-router'
+import {Link} from 'react-router-dom'
 import { useSelector,useDispatch} from 'react-redux'
 import {logout} from '../../actions/login'
 import {getDealership} from '../../actions/booking'
@@ -57,7 +58,7 @@ function BookingSummary() {
                        </div>
                        <div className="flex h-1/5 mt-3 flex-row justify-between ">
                          <p className="hidden">Checkout</p>
-                         <button className="bg-red-500 hover:bg-red-400 text-white py-2 px-6 rounded">Checkout</button>
+                        <Link to="/checkout/"> <button className="bg-red-500 hover:bg-red-400 text-white py-2 px-6 rounded">Checkout</button></Link>
                        </div>
                    </div> 
                    
