@@ -173,12 +173,7 @@ class SignUpForm extends Component{
     <button type="submit"className="bg-red-500 hover:bg-red-600 text-white w-1/3 py-2 px-4 ml-4 mx-2 rounded">
   Sign Up
 </button>
-<Link to="/">
-<button  className=" block bg-red-500 hover:bg-red-600 text-white my-2 py-2 px-4 ml-4 rounded w-1/3" > 
-     
-   Login
- </button>
- </Link>
+<span className="block ml-4 mt-2">Already have an account? <span className="text-red-600 hover:text-red-800"><a href="/">login</a></span></span>
  
                     </form>
 
