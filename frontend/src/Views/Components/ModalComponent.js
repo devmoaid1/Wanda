@@ -19,7 +19,7 @@ function ModalComponent(props) {
         <Modal.Body>
          
           <h1>
-            Are You Sure You want to {props.action} Booking {props.id}?
+            Are You Sure You want to {props.action}{props.dealer}?
           </h1>
         </Modal.Body>
         <Modal.Footer>

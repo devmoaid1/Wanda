@@ -1,33 +1,34 @@
 import React from 'react'
 import {Modal,Button} from 'react-bootstrap'
-export default function ModalComponent(props) {
-
+import {useDispatch} from 'react-redux'
+import {Link} from 'react-router-dom' 
+function DealerModal(props) {
+    
+    const dispatch=useDispatch()
     return (
-        <div>
-             <Modal
-      {...props}
-      size="lg"
-      aria-labelledby="contained-modal-title-vcenter"
-      centered
+      <Modal
+        {...props}
+        size="lg"
+        aria-labelledby="contained-modal-title-vcenter"
+        centered
+      >
+        <Modal.Header closeButton>
+          <Modal.Title id="contained-modal-title-vcenter">
+            Confirmation Massage
+          </Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+         
+          <h1>
+            Are You Sure You want to Select This dealership?
+          </h1>
+        </Modal.Body>
+        <Modal.Footer>
+          <Link to={`/book/${props.car}/${props.dealer}`}><Button variant="success" >Yes</Button> </Link>
+          <Button variant="danger" onClick={props.onHide}>No</Button>
+        </Modal.Footer>
+      </Modal>
+    );
+  }
 
-    >
-      <Modal.Header closeButton>
-        <Modal.Title id="contained-modal-title-vcenter">
-          Modal heading
-        </Modal.Title>
-      </Modal.Header>
-      <Modal.Body>
-        <h4>{props.dealer.name}</h4>
-        <p>
-          Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
-          dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac
-          consectetur ac, vestibulum at eros.
-        </p>
-      </Modal.Body>
-      <Modal.Footer>
-        <Button onClick={props.onHide}>Close</Button>
-      </Modal.Footer>
-    </Modal>
-        </div>
-    )
-}
+export default DealerModal

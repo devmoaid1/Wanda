@@ -1,69 +1,49 @@
-import React ,{Component, Fragment,useState} from 'react'
+import React ,{ Fragment,useState,useEffect} from 'react'
 import {getDealerships} from '../../actions/dealerships'
-import propTypes from 'prop-types'
-import {connect} from 'react-redux'
-import {withRouter} from 'react-router-dom' 
+ 
 import {Link} from 'react-router-dom' 
-import {logout} from '../../actions/login' 
+
 import NavBarComponent from '../Components/navbar' 
 import Footer from '../Components/footer'
-import Modal from 'react-modal'
+import DealerModal from './modal'
+import { useSelector,useDispatch} from 'react-redux'
 
-Modal.setAppElement("#root")
-class SelectDealership extends Component{
+const SelectDealership=(props)=>{
 
- static propTypes={
-     getDealerships:propTypes.func.isRequired,
-     logout:propTypes.func.isRequired,
-     dealerships:propTypes.object.isRequired
- } 
-
- state={
-   isOpen:false
- }
-
- ModalHandler=(dealer)=>{ 
-   console.log(dealer.name)
-   if(dealer.id===1){
-    return(
-      <div>    <Modal  isOpen={this.state.isOpen} onRequestClose={this.onClose}>
-           <h1>Are You sure you want to select {dealer.name} ?</h1>
-           <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-2 mx-2 rounded">
-             Confirm
-         </button>  
-         <button onClick={this.onClose}>close</button>
-         </Modal> 
-         </div>
+  const dispatch=useDispatch()
+  const dealershipsState=useSelector((state)=>state.dealerships)
+  const auth=useSelector((state)=>state.auth)
+  const {car}=dealershipsState 
+  const [dealerId,setDealerId]=useState(0)
+  const [modalShow,setModalShow]=useState(false)
+  var nf = new Intl.NumberFormat();
+  const carId=props.match.params.carID
   
-    )
+ 
+  
+  
+  
+  
+  const onAction=()=>{
+    <Link to={`/book/${carId}/${dealerId}`} ></Link>
   }
   
-  
-   
 
-  
-}
-onSelect=()=>{
-  this.setState({isOpen:true})
-}
-onClose=()=>{
-  this.setState({isOpen:false})
-}
- componentDidMount(){ 
-    // const car= this.props.dealerships.car
-    const carId=this.props.match.params.carID
-     this.props.getDealerships(carId);
-     
-    
+  const onSelect=(id)=>{
+     setDealerId(id) 
+     setModalShow(true) 
+     console.log(id)
+  }
 
- } 
-componentDidUpdate(){
-    console.log(this.props.dealerships)
-}
 
- renderCarList(){
-    const {dealerships}=this.props.dealerships; 
-    const carID=this.props.match.params.carID
+ useEffect(()=>{
+  dispatch(getDealerships(carId)) 
+  console.log(dealerId)
+ },[])
+ 
+ const renderDealerList=()=>{
+    const {dealerships}=dealershipsState
+    const carID=props.match.params.carID
    
     return dealerships.map((item)=>( 
       
@@ -99,15 +79,15 @@ componentDidUpdate(){
 
 
         <div className="   flex flex-row mt-4 justfiy-center  ">
-       <Link to={`/book/${carID}/${item.id}`} > <button onClick={this.onSelect}  class="bg-red-600 hover:bg-red-700 text-white font-large py-2 px-2 mx-2 rounded">
+        <button onClick={()=>onSelect(item.id)} class="bg-red-600 hover:bg-red-700 text-white font-large py-2 px-2 mx-2 rounded">
         Select 
        </button>
-       </Link>
+       
      </div>  
-        
+         <DealerModal show={modalShow} onHide={()=>setModalShow(false)} onAction={onAction} dealer={dealerId} car={carID} />
 
         </div>  
-        {this.ModalHandler(item)}
+        
         </div>
       
           :null
@@ -116,14 +96,12 @@ componentDidUpdate(){
     ))
    } 
    
- render(){ 
+ 
 
-    const {car}=this.props.dealerships 
-    var nf = new Intl.NumberFormat();
      return( 
            <Fragment>
          <header>
-             <NavBarComponent user={this.props.auth} logout={this.props.logout}/>
+             <NavBarComponent user={auth} />
          </header>
         
          <div className="w-full h-full flex flex-row "> 
@@ -150,7 +128,7 @@ componentDidUpdate(){
          
          <div className="flex flex-col  w-full h-full ml-30 px-5 py-3  bg-white "> 
          <div className="justify-start ml-17  mx-auto"> <h1 className="text-3xl font-bold "> Select Dealer</h1></div>   
-         {this.renderCarList()}
+         {renderDealerList()}
          
 
 
@@ -168,13 +146,10 @@ componentDidUpdate(){
 
 
 
-} 
+
 
  
 
-const mapStateToProps=state=>({
-   dealerships:state.dealerships,
-   auth:state.auth
-})
 
-export default connect(mapStateToProps,{getDealerships,logout})(withRouter(SelectDealership))
+
+export default SelectDealership
