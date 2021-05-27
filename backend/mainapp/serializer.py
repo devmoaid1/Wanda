@@ -13,7 +13,12 @@ class CarSerializer(serializers.ModelSerializer):
 class BookingSerializer(serializers.ModelSerializer):
     class Meta:
         model = Booking
-        fields = '__all__'
+        fields = ('status',
+                  'car',
+                  'created_by',
+                  'dealership',
+                  )
+        date = serializers.DateField(format=None, input_formats=None)
 
 
 class DealershipSerializer(serializers.ModelSerializer):

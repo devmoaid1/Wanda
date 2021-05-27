@@ -1,35 +1,35 @@
-import React,{Component} from 'react' 
-//import axios from 'axios';
+import React,{useState,useEffect} from 'react' 
+
 import 'bootstrap/dist/css/bootstrap.min.css'; 
-import {connect} from 'react-redux'
+
+import { useSelector,useDispatch} from 'react-redux'
 import getCars from '../../actions/cars'
-import propTypes from 'prop-types' 
+ 
 import {Link} from 'react-router-dom' 
 import NavBarComponent from '../Components/navbar'
 import bgphoto from'../../images/bgphoto.jpg' 
 import {logout} from '../../actions/login' 
-import { withRouter } from "react-router-dom"; 
+
 import Footer from '../Components/footer'
 
 
-class CarsView extends Component{
+const CarsView =()=>{
  
-  componentDidUpdate(prevProps, prevState) {
-    console.log(this.props.auth.user)
-    console.log(this.props.auth.token)
-  }
+   const dispatch=useDispatch()
+   const carsState=useSelector((state)=>state.cars) 
+   const auth =useSelector((state)=>state.auth) 
+   const [carsList,setCars]=useState(null)
+   useEffect(()=>{
+    dispatch(getCars()) 
+    setCars(carsState.cars)
+     
     
-    
-    componentDidMount(){
-      
-     this.props.getCars(); 
-     console.log(this.props.auth);
-      
-    }
-    
-   renderCarList(){
-    const newitems=this.props.cars;
-    //let path=`/catalog/${item.id}`
+   },[])
+  
+   console.log(carsList)
+  const renderCarList=()=>{
+    const newitems=carsState.cars;
+   
     return newitems.map((item)=>( 
       
       <div className=" flex flex-col   rounded-md bg-white ml-3 mr-3 overflow-hidden shadow-lg hover:shadow-xlg h-full " key={item.id}>
@@ -57,18 +57,15 @@ class CarsView extends Component{
     ))
    } 
 
-   static propTypes={
-     cars:propTypes.array.isRequired,
-     logout:propTypes.func.isRequired
-   }
+  
  
-    render(){
+   
 
     return( 
         
         
         <div className="w-full h-full"> 
-        <NavBarComponent logout={this.props.logout} user={this.props.auth}/>
+        <NavBarComponent logout={logout} user={auth}/>
         
           <div 
           className="relative flex items-center justify-center w-full h-4/6 object-contain bg-cover bg-center bg-fixed bg-no-repeat "
@@ -86,7 +83,7 @@ class CarsView extends Component{
            <div><h1 className="text-3xl bold ml-20 mt-10">Latest Cars</h1></div>  
           <div className=" w-full h-1/2 my-10  lg:grid grid-cols-3 grid-row-2 gap-3 sm:grid grid-cols-1 gap-5">
          
-          {this.renderCarList()}
+          {renderCarList()}
           </div>
           <footer>
           <Footer/>
@@ -104,14 +101,11 @@ class CarsView extends Component{
 
 
     )
- } 
+  
 
 
 } 
 
-const mapStateToProps=state=>({
- cars:state.cars.cars,
- auth:state.auth
-})
 
-export default connect(mapStateToProps,{getCars,logout})(withRouter(CarsView));
+
+export default CarsView;

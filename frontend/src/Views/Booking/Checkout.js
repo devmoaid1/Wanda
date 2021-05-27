@@ -12,7 +12,7 @@ import { Elements } from "@stripe/react-stripe-js";
 import {makeBooking} from '../../actions/booking' 
 import {Spinner} from 'react-bootstrap'
 import Moment from 'react-moment';
-
+import moment from 'moment'
 
 
 
@@ -24,7 +24,7 @@ const CheckoutForm = (props) => {
   const bookingState=useSelector((state)=>state.booking)
   const loading=bookingState.loading
   const dispatch=useDispatch()
-  const date= <Moment   format="YYYY-MM-DD HH:mm ">
+  const date= <Moment   format="YYYY-MM-DDT +hh:mm ">
   {bookingData.date}            
      </Moment>
   console.log(loading,bookingData,date.props.children)
@@ -50,7 +50,7 @@ const CheckoutForm = (props) => {
     formData.set("car",bookingData.car)
     formData.set("created_by",bookingData.created_by)
     formData.set("dealership",bookingData.dealership)
-    formData.set("date",bookingData.date)
+    formData.set("date",date.props.children.toString())
     formData.set("status",bookingData.status)
     dispatch(makeBooking(formData))
     props.onHide()

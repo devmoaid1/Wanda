@@ -22,8 +22,7 @@ function BookingSummary() {
         const car=data.car
         const dealer= data.dealership
         dispatch(getDealership(car,dealer))
-        console.log(data)
-        console.log(booking)
+        
     },[])
     return (
         <div className="h-screen bg-gray-100"> 
