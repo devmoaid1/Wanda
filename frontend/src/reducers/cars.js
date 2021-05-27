@@ -1,17 +1,31 @@
-import GET_CARS from '../actions/types';
+import GET_CARS ,{SET_LOADING,UNSET_LOADING} from '../actions/types';
 
 
 const initialState={
-    cars:[]
+    cars:[],
+    loading:true
 }
 
 
  function carsReducer(state=initialState,action){
-   if(action.type===GET_CARS){
-       return{...state,cars:action.payload}
-   }
-   else 
-   return state;
+    switch(action.type){
+        case GET_CARS:
+            return{...state,cars:action.payload};
+    
+
+        case SET_LOADING:
+            return{...state,loading:action.payload}
+                   
+        case UNSET_LOADING:
+            return{...state,loading:action.payload}   
+
+         default:
+             return state;
+    
+    
+    
+    
+         }
 }
 export default carsReducer;
    

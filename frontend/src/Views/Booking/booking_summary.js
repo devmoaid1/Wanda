@@ -11,7 +11,7 @@ import Checkout from './Checkout'
 
 
 
-function BookingSummary() { 
+const BookingSummary=()=> { 
     const dispatch=useDispatch()
     const auth=useSelector((state)=>state.auth)
     const booking=useSelector((state)=>state.booking)

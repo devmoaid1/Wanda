@@ -8,10 +8,10 @@ import getCars from '../../actions/cars'
 import {Link} from 'react-router-dom' 
 import NavBarComponent from '../Components/navbar'
 import bgphoto from'../../images/bgphoto.jpg' 
-import {logout} from '../../actions/login' 
+ 
 
 import Footer from '../Components/footer'
-
+import Loader from '../Components/loader'
 
 const CarsView =()=>{
  
@@ -63,9 +63,12 @@ const CarsView =()=>{
 
     return( 
         
+     
+
+         
         
         <div className="w-full h-full"> 
-        <NavBarComponent logout={logout} user={auth}/>
+        <NavBarComponent  user={auth}/>
         
           <div 
           className="relative flex items-center justify-center w-full h-4/6 object-contain bg-cover bg-center bg-fixed bg-no-repeat "
@@ -97,8 +100,7 @@ const CarsView =()=>{
         
        
         </div>
-       
-
+      
 
     )
   
