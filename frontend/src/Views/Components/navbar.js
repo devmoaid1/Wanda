@@ -32,7 +32,7 @@ const NavBarComponent =(props)=> {
 
            <div className="inline-block justify-left ml-7">
              <span className="text-xl mr-4  focus:ring-white"><a className=" hover:purple-700" href="/home/">Home</a></span>
-             <span  className="text-xl mr-4"><a href="/cars/">Cars</a></span>
+             <span  className="text-xl mr-4"><a href="/bookingslist/">Bookings</a></span>
            <span  className="text-xl mr-4 hover:purple-700"><a  onClick={onLogout} href="#">Logout</a></span>
            </div> 
              <div className=" inline-block w-2/3 bg-red-300"></div>
