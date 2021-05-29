@@ -28,7 +28,7 @@ function ManageBookings() {
         setModalShow(true)
     }
     
-    const bookingStatus=(status)=>{
+   const bookingStatus=(status)=>{
         if(status==="pending"){
 
            return <span class="rounded bg-yellow-500 py-1 px-3 text-xs text-white font-semibold">{status}</span>
