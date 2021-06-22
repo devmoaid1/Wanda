@@ -8,10 +8,10 @@ export  const BarChar=()=> {
     <div>
       <Bar
         data={{
-          labels:["red","green","blue","yellow"],
+          labels:["red","green","blue","yellow","brown"],
           datasets: [{
-            label: 'Dealerships sales',
-            data: [12, 19, 3, 5, 2, 3],
+            label: 'Dealership sales in EGP',
+            data: [1200000, 190000, 300000, 50000, 20000, 3000],
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
                 'rgba(54, 162, 235, 0.2)',

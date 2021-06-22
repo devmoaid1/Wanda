@@ -99,7 +99,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
                     
                     
             
-            <div className="h-32"></div>
+            <div className="h-10"></div>
         </div>
 
        </div>
