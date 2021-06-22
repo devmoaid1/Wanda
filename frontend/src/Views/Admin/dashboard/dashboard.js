@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { useSelector,useDispatch} from 'react-redux'
-import PieChar from './DongutChart'
+import {BarChar} from './DongutChart'
 import Sidebar from '../../Components/Sidebar'
 import Loader from '../../Components/loader'
 
@@ -92,12 +92,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 
             
-            <div className=" mx-auto  px-3 ml-5 flex flex-col items-center  w-1/4 h-68 rounded shadow-lg hover:shadow-xl" >
-                <div> <h1 className="text-2xl">Dealerships sales ratio</h1></div>
-                    <div className="mx-auto ">
-                    <PieChar data={dashboard.sales}/>
-                    </div>
-            </div>
+                      <div className=" w-3/4 rounded shadow-lg p-4 mx-auto mt-10">
+
+                    <BarChar />
+                      </div>
+                    
+                    
+            
             <div className="h-32"></div>
         </div>
 
