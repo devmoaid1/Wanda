@@ -14,6 +14,7 @@ class BookingSerializer(serializers.ModelSerializer):
     class Meta:
         model = Booking
         fields = ('status',
+                  'id',
                   'car',
                   'created_by',
                   'dealership',
