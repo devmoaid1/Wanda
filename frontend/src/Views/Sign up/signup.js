@@ -2,9 +2,8 @@ import React,{Component,Fragment} from 'react';
 
 import logphoto from '../../images/loginphoto.jpeg' 
 import {connect} from 'react-redux'
-import { push } from "connected-react-router";
 import '../Login/login.css'
-import { withRouter,Link } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import PropTypes from "prop-types"; 
 import signUpNewUser from '../../actions/signup' 
 import {

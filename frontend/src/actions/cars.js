@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 import GET_CARS from '../actions/types'
-import {setLoading,unsetLoading} from './login'
+import {unsetLoading} from './login'
 
 //get cars action
 const getCars=()=>dispatch=>{

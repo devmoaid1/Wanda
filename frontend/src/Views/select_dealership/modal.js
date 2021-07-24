@@ -1,10 +1,9 @@
 import React from 'react'
 import {Modal,Button} from 'react-bootstrap'
-import {useDispatch} from 'react-redux'
 import {Link} from 'react-router-dom' 
 function DealerModal(props) {
     
-    const dispatch=useDispatch()
+    
     return (
       <Modal
         {...props}

@@ -16,9 +16,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
     
       useEffect(()=>{
         dispatch(getDealers())          
-         console.log(dashboard)
+        console.log(dashboard)
       },[])
-   
+      
     return (
 
 
@@ -94,7 +94,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
             
                       <div className=" w-3/4 rounded shadow-lg p-4 mx-auto mt-10">
 
-                    <BarChar />
+                    <BarChar labels={dashboard.sales[0]} data={dashboard.sales[1]}/>
                       </div>
                     
                     

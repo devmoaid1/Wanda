@@ -11,7 +11,7 @@ import bgphoto from'../../images/bgphoto.jpg'
  
 
 import Footer from '../Components/footer'
-import Loader from '../Components/loader'
+
 
 const CarsView =()=>{
  

@@ -1,5 +1,5 @@
-import React,{Component} from 'react'; 
-import { useSelector,useDispatch} from 'react-redux'
+import React from 'react'; 
+import {useDispatch} from 'react-redux'
 import logo from'../../images/Group 1.svg'
 import './navbar.css'
 import {logout} from '../../actions/login'
@@ -12,12 +12,7 @@ const NavBarComponent =(props)=> {
    const onLogout=()=>{
      dispatch(logout())
    }
-    
-
-   
-
-  
-  
+      
     const user=props.user.user
     
     return (

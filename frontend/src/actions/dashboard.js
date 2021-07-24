@@ -23,6 +23,7 @@ export const getDealers=()=>dispatch=>{
     });
 }  
 
+// get the biggest dealership sales
 export const getMostSales=(dealers)=>dispatch=>{
     let biggest={};      
     let bigger=0;
@@ -47,6 +48,7 @@ export const getMostSales=(dealers)=>dispatch=>{
 
 } 
 
+// get total sales of all dealerships
 export const getTotalSales=(dealers)=>dispatch=>{
           
     let total=0;
@@ -66,15 +68,18 @@ export const getTotalSales=(dealers)=>dispatch=>{
 
 export const getSalesList=(dealers)=>dispatch=>{
           
-    let dealer={name:'',
-value:0};
-     let salesList=[]
+
+    let dealersNames=[]
+    let dealersSales=[]
     
+    let salesList=[]
     for(let i=0;i<dealers.length;i++){
-       dealer={name:dealers[i].name,value:dealers[i].sales} 
-       salesList.push(dealer)
+       dealersNames.push(dealers[i].name)
+       dealersSales.push(dealers[i].sales)
     }
     
+    salesList.push(dealersNames)
+    salesList.push(dealersSales)
     
     dispatch({
         type:GET_DEALERS_SALES,

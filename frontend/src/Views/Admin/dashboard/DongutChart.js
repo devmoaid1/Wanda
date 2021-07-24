@@ -1,17 +1,18 @@
 import { Bar} from "react-chartjs-2";
 import React from "react"
 
-export  const BarChar=()=> { 
-
-    // const data=props.data
+export  const BarChar=(props)=> { 
+     
+  const labels=props.labels
+  const data=props.data
   return (
     <div>
       <Bar
         data={{
-          labels:["red","green","blue","yellow","brown"],
+          labels:labels,
           datasets: [{
             label: 'Dealership sales in EGP',
-            data: [1200000, 190000, 300000, 50000, 20000, 3000],
+            data: data,
             backgroundColor: [
                 'rgba(255, 99, 132, 0.7)',
                 'rgba(54, 162, 235, 0.7)',

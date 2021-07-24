@@ -3,7 +3,7 @@ import { useSelector,useDispatch} from 'react-redux'
 import{updateProfile} from '../../../actions/login'
 import {Spinner} from "react-bootstrap"
 import Sidebar from '../../Components/Sidebar'
-import { toast } from "react-toastify";
+
 function AdminProfile() { 
 
     const auth=useSelector((state)=>state.auth)
@@ -92,11 +92,6 @@ function AdminProfile() {
 
                   </li>
                 </ul>
-               
-
-                
-
-               
                 
                  </div>
                                 
