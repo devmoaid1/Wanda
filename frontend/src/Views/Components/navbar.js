@@ -19,7 +19,7 @@ const NavBarComponent =(props)=> {
       
       <div style={{background:'#091c29'}}>
         <div className="flex flex-row items-center  w-10/12 mx-auto py-1 text-white"> 
-          <div className="flex flex-row justify-left pt-2  text-white"><img width="100"
+          <div className="flex flex-row justify-left pt-2 mt-1  text-white"><img width="100"
           height="100"  src={logo} alt="logo"></img>        
           
            

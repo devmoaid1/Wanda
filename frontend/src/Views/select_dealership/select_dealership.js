@@ -105,19 +105,19 @@ const SelectDealership=(props)=>{
          </header>
         
          <div className="w-full h-full flex flex-row "> 
-         <div className=" card hover:shadow-lg w-1/2 h-1/3 my-20 ml-12 flex flex-col space-y-5 divide-y-2 divide-gray-200 shadow-md bg-white overflow-hidden ">
+         <div className=" card hover:shadow-lg w-1/2 h-1/3 my-20 ml-12 flex flex-col space-y-3 divide-y-2 divide-gray-200 shadow-md bg-white overflow-hidden ">
          <img  className="w-full h-60 sm:h-64 object-cover " src={car.picture} alt="carphoto"></img> 
         
            <div className=" flex flex-col space-y-6 p-4 h-full">
          <h1 className="text-3xl font-bold">{car.name}</h1> 
         
          <div> 
-         <span className="text-md font-medium text-gray-700  mt-15 ">Price : {nf.format(car.price)} <span >EGP</span></span>
+         <span className="text-md font-semibold text-gray-700  mt-10 ">Price : {nf.format(car.price)} <span >EGP</span></span>
          </div>
 
           <div className="w-full">
          
-         <span className="text-md font-medium text-gray-700 mt-8 text-justify">Model : <span className="text-md text-gray-700"> {car.year} </span> </span>
+         <span className="text-md font-semibold text-gray-700 mt-4 text-justify">Model : <span className="text-md text-gray-700"> {car.year} </span> </span>
          </div> 
        
          </div>

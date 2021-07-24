@@ -37,7 +37,7 @@ function AddReport(props) {
                  <form>
           <div>
 
-       <label className="block text-gray-700 text-sm font-semibold mb-2" htmlFor="username">
+       <label className="block text-gray-700 text-sm font-semibold mb-2" htmlFor="title">
          title
        </label>
        <input  onChange={(e)=>setTitle(e.target.value)} className="border border-transparent focus:outline-none focus:ring-2 focus:ring-pink-400 focus:border-transparent rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:shadow-outline" name="title" type="text" placeholder="title"/>
@@ -46,10 +46,10 @@ function AddReport(props) {
 
           <div>
 
-       <label className="block text-gray-700 text-sm font-semibold mb-2" htmlFor="username">
+       <label className="block text-gray-700 text-sm font-semibold mb-2" htmlFor="content">
          Content
        </label>
-       <input  onChange={(e)=>setContent(e.target.value)} className="border border-transparent focus:outline-none focus:ring-2 focus:ring-pink-400 focus:border-transparent rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:shadow-outline" name="title" type="text" placeholder="title"/>
+       <input  onChange={(e)=>setContent(e.target.value)} className="border border-transparent focus:outline-none focus:ring-2 focus:ring-pink-400 focus:border-transparent rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:shadow-outline" name="content" type="text" placeholder="content"/>
       
           </div>
 

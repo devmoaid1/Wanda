@@ -21,7 +21,7 @@ const BookingSummary=()=> {
     useEffect(()=>{
         const car=data.car
         const dealer= data.dealership
-        dispatch(getDealership(car,dealer))
+        dispatch(getDealership(dealer,car))
         
     },[])
     return (
@@ -39,28 +39,28 @@ const BookingSummary=()=> {
                    <img className="h-full w-full" src={booking.car.picture} alt="car"></img>
                    </div> 
 
-                   <div className=" flex flex-col space-y-6  p-6 w-2/3 bg-white ">
+                   <div className=" flex flex-col space-y-6  p-4 w-2/3 bg-white ">
                        <div className="flex flex-col divide-y-2 divide-gray-400 divide-dashed space-y-6">
-                       <div className="flex flex-row justify-between ">
+                       <div className="flex flex-row justify-between py-1">
                          <p className="text-lg font-normal">SubTotal :</p>
                          <p className="text-lg font-medium">{booking.car.price} EGP</p>
                        </div>
-                       <div className="flex h-1/3 mt-3 flex-row justify-between ">
+                       <div className="flex h-1/3 mt-3 flex-row justify-between py-1 ">
                          <p className="text-lg font-normal">Date and time :</p>
                          <Moment  className="text-lg font-medium" format="DD-MM-YYYY HH:mm A">
                           {data.date}            
                        </Moment>
                        </div>
-                       <div className="flex h-1/3 mt-3 flex-row justify-between ">
+                       <div className="flex h-1/3 mt-3 flex-row justify-between py-1 ">
                          <p className="text-lg font-normal">Car Name :</p>
                          <p className="text-lg font-medium">{booking.car.name}</p>
                        </div>
-                       <div className="flex h-1/3 mt-3 flex-row justify-between ">
+                       <div className="flex h-1/3 mt-3 flex-row justify-between py-1">
                          <p className="text-lg font-normal">DealerShip Name :</p>
                          <p className="text-lg font-medium">{booking.dealership.name}</p>
                        </div>
                        </div>
-                       <div className="flex h-1/5 mt-3 w-full flex-row justify-between ">
+                       <div className="flex h-1/5 mt-2 w-full flex-row justify-between ">
                          <p className="hidden">Checkout</p>
                          <button onClick={()=>setModal(true)} className=" w-full bg-red-500 hover:bg-red-400 text-white py-2 px-6 rounded">Checkout</button>
                          <Checkout show={modal} bookingDetails={data} onHide={()=>setModal(false)}/>
