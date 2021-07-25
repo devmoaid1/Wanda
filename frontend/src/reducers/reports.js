@@ -1,8 +1,9 @@
-import {GET_REPORTS,DELETE_REPORT,ADD_REPORT,SET_LOADING,UNSET_LOADING} from '../actions/types' 
+import {GET_REPORTS,DELETE_REPORT,ADD_REPORT,SET_LOADING,UNSET_LOADING,GET_REPORT} from '../actions/types' 
 
 
 const initialState={
     reports:[],
+    report:{},
     loading:false
 }
 
@@ -14,6 +15,9 @@ export const reportsReducer=(state=initialState,action)=>{
 
     case GET_REPORTS:
          return {...state,reports:action.payload}
+
+    case GET_REPORT:
+          return {...state,report:action.payload}    
 
     case DELETE_REPORT:
      return {
@@ -34,11 +38,6 @@ export const reportsReducer=(state=initialState,action)=>{
 
         default:
             return state
-
-
-
-
-
 
  }
 
