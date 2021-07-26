@@ -31,7 +31,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
         <div className="grid grid-cols-5">
 
 
-          <Sidebar user={auth.user} />
+          <Sidebar user={auth.user} page={"dashboard"}/>
 
 
 

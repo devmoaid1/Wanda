@@ -32,7 +32,7 @@ function AdminProfile() {
     return (
         <div className="grid grid-cols-5 ">
             
-            <Sidebar user={auth.user}/>
+            <Sidebar user={auth.user} page={"profile"}/>
 
             <div className=" p-10 col-span-4 h-screen">
             

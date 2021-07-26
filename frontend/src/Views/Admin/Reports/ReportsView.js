@@ -71,7 +71,7 @@ function ReportsView() {
         <td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b text-center block lg:table-cell relative lg:static">
             <span class="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">Actions</span>
             <a href="#" onClick={()=>onDelete(report.id)}  class="text-red-500 hover:text-red-700 pl-6">Delete</a>
-            <a href={`/reports/${report.id}`}  class="text-blue-500 hover:text-red-700 pl-6">View</a> 
+            <a href={`/report/${report.id}`}  class="text-blue-500 hover:text-blue-800 pl-6">View</a> 
             
         </td>
        </tr> 
@@ -96,7 +96,7 @@ function ReportsView() {
             <Loader/>:
         
         <div className="grid grid-cols-5">
-             <Sidebar user={auth.user}/>
+             <Sidebar user={auth.user} page={"reports"}/>
             <div className=' flex flex-col space-y-20 py-10 px-10 col-span-4 h-screen'>
             <div>
                <h1 className="text-3xl font-semibold font-body "> Reports List </h1> 

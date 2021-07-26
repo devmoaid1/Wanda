@@ -27,14 +27,16 @@ function ReportDetailsView(props){
           <Loader/>:
         <div className="grid grid-cols-5 ">
             <div className="h-screen">
-
-            <Sidebar user={auth.user}/>
+            <Sidebar user={auth.user} page={"reports"}/>
             </div>
-            <div className="col-span-4"> 
 
-            <h1> this  report details page</h1>
-            <h1> {report.title}</h1>
-            <h1>{report.content}</h1>
+            <div className="col-span-4"> 
+            <div className="flex flex-col p-4">
+           
+            <h1 className="text-2xl font-bold"> {report.title}</h1>
+            <h1 className="text-2xl font-Semibold">{report.description}</h1>
+
+            </div>
             
             </div>
         </div>

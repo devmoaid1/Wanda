@@ -1,67 +1,36 @@
-import React, { Component,Fragment } from 'react'
+
 import NavBarComponent from '../Components/navbar'
 import Footer from '../Components/footer'
-import propTypes from 'prop-types'
-import {connect} from 'react-redux'
-import {withRouter} from 'react-router-dom' 
-// import {Link} from 'react-router-dom' 
-import {logout} from '../../actions/login'
-import {updateProfile} from '../../actions/login' 
-import {Spinner} from "react-bootstrap"
-class EditProfile extends Component {
+import React, {useState ,useEffect} from 'react'
+import { useSelector,useDispatch} from 'react-redux'
+import{updateProfile} from '../../actions/login'
+import {Spinner} from "react-bootstrap" 
+
+
+const EditProfile=()=>{
    
-    static propTypes={
-        
-        logout:propTypes.func.isRequired,
-        updateProfile:propTypes.func.isRequired
-        
-    } 
+  const auth=useSelector((state)=>state.auth)
+  const dispatch=useDispatch() 
 
-    state={
-        email:"",
-        phone:"",
-        address:"",
-        pic:null
-    }
+  const [email,setEmail]=useState("")
+  const [phone,setPhone]=useState("")
+  const [address,setAddress]=useState("")
+  const [pic,setPic]=useState(null) 
 
-    handleChange=(e)=>{
-        if(e.target.name==="pic"){
-            this.setState({
-              pic: e.target.files[0]
-                
-            });
-          }else{
-            this.setState({
-              [e.target.name]: e.target.value
-                
-            });
-          }
-          
-          
-          console.log( this.state,e.target.value,e.target.name)
-    }
-    
-
-    handleSubmit=(e)=>{
-        e.preventDefault()
-        let formdata= new FormData() 
-        
-       formdata.append('email',this.state.email)
-       formdata.append('phone',this.state.phone)
-       formdata.append('address',this.state.address)
-       formdata.append('pic',this.state.pic)
-
-       this.props.updateProfile(formdata) 
-       
-
-    }
-
-    render() {
-        const user=this.props.auth.user
+  const handleSubmit=(e)=>{
+    e.preventDefault()
+    let formData=new FormData()
+    formData.set("email",email)
+    formData.set("phone",phone)
+    formData.set("addres",address)
+    formData.set("pic",pic)
+    dispatch(updateProfile(formData,"/editprofile/"))    
+}
+        const user=auth.user
         return (
             <>
                 <header>
-                    <NavBarComponent user={this.props.auth} logout={this.props.logout} />
+                    <NavBarComponent user={auth}  />
                 </header>
 
 
@@ -111,30 +80,30 @@ class EditProfile extends Component {
 
                     <h1 className="text-3xl font-semibold"> Edit Profile</h1>
                     <div className="h-5"></div>
-                     <form onSubmit={this.handleSubmit} className="flex flex-col">
+                     <form onSubmit={handleSubmit} className="flex flex-col">
                      <label className="block text-gray-700 text-sm font-semibold mb-2" htmlFor="email">
          Email
        </label>
-       <input  onChange={this.handleChange} className="border border-transparent focus:outline-none focus:ring-2 focus:ring-pink-400 focus:border-transparent rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:shadow-outline" name="email" type="email" placeholder={user.email}/>
+       <input   onChange={(e)=>setEmail(e.target.value)} className="border border-transparent focus:outline-none focus:ring-2 focus:ring-pink-400 focus:border-transparent rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:shadow-outline" name="email" type="email" placeholder={user.email}/>
                         
        <label className="block text-gray-700 text-sm font-semibold mb-2" htmlFor="phone">
          Phone Number
        </label>
-       <input  onChange={this.handleChange} className="border border-transparent focus:outline-none focus:ring-2 focus:ring-pink-400 focus:border-transparent rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:shadow-outline" name="phone" type="text" placeholder={user.phone}/>
+       <input  onChange={(e)=>setPhone(e.target.value)} className="border border-transparent focus:outline-none focus:ring-2 focus:ring-pink-400 focus:border-transparent rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:shadow-outline" name="phone" type="text" placeholder={user.phone}/>
 
        <label className="block text-gray-700 text-sm font-semibold mb-2" htmlFor="phone">
          Address
        </label>
-       <input  onChange={this.handleChange} className="border border-transparent focus:outline-none focus:ring-2 focus:ring-pink-400 focus:border-transparent rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:shadow-outline" name="address" type="text" placeholder={user.address}/>
+       <input   onChange={(e)=>setAddress(e.target.value)} className="border border-transparent focus:outline-none focus:ring-2 focus:ring-pink-400 focus:border-transparent rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:shadow-outline" name="address" type="text" placeholder={user.address}/>
 
        <label className="block text-gray-700 text-sm font-semibold mb-2" htmlFor="phone">
         Profile Picture
        </label>
-       <input  onChange={this.handleChange} className=" rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:shadow-outline" name="pic" type="file" placeholder={user.pic}/>
+       <input  onChange={(e)=>setPic(e.target.files[0])} className=" rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:shadow-outline" name="pic" type="file" placeholder={user.pic}/>
 
        <button type="submit"className="bg-red-500 hover:bg-red-400 text-white text-xl  py-2 px-4 ml-4 mx-2 rounded">
        { 
-      this.props.auth.loading===true?       
+      auth.loading===true?       
       
       <Spinner
       as="span"
@@ -164,12 +133,8 @@ class EditProfile extends Component {
             </>
         )
     }
-}
 
-const mapStateToProps=state=>({
-    
-    auth:state.auth,
-    editProfile:state.editProfile
- }) 
 
- export default connect(mapStateToProps,{logout,updateProfile})(withRouter(EditProfile))
+ 
+
+ export default EditProfile
