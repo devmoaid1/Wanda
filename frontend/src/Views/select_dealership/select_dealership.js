@@ -84,7 +84,7 @@ const SelectDealership=(props)=>{
        </button>
        
      </div>  
-         <DealerModal show={modalShow} onHide={()=>setModalShow(false)} onAction={onAction} dealer={dealerId} car={carID} />
+        <DealerModal show={modalShow} onHide={()=>setModalShow(false)} onAction={onAction} dealer={dealerId} car={carID} />
 
         </div>  
         

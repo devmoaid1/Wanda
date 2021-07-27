@@ -10,6 +10,7 @@ import {Spinner} from "react-bootstrap"
 const EditProfile=()=>{
    
   const auth=useSelector((state)=>state.auth)
+  const user=auth.user
   const dispatch=useDispatch() 
 
   const [email,setEmail]=useState("")
@@ -26,7 +27,6 @@ const EditProfile=()=>{
     formData.set("pic",pic)
     dispatch(updateProfile(formData,"/editprofile/"))    
 }
-        const user=auth.user
         return (
             <>
                 <header>

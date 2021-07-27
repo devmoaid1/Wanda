@@ -14,7 +14,7 @@ export const login=(userData,redirectTo)=>dispatch=>{
         dispatch(unsetLoading())
     }).catch(err=>{
       dispatch(unsetCurrentUser());
-      toastOnError(JSON.stringify(err));
+      toastOnError("Username or Password are invalid");
     });
         
 } 

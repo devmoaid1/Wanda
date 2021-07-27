@@ -1,14 +1,11 @@
 import React,{useState,useEffect} from 'react' 
-
-import 'bootstrap/dist/css/bootstrap.min.css'; 
-
 import { useSelector,useDispatch} from 'react-redux'
-import getCars from '../../actions/cars'
- 
 import {Link} from 'react-router-dom' 
 import NavBarComponent from '../Components/navbar'
 import bgphoto from'../../images/bgphoto.jpg' 
- 
+import getCars from '../../actions/cars'
+import CarContainer from './car_container'
+import 'bootstrap/dist/css/bootstrap.min.css'; 
 
 import Footer from '../Components/footer'
 
@@ -16,41 +13,21 @@ import Footer from '../Components/footer'
 const CarsView =()=>{
  
    const dispatch=useDispatch()
-   const carsState=useSelector((state)=>state.cars) 
+   const homeState=useSelector((state)=>state.cars) 
    const auth =useSelector((state)=>state.auth) 
-   const [carsList,setCars]=useState(null)
+   
    useEffect(()=>{
     dispatch(getCars()) 
-    setCars(carsState.cars)
-     
     
    },[])
   
-   console.log(carsList)
+   
   const renderCarList=()=>{
-    const newitems=carsState.cars;
+    const newitems=homeState.cars;
    
     return newitems.map((item)=>( 
       
-      <div className=" flex flex-col   rounded-md bg-white ml-3 mr-3 overflow-hidden shadow-lg hover:shadow-xlg h-full " key={item.id}>
-        <div className="w-full h-1/2">
-        <img src={item.picture} className="w-full h-full" alt="pic"></img>
-        </div>
-        <div className="flex flex-col px-3 space-y-6">
-        <h1 className="text-2xl font-semibold ">{item.name}</h1>
-      
-        <span className="block font-medium text-gray-600">{(item.price).toLocaleString('en')} Egp</span> 
-
-        <div className="inline-block ">
-        <Link to={`/select/${item.id}`}> <button class="bg-red-600 hover:bg-red-700 text-white font-large py-2 px-8  rounded">
-  Book Now
-</button></Link>
-<Link to={`/catalog/${item.id}`}> <button class="bg-gray-800 hover:bg-gray-700 text-white font-large py-2 px-4  rounded">
-  View Catalog
-</button> </Link>
-        </div>     
-        </div>
-      </div>
+      <CarContainer car={item}/>
 
 
 
