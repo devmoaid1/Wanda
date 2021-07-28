@@ -1,8 +1,9 @@
-import GET_CARS ,{SET_LOADING,UNSET_LOADING} from '../actions/types';
+import GET_CARS ,{GET_CAR,SET_LOADING,UNSET_LOADING} from '../actions/types';
 
 
 const initialState={
     cars:[],
+    car:{},
     loading:true
 }
 
@@ -11,6 +12,9 @@ const initialState={
     switch(action.type){
         case GET_CARS:
             return{...state,cars:action.payload};
+
+        case GET_CAR:
+            return{...state,car:action.payload};
     
 
         case SET_LOADING:

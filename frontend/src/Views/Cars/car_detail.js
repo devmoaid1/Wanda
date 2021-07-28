@@ -1,44 +1,31 @@
-import React ,{ Component, Fragment } from "react"
-import axios from 'axios'
+import React ,{ useEffect, Fragment } from "react"
+import { useSelector,useDispatch} from 'react-redux'
 import video from '../../videos/Overview- The innovative features of the all-new BMW 7 Series.---youtube-downloader---www.download.tube.mp4'
 import NavBarComponent from "../Components/navbar" 
-import propTypes from 'prop-types'
-import {logout} from'../../actions/login' 
-import {connect} from 'react-redux'
-import {withRouter,Link} from 'react-router-dom'
+import {Link} from 'react-router-dom'
 import Footer from '../Components/footer'
-
-class CarDetail extends Component{
-   
-     state={
-         car:{}
-     }
-      
-
-    async componentDidMount(){ 
-      const carId=this.props.match.params.carID
-      console.log(carId)
-      axios.get(`/api/cars/${carId}`).then(res=>this.setState({
-          car:res.data
-      }));
-
-      console.log(video)
+import { getCarById } from "../../actions/cars"
+const CarDetail =(props)=>{
         
+      const carState=useSelector((state)=>state.cars)
+      const auth=useSelector((state)=>state.auth)
+      const dispatch=useDispatch()
+      const car=carState.car
 
-     } 
+      useEffect(()=>{
+          const carId=props.match.params.carID
+          dispatch(getCarById(carId))
+          console.log(carState)
 
-     static propTypes={
-        
-        logout:propTypes.func.isRequired
-      }
-    render() {
-        const car=this.state.car
+      },[])
+
+
           return(
            <Fragment>  
         <div className="w-full h-full" >
-           <NavBarComponent logout={this.props.logout} user={this.props.auth} />
+           <NavBarComponent  user={auth} />
         
-            <video className="  w-full " autoPlay loop muted >
+            <video className=" w-full " autoPlay loop muted >
                 <source src={video} type="video/mp4"></source>
             </video>
         
@@ -76,17 +63,15 @@ class CarDetail extends Component{
   Book Now
 </button></Link>
         </div>
+
         <Footer/>
        </div>
        </div>
        </Fragment> 
         ) 
     }
-}
 
 
-const mapStateToProps=state=>({
-  auth:state.auth  
-})
 
-export default connect(mapStateToProps,{logout})(withRouter(CarDetail))
+
+export default CarDetail
