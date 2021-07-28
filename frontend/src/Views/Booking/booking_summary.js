@@ -1,14 +1,14 @@
 import React,{useEffect,useState} from 'react'
 import { useLocation} from 'react-router'
-import {Link} from 'react-router-dom'
+
 import { useSelector,useDispatch} from 'react-redux'
-import {logout} from '../../actions/login'
+
 import {getDealership} from '../../actions/booking'
 import NavBarComponent from '../Components/navbar'
 import Footer from "../Components/footer"
 import Moment from 'react-moment';
 import Checkout from './Checkout' 
-
+import Loader from '../Components/loader'
 
 
 const BookingSummary=()=> { 
@@ -25,6 +25,14 @@ const BookingSummary=()=> {
         
     },[])
     return (
+
+      <> 
+      {
+           booking.loading===true?<Loader/>:
+
+
+
+      
         <div className="h-screen bg-gray-100"> 
             <header>
                 <NavBarComponent user={auth} />
@@ -73,6 +81,8 @@ const BookingSummary=()=> {
                <Footer/>
             </footer>
         </div>
+        }
+        </>
     )
 }
 

@@ -9,7 +9,7 @@ import getCars from './cars'
 
 
 export const getDealership=(dealerId,carId)=>dispatch=>{
-
+    dispatch(setLoading())
     axios.get(`http://127.0.0.1:8000/api/dealerships/${dealerId}`).then(res=>{
 
          dispatch({
@@ -18,6 +18,7 @@ export const getDealership=(dealerId,carId)=>dispatch=>{
          }) 
 
          dispatch(getCar(carId))
+         dispatch(unsetLoading())
     }).catch(err=>{
         toastOnError(err);
     })

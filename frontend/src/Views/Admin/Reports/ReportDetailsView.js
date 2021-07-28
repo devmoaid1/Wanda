@@ -3,21 +3,20 @@ import Sidebar from '../../Components/Sidebar'
 import Loader from '../../Components/loader'
 import { useSelector,useDispatch} from 'react-redux'
 import {getReport} from '../../../actions/reports'
+import {Modal,Button} from 'react-bootstrap'
 function ReportDetailsView(props){ 
     
-    const auth=useSelector((state)=>state.auth)
+    
     const reportState=useSelector((state)=>state.reports)
-    const report=reportState.report 
+   
     const dispatch=useDispatch()
 
     
+    const {report}=props
     useEffect(()=>{
-        const reportID=props.match.params.reportID
-        dispatch(getReport(reportID)) 
-        console.log(reportState)
-
+        
     },[])
-
+  
     return (
 
         <>
@@ -25,21 +24,28 @@ function ReportDetailsView(props){
         {
           reportState.loading?
           <Loader/>:
-        <div className="grid grid-cols-5 ">
-            <div className="h-screen">
-            <Sidebar user={auth.user} page={"reports"}/>
-            </div>
-
-            <div className="col-span-4"> 
-            <div className="flex flex-col p-4">
+          <Modal
+          {...props}
+          size="lg"
+          aria-labelledby="contained-modal-title-vcenter"
+          centered
+        >
+          <Modal.Header closeButton>
+            <Modal.Title id="contained-modal-title-vcenter">
+              {report.title}
+            </Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+           <div className="w-full h-full py-4 ">
+               <p className="text-md font-light text-justify">{report.description}</p>
+           </div>
            
-            <h1 className="text-2xl font-bold"> {report.title}</h1>
-            <h1 className="text-2xl font-Semibold">{report.description}</h1>
-
-            </div>
-            
-            </div>
-        </div>
+          </Modal.Body>
+          <Modal.Footer>
+           
+            <Button variant="danger" onClick={props.onHide}>Close</Button>
+          </Modal.Footer>
+        </Modal>
 }
       </>
     )

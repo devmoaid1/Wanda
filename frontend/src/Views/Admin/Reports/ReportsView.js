@@ -7,7 +7,7 @@ import Loader from '../../Components/loader'
 import ModalComponent from '../../Components/ModalComponent'
 import Moment from 'react-moment';
 import AddReport from './Add_report'
-
+import ReportDetailsView from './ReportDetailsView'
 function ReportsView() {
 
     const dispatch=useDispatch()
@@ -15,9 +15,10 @@ function ReportsView() {
     const reportsState=useSelector((state)=>state.reports)
     const [modalShow, setModalShow] = useState(false);
     const [modalFormShow,setmodalFormShow]=useState(false)
+    const[view,setView]=useState(false)
     const [action,setAction]= useState('')
     const[id,setId]=useState(0)
-    
+    const[reportObject,setReport]=useState({title:"",description:""})
 
      useEffect(()=>{
          dispatch(getReports());
@@ -26,7 +27,10 @@ function ReportsView() {
 
      },[]) 
 
-
+    const onView=(report)=>{
+        setReport(report)
+        setView(true)
+    }
      const onDelete=(id)=>{
          setId(id)
          setAction("Delete") 
@@ -47,7 +51,7 @@ function ReportsView() {
          return reports.map((report)=>(
             <tbody key={report.id}>       
             <ModalComponent onAction={handleAction} id={id} action={action} show={modalShow} onHide={()=>setModalShow(false)}/>
-       
+            <ReportDetailsView show={view}  onHide={()=>setView(false)} report={reportObject} />
         <tr  class="bg-white text-medium font-body lg:hover:bg-gray-100 flex lg:table-row flex-row lg:flex-row flex-wrap lg:flex-no-wrap mb-10 lg:mb-0">
         <td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">
             <span class="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">Company name</span>
@@ -70,8 +74,8 @@ function ReportsView() {
        
         <td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b text-center block lg:table-cell relative lg:static">
             <span class="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">Actions</span>
+            <a href="#" onClick={()=>onView(report)} class="text-blue-500 hover:text-blue-800 pl-6">View</a> 
             <a href="#" onClick={()=>onDelete(report.id)}  class="text-red-500 hover:text-red-700 pl-6">Delete</a>
-            <a href={`/report/${report.id}`}  class="text-blue-500 hover:text-blue-800 pl-6">View</a> 
             
         </td>
        </tr> 

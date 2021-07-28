@@ -1,73 +1,73 @@
-import React ,{Component} from 'react'
-import {getDealership,makeBooking} from '../../actions/booking'
-import propTypes from 'prop-types'
-import {connect} from 'react-redux'
-import {withRouter,Link} from 'react-router-dom' 
+import React ,{useState,useEffect} from 'react'
+import {getDealership} from '../../actions/booking'
 
-import {logout} from '../../actions/login' 
+import {useDispatch,useSelector} from 'react-redux'
+import {Link} from 'react-router-dom' 
+
+
 import NavBarComponent from '../Components/navbar' 
 import Footer from '../Components/footer' 
 import clockPhoto from '../../images/booking.jpeg'
 import { DateTimePickerComponent } from '@syncfusion/ej2-react-calendars'
-import { toast } from "react-toastify";
 
-class BookingView extends Component{
+
+const  BookingView=(props)=>{
     
-    constructor(props){
-      super(props)
-      this.state={
-        date:"",
-        car:null,
-        dealership:null,
+
+    const dispatch=useDispatch()
+    const auth=useSelector((state)=>state.auth)
+    const car=props.match.params.carID
+    const dealer=props.match.params.dealerID 
+    const{user}=auth
+    const [date,setDate]=useState("")
+
+    const booking={
+        date:date,
+        car:car,
+        dealership:dealer,
         status:"pending",
-        created_by:null
+        created_by:user.username
     }
-     
-    }
+    
      
 
-    createState=()=>{
-        const car=this.props.match.params.carID
-        const dealer=this.props.match.params.dealerID
-        const{user}=this.props.auth
-        this.setState({ 
-            car:car,
-            dealership:dealer,
-            created_by:user.username
+    // createState=()=>{
+    //     const car=this.props.match.params.carID
+    //     const dealer=this.props.match.params.dealerID
+    //     this.setState({ 
+    //         car:car,
+    //         dealership:dealer,
+    //         created_by:user.username
 
-        })
-    }
+    //     })
+    // }
    
-    componentDidMount(){ 
-        const car=this.props.match.params.carID
-        const dealer=this.props.match.params.dealerID 
-        this.createState()
-        this.props.getDealership(car,dealer)
-        console.log(this.state)
-    } 
+//    useEffect(()=>{
 
-    componentDidUpdate(){
-        console.log(this.props.booking) 
-        console.log(this.state)
-    } 
+    
+//     dispatch(getDealership(car,dealer))
+//     console.log(booking)
 
-    handleChange=(e)=>{
+
+
+
+//    })
+
+    
+
+   const handleChange=(e)=>{
         
-        this.setState({date:e.target.value})
+        setDate(e.target.value) 
+        console.log(booking)
     } 
 
    
-    static propTypes={
-        getDealership:propTypes.func.isRequired,
-        makeBooking:propTypes.func.isRequired,
-        logout:propTypes.func.isRequired,
-        booking:propTypes.object.isRequired
-    } 
-  render(){
+   
+  
       return( 
           <div className="bg-gray-100">       
         <header>
-        <NavBarComponent user={this.props.auth} logout={this.props.logout}/>
+        <NavBarComponent user={auth} />
     </header>
           <div className="w-full h-screen bg-gray-100 ">
               <div className=" flex flex-row w-3/4 h-3/4  mx-auto my-20 rounded overflow-hidden shadow-lg">
@@ -80,9 +80,9 @@ class BookingView extends Component{
             </svg>  <h1 className=" ml-2 inline-block font-bold text-3xl">Booking details</h1></div>
              <div className="mx-auto mt-6"><h1 className="text-xl">Specify booking date and time</h1></div>
              <div className="h-20"></div> 
-             <div className="w-1/2 h-10 mx-auto mt-20 "><DateTimePickerComponent  onChange={this.handleChange} placeholder="choose date and time" ></DateTimePickerComponent> </div> 
+             <div className="w-1/2 h-10 mx-auto mt-20 "><DateTimePickerComponent  onChange={handleChange} placeholder="choose date and time" ></DateTimePickerComponent> </div> 
              <div className="h-20"></div>
-             <Link to={{ pathname: '/bookingsummary/', state: this.state }}> <div> <button  className="bg-red-500 hover:bg-red-700 text-white  py-2 px-20 rounded">Confirm</button></div></Link>
+             <Link to={{ pathname: '/bookingsummary/', state: booking }}> <div> <button  className="bg-red-500 hover:bg-red-700 text-white  py-2 px-20 rounded">Confirm</button></div></Link>
 
 
            </div> 
@@ -100,11 +100,7 @@ class BookingView extends Component{
       )
   }
 
-} 
 
-const mapStateToProps=state=>({
-    booking:state.booking,
-    auth:state.auth
- }) 
 
- export default connect(mapStateToProps,{getDealership,logout,makeBooking})(withRouter(BookingView))
+
+ export default BookingView
