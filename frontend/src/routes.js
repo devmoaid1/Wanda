@@ -24,7 +24,7 @@ const BaseRouter = () => (
       <Route  path="/catalog/:carID" component={CarDetail} />
       <Route  path="/home/" component={CarsView} />
       <Route  path="/signup/" component={SignUpForm} />
-      <Route  path="/select/:carID" component={SelectDealership} />
+      <Route  path="/select/" component={SelectDealership} />
       <Route  path="/book/:carID/:dealerID" component={BookingView} />
       <Route  path="/bookingsummary/" component={BookingSummary} />
       <Route  path="/bookingslist/" component={BookingsListView} />

@@ -1,6 +1,6 @@
-import React,{useState,useEffect} from 'react' 
+import React,{useEffect} from 'react' 
 import { useSelector,useDispatch} from 'react-redux'
-import {Link} from 'react-router-dom' 
+
 import NavBarComponent from '../Components/navbar'
 import bgphoto from'../../images/bgphoto.jpg' 
 import getCars from '../../actions/cars'

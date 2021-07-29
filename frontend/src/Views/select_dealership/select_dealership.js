@@ -1,23 +1,24 @@
 import React ,{ Fragment,useState,useEffect} from 'react'
 import {getDealerships} from '../../actions/dealerships'
- 
 import {Link} from 'react-router-dom' 
-
+import { useSelector,useDispatch} from 'react-redux'
+import { useLocation} from 'react-router'
 import NavBarComponent from '../Components/navbar' 
 import Footer from '../Components/footer'
 import DealerModal from './modal'
-import { useSelector,useDispatch} from 'react-redux'
+import Loader from '../Components/loader'
 
 const SelectDealership=(props)=>{
-
+  
+  const location=useLocation()
   const dispatch=useDispatch()
   const dealershipsState=useSelector((state)=>state.dealerships)
   const auth=useSelector((state)=>state.auth)
-  const {car}=dealershipsState 
   const [dealerId,setDealerId]=useState(0)
   const [modalShow,setModalShow]=useState(false)
-  var nf = new Intl.NumberFormat();
   const carId=props.match.params.carID
+  const car=location.state
+  var nf = new Intl.NumberFormat();
   
  
   
@@ -49,7 +50,7 @@ const SelectDealership=(props)=>{
       
         item.cars.filter((item)=>item===carID)?      
       <div className=" card hover:shadow-lg flex flex-row rounded-md   bg-white overflow-hidden shadow-md mt-7 w-3/4 h-60 mx-auto " key={item.id}>
-        <div > <img src={item.pic} className="w-60 h-60 object-cover"alt="pic"></img></div>
+        <div > <img src={item.pic} className=" flex-shrink-0 w-60 h-60 object-cover"alt="pic"></img></div>
          
         
         <div className="flex flex-col w-3/4 h-full px-3 py-2">
@@ -84,7 +85,7 @@ const SelectDealership=(props)=>{
        </button>
        
      </div>  
-        <DealerModal show={modalShow} onHide={()=>setModalShow(false)} onAction={onAction} dealer={dealerId} car={carID} />
+        <DealerModal show={modalShow} onHide={()=>setModalShow(false)} onAction={onAction} dealer={dealerId} car={car.id} />
 
         </div>  
         
@@ -99,7 +100,12 @@ const SelectDealership=(props)=>{
  
 
      return( 
-           <Fragment>
+       
+       <> 
+       {
+         dealershipsState.loading===true?<Loader/>:
+         
+           <>
          <header>
              <NavBarComponent user={auth} />
          </header>
@@ -137,10 +143,10 @@ const SelectDealership=(props)=>{
          <footer >
          <Footer/>
          </footer>
-      
+      </>
              
-      
-     </Fragment>
+    }      
+     </>
      )
  }
 

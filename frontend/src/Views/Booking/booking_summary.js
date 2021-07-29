@@ -47,7 +47,7 @@ const BookingSummary=()=> {
                    <img className="h-full w-full" src={booking.car.picture} alt="car"></img>
                    </div> 
 
-                   <div className=" flex flex-col space-y-6  p-4 w-2/3 bg-white ">
+                   <div className=" flex flex-col space-y-6  p-3 w-2/3 bg-white ">
                        <div className="flex flex-col divide-y-2 divide-gray-400 divide-dashed space-y-6">
                        <div className="flex flex-row justify-between py-1">
                          <p className="text-lg font-normal">SubTotal :</p>

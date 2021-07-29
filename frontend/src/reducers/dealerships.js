@@ -1,9 +1,10 @@
-import {GET_DEALERSHIPS,GET_CAR} from '../actions/types'
+import {GET_DEALERSHIPS,GET_CAR,SET_LOADING,UNSET_LOADING} from '../actions/types'
 
 
 const intialState={
     dealerships:[],
-    car:{}
+    car:{},
+    loading:false
 } 
 
 
@@ -16,8 +17,13 @@ const dealershipsReducer=(state=intialState,action)=>{
     
         case GET_CAR: 
            
-        return{...state,car:action.payload};
- 
+            return{...state,car:action.payload};
+    
+        case SET_LOADING:
+            return{...state,loading:action.payload}
+                   
+        case UNSET_LOADING:
+            return{...state,loading:action.payload} 
        
  
          default:

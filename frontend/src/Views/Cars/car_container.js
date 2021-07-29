@@ -14,7 +14,7 @@ function CarContainer(props){
         <span className="block font-medium text-gray-600">{(car.price).toLocaleString('en')} Egp</span> 
 
         <div className="inline-block ">
-        <Link to={`/select/${car.id}`}> <button class="bg-red-600 hover:bg-red-700 text-white font-large py-2 px-8  rounded">
+        <Link to={{ pathname: '/select/', state: car }}> <button class="bg-red-600 hover:bg-red-700 text-white font-large py-2 px-8  rounded">
   Book Now
 </button></Link>
 <Link to={`/catalog/${car.id}`}> <button class="bg-gray-800 hover:bg-gray-700 text-white font-large py-2 px-4  rounded">

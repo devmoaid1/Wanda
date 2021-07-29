@@ -81,7 +81,7 @@ const CheckoutForm = (props) => {
     <form  onSubmit={handleSubmit}>
       <CardElement />
       
-      <button className=" mt-8 bg-red-500 hover:bg-red-400 text-white py-2 px-6 rounded w-full" type="submit" disabled={!stripe}>
+      <button className=" mt-8 bg-blue-500 hover:bg-blue-600 text-white py-2 px-6 rounded w-full" type="submit" disabled={!stripe}>
        {
          loading?
          <Spinner
