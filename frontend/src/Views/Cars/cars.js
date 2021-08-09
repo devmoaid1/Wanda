@@ -1,4 +1,4 @@
-import React,{useEffect} from 'react' 
+import React,{useEffect,useState} from 'react' 
 import { useSelector,useDispatch} from 'react-redux'
 
 import NavBarComponent from '../Components/navbar'
@@ -12,9 +12,15 @@ import Footer from '../Components/footer'
 
 const CarsView =()=>{
  
-   const dispatch=useDispatch()
-   const homeState=useSelector((state)=>state.cars) 
-   const auth =useSelector((state)=>state.auth) 
+  const dispatch=useDispatch()
+  const homeState=useSelector((state)=>state.cars) 
+  const auth =useSelector((state)=>state.auth)
+  const newitems=homeState.cars;
+  const[search,setSearch]=useState('') 
+  
+  const filteredCars=newitems.filter(car=>{
+    return car.name.toLowerCase().includes(search.toLowerCase())
+  })
    
    useEffect(()=>{
     dispatch(getCars()) 
@@ -23,9 +29,8 @@ const CarsView =()=>{
   
    
   const renderCarList=()=>{
-    const newitems=homeState.cars;
    
-    return newitems.map((item)=>( 
+    return filteredCars.map((item)=>( 
       
       <CarContainer car={item}/>
 
@@ -60,7 +65,21 @@ const CarsView =()=>{
           />
            </div>
 
-           <div><h1 className="text-3xl bold ml-20 mt-10">Latest Cars</h1></div>  
+           <div className="flex flex-row h-20 mt-10">
+             <h1 className="text-3xl bold ml-20 mt-10">Latest Cars</h1>
+             
+             <div class=" bg-white-100 mt-10 mx-auto">
+    <div class="container h-10  flex justify-center items-center overflow-hidden shadow-lg rounded-md">
+        <div class="relative">
+            <div class="absolute top-4 left-3"> <i class="fa fa-search text-gray-400 z-20 hover:text-gray-500"></i> </div> <input type="text" onChange={e=>setSearch(e.target.value)} class="h-14 w-96 pl-10 pr-20 rounded-lg z-0 focus:shadow focus:outline-none" placeholder="Search Car..."/>
+            <div class="absolute top-2 right-1"> <button class="h-10 w-20 text-white rounded-lg bg-red-500 hover:bg-red-600">Search</button> </div>
+        </div>
+    </div>
+</div>
+              
+           
+           
+           </div>  
           <div className=" w-full h-1/2 my-10  lg:grid grid-cols-3 grid-row-2 gap-3 sm:grid grid-cols-1 gap-5">
          
           {renderCarList()}
