@@ -59,7 +59,7 @@ const CarDetail =(props)=>{
             {car.description}
         </div> 
         <div>
-        <Link to={`/select/${car.id}`}> <button class="bg-red-600 hover:bg-red-700 text-white font-large py-2 px-8  rounded ml-20 my-10">
+        <Link to={{ pathname: '/select/', state: car }}> <button class="bg-red-600 hover:bg-red-700 text-white font-large py-2 px-8  rounded ml-20 my-10">
   Book Now
 </button></Link>
         </div>
