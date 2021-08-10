@@ -1,23 +1,19 @@
-import React ,{ useEffect, Fragment } from "react"
-import { useSelector,useDispatch} from 'react-redux'
+import React ,{  Fragment } from "react"
+import { useSelector} from 'react-redux'
+import { useLocation} from 'react-router'
 import video from '../../videos/Overview- The innovative features of the all-new BMW 7 Series.---youtube-downloader---www.download.tube.mp4'
 import NavBarComponent from "../Components/navbar" 
 import {Link} from 'react-router-dom'
 import Footer from '../Components/footer'
-import { getCarById } from "../../actions/cars"
-const CarDetail =(props)=>{
-        
-      const carState=useSelector((state)=>state.cars)
+
+const CarDetail =()=>{
+
+
+      const location=useLocation()  
       const auth=useSelector((state)=>state.auth)
-      const dispatch=useDispatch()
-      const car=carState.car
+      const car=location.state
 
-      useEffect(()=>{
-          const carId=props.match.params.carID
-          dispatch(getCarById(carId))
-          console.log(carState)
-
-      },[])
+   
 
 
           return(

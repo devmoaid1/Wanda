@@ -17,7 +17,7 @@ function CarContainer(props){
         <Link to={{ pathname: '/select/', state: car }}> <button class="bg-red-600 hover:bg-red-700 text-white font-large py-2 px-8  rounded">
   Book Now
 </button></Link>
-<Link to={`/catalog/${car.id}`}> <button class="bg-gray-800 hover:bg-gray-700 text-white font-large py-2 px-4  rounded">
+<Link to={{ pathname: '/catalog/', state: car }}> <button class="bg-gray-800 hover:bg-gray-700 text-white font-large py-2 px-4  rounded">
   View Catalog
 </button> </Link>
         </div>     

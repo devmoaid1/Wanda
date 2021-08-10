@@ -6,49 +6,52 @@ import bgphoto from'../../images/bgphoto.jpg'
 import getCars from '../../actions/cars'
 import CarContainer from './car_container'
 import 'bootstrap/dist/css/bootstrap.min.css'; 
-
 import Footer from '../Components/footer'
+import ReactPaginate from 'react-paginate'
 
 
 const CarsView =()=>{
  
   const dispatch=useDispatch()
-  const homeState=useSelector((state)=>state.cars) 
-  const auth =useSelector((state)=>state.auth)
-  const newitems=homeState.cars;
+  const homeState=useSelector((state)=>state.cars) //state 
+  const auth =useSelector((state)=>state.auth) // user state
+  const carsList=homeState.cars;//list of cars
   const[search,setSearch]=useState('') 
   
-  const filteredCars=newitems.filter(car=>{
+  const[pageNumber,setPageNumber]=useState(0)
+
+  const carsPerPage=3 
+  const pageVisited=pageNumber*carsPerPage 
+
+  const pageCount=Math.ceil(carsList.length/carsPerPage)
+  const filteredCars=carsList.filter(car=>{
     return car.name.toLowerCase().includes(search.toLowerCase())
-  })
-   
-   useEffect(()=>{
+  })// searching functionality
+  
+  const displayCars=filteredCars.slice(pageVisited,pageVisited+carsPerPage).map((car)=>{
+
+    return <CarContainer car={car}/>
+
+  }) 
+
+
+  const changePage=({selected})=>{
+    setPageNumber(selected)
+  }
+  useEffect(()=>{
     dispatch(getCars()) 
     
    },[])
   
    
-  const renderCarList=()=>{
-   
-    return filteredCars.map((item)=>( 
-      
-      <CarContainer car={item}/>
-
-
-
-    ))
-   } 
+  
 
   
  
    
 
     return( 
-        
-     
-
-         
-        
+            
         <div className="w-full h-full"> 
         <NavBarComponent  user={auth}/>
         
@@ -82,7 +85,18 @@ const CarsView =()=>{
            </div>  
           <div className=" w-full h-1/2 my-10  lg:grid grid-cols-3 grid-row-2 gap-3 sm:grid grid-cols-1 gap-5">
          
-          {renderCarList()}
+          {displayCars}
+
+          <ReactPaginate
+          previousLabel={"prev"}
+          nextLabel={"next"}
+          pageCount={pageCount}
+          onPageChange={changePage}
+          containerClassName={"paginationbttns"}
+          previousLinkClassName={"previousbttn"}
+          nextLinkClassName={"nextbttn"}
+          disabledClassName={"paginationDisabled"}
+          />
           </div>
           <footer>
           <Footer/>
