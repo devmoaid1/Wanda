@@ -4,9 +4,9 @@ function CarContainer(props){
 
     const car=props.car
     return (
-        <div className=" flex flex-col   rounded-md bg-white ml-3 mr-3 overflow-hidden shadow-lg hover:shadow-xlg h-full " key={car.id}>
+        <div className=" flex flex-col space-y-3  rounded-md bg-white ml-3 mr-3 overflow-hidden shadow-lg hover:shadow-xlg h-full " key={car.id}>
         <div className="w-full h-1/2">
-        <img src={car.picture} className="w-full h-full" alt="pic"></img>
+        <img src={car.picture} className="w-full h-60 bg-contain" alt="pic"></img>
         </div>
         <div className="flex flex-col px-3 space-y-6">
         <h1 className="text-2xl font-semibold ">{car.name}</h1>

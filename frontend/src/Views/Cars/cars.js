@@ -8,7 +8,7 @@ import CarContainer from './car_container'
 import 'bootstrap/dist/css/bootstrap.min.css'; 
 import Footer from '../Components/footer'
 import ReactPaginate from 'react-paginate'
-
+import "./pagination.css"
 
 const CarsView =()=>{
  
@@ -86,7 +86,8 @@ const CarsView =()=>{
           <div className=" w-full h-1/2 my-10  lg:grid grid-cols-3 grid-row-2 gap-3 sm:grid grid-cols-1 gap-5">
          
           {displayCars}
-
+          
+          </div>
           <ReactPaginate
           previousLabel={"prev"}
           nextLabel={"next"}
@@ -96,9 +97,9 @@ const CarsView =()=>{
           previousLinkClassName={"previousbttn"}
           nextLinkClassName={"nextbttn"}
           disabledClassName={"paginationDisabled"}
+          activeClassName={"paginationActive"}
           />
-          </div>
-          <footer>
+          <footer className="mt-4">
           <Footer/>
           </footer>
          
