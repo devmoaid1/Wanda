@@ -1,4 +1,4 @@
-<img className="mx-auto"src="frontend/src/images/Group 1.svg"><img>
+<img src="frontend/src/images/Group 1.svg"><img>
 
 # Wanda-Car Buying System
 
