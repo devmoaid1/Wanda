@@ -6,8 +6,8 @@ Wanda is car buying website that facilitates car buying process by givivng abili
 
 <h1>Built With</h1>
 <ul>
- <a href="https://reactjs.org/">React js</a>
- <a href="https://www.djangoproject.com/">Django </a>
- <a href="https://www.mongodb.com/">Mongo DB</a>
- <a href="https://stripe.com/en-gb-us">Stripe</a>
+ <li><a href="https://reactjs.org/">React js</a></li>
+ <li><a href="https://www.djangoproject.com/">Django </a></li>
+ <li><a href="https://www.mongodb.com/">Mongo DB</a></li>
+ <li><a href="https://stripe.com/en-gb-us">Stripe</a></li>
 </ul>
