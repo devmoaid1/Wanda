@@ -7,9 +7,9 @@ import {setLoading,unsetLoading} from "./login"
 import getCars from './cars'
 
 
-
+//get dealer by id 
 export const getDealership=(dealerId,carId)=>dispatch=>{
-    dispatch(setLoading())
+    dispatch(setLoading()) //set loading to true before fetching data
     axios.get(`http://127.0.0.1:8000/api/dealerships/${dealerId}`).then(res=>{
 
          dispatch({
@@ -18,12 +18,13 @@ export const getDealership=(dealerId,carId)=>dispatch=>{
          }) 
 
          dispatch(getCar(carId))
-         dispatch(unsetLoading())
+         dispatch(unsetLoading()) //set loading to false once finishing fetching data
     }).catch(err=>{
         toastOnError(err);
     })
 }
 
+//get car by Id
 export const getCar=(id)=>dispatch=>{
     
     axios.get(`/api/cars/${id}`).then(res=>{
@@ -39,6 +40,7 @@ export const getCar=(id)=>dispatch=>{
     
 }  
 
+// make a booking
 export const makeBooking=(booking)=>dispatch=>{
     dispatch(setLoading())
     axios.post('/api/bookings/',booking).then(res=>{
@@ -53,6 +55,7 @@ export const makeBooking=(booking)=>dispatch=>{
     })
 } 
 
+//get list of bookings
 export const getBookings=()=>dispatch=>{
     dispatch(setLoading())
    axios.get('/api/bookings/').then(res=>{

@@ -8,12 +8,12 @@ const NavBarComponent =(props)=> {
   
   const dispatch=useDispatch()
   
+  const user=props.user.user
 
    const onLogout=()=>{
      dispatch(logout())
    }
       
-    const user=props.user.user
     
     return (
       
