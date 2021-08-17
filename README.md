@@ -1,4 +1,4 @@
-<img src="frontend/src/images/wandalogo.svg"><img>
+<img className="mx-auto"src="frontend/src/images/Group 1.svg"><img>
 
 # Wanda-Car Buying System
 
@@ -6,8 +6,8 @@ Wanda is car buying website that facilitates car buying process by givivng abili
 
 <h1>Built With</h1>
 <ul>
- <li>React js</li>
- <li>Django </li>
- <li>Mongo DB</li>
- <li>Stripe</li>
+ <a href="https://reactjs.org/">React js</a>
+ <a href="https://www.djangoproject.com/">Django </a>
+ <a href="https://www.mongodb.com/">Mongo DB</a>
+ <a href="https://stripe.com/en-gb-us">Stripe</a>
 </ul>
