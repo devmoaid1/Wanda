@@ -19,6 +19,7 @@ Wanda is car buying website that facilitates car buying process by givivng abili
 <h2>Customer Side</h2> 
 
 <img src="frontend/src/images/Home_Page.png"><img>
+<img src="frontend/src/images/Home_page2.png"><img>
 <img src="frontend/src/images/Select%20Delaer.png"><img>
 <img src="frontend/src/images/BookingDetails.png"><img>
 <img src="frontend/src/images/Booking_summary.png"><img>
